@@ -1,9 +1,6 @@
 package ija.ija2022.homework2.tool.common;
 
 import ija.ija2022.homework2.game.*;
-//import ija.ija2022.homework2.tool.common.CommonMazeObject;
-
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 

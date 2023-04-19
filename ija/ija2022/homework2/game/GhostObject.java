@@ -3,7 +3,6 @@ package ija.ija2022.homework2.game;
 import ija.ija2022.homework2.tool.common.CommonField;
 import ija.ija2022.homework2.tool.common.CommonMazeObject;
 
-import java.util.Random;
 
 public class GhostObject implements CommonMazeObject{
     private CommonField field;

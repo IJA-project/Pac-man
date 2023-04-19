@@ -5,19 +5,14 @@
 package ija.ija2022.homework2;
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.util.List;
 import java.util.Scanner; // Import the Scanner class to read text files
 import java.io.IOException;
-
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 //--- Importy z implementovaneho reseni ukolu
-import ija.ija2022.homework2.game.KeyObject;
+
 import ija.ija2022.homework2.game.MazeConfigure;
 //--- 
 
@@ -63,8 +58,6 @@ public class Homework2 {
         MazePresenter presenter = new MazePresenter(maze);
         presenter.open();
 
-
-//        CommonMazeObject obj = maze.ghosts().get(0);
         CommonMazeObject pacman = maze.getPacman();
 
 
@@ -89,11 +82,10 @@ public class Homework2 {
                 }
             });
 
-
             Thread ghostThread = new Thread(() -> {
                 try {
 
-                    for (CommonMazeObject obj:maze.ghosts()) {
+                    for (CommonMazeObject obj:maze.ghosts()){
                         Random random = new Random();
                         int randomWintNextIntWithinARange = random.nextInt(4 - 0) + 0;
                         ProcessBuilder processBuilder = new ProcessBuilder("java", "ghost");
@@ -143,6 +135,6 @@ public class Homework2 {
             Thread.sleep(ms);
         } catch (InterruptedException ex) {
             Logger.getLogger(Homework2.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        }
     }
 }
