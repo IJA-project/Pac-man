@@ -15,7 +15,6 @@ public class WallField extends AbstractObservableField{
     public WallField(int row, int col){
         this.row = row;
         this.col = col;
-
     }
 
     @Override

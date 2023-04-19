@@ -5,6 +5,7 @@
 
 package ija.ija2022.homework2.tool.view;
 
+import ija.ija2022.homework2.game.TargetField;
 import ija.ija2022.homework2.tool.common.CommonField;
 import ija.ija2022.homework2.tool.common.CommonMazeObject;
 import ija.ija2022.homework2.tool.common.Observable;
@@ -36,10 +37,15 @@ public class FieldView extends JPanel implements Observable.Observer {
 
     private void privUpdate() {
         if (this.model.canMove()) {
-            this.setBackground(Color.white);
+            if(this.model instanceof TargetField){
+                this.setBackground(Color.blue);
+            }else{
+                this.setBackground(Color.white);
+            }
+
             if (!this.model.isEmpty()) {
                 CommonMazeObject o = this.model.get();
-                ComponentView v = o.isPacman() ? new PacmanView(this, this.model.get()) : o.isPoint() ? new PointView(this, this.model.get()) : new GhostView(this, this.model.get());
+                ComponentView v = o.isPacman() ? new PacmanView(this, this.model.get()) : o.isPoint() ? new PointView(this, this.model.get()) : o.isKey() ? new KeyView(this, this.model.get()) :new GhostView(this, this.model.get());
                 this.objects.add(v);
             } else {
                 this.objects.clear();

@@ -3,10 +3,14 @@
  * Spuštění presentéru (vizualizace) implementace modelu bludiště.
  */
 package ija.ija2022.homework2;
+import java.io.File;  // Import the File class
+import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.util.Scanner; // Import the Scanner class to read text files
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,12 +36,20 @@ public class Homework2 {
     
     public static void main(String... args) {
         MazeConfigure cfg = new MazeConfigure();
-        cfg.startReading(4, 4);
-        cfg.processLine("PP.G");
-        cfg.processLine("PPX.");
-        cfg.processLine("PPX.");
-        cfg.processLine("PPS.");
-        cfg.stopReading();
+        cfg.startReading(10, 10);
+
+
+        try {
+            File myobj = new File("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\ija2022\\homework2\\filename.txt");
+            Scanner myReader = new Scanner(myobj);
+            while (myReader.hasNextLine()) {
+                cfg.processLine(myReader.nextLine());
+            }
+            cfg.stopReading();
+        }catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
 
         CommonMaze maze = cfg.createMaze();
         MazePresenter presenter = new MazePresenter(maze);
@@ -50,18 +62,22 @@ public class Homework2 {
 
 
         while (true){
-//            System.out.println(pacman.getField());
+
             Random random = new Random();
             int randomWintNextIntWithinARange = random.nextInt(4 - 0) + 0;
-            sleep(1000);
+//            sleep(150);
             char tmp = presenter.GetChar();
             if (randomWintNextIntWithinARange == 0){
+                sleep(400);
                 obj.move(CommonField.Direction.U);
             } else if (randomWintNextIntWithinARange == 1) {
+                sleep(400);
                 obj.move(CommonField.Direction.D);
             } else if (randomWintNextIntWithinARange == 2) {
+                sleep(400);
                 obj.move(CommonField.Direction.R);
             } else if (randomWintNextIntWithinARange ==3) {
+                sleep(400);
                 obj.move(CommonField.Direction.L);
             }
 
@@ -74,7 +90,7 @@ public class Homework2 {
             } else if (Character.toLowerCase(tmp)=='d') {
                 pacman.move(CommonField.Direction.R);
             }
-            //System.out.println(randomWintNextIntWithinARange);
+
             if (pacman.getLives()==0){
                 break;
             }

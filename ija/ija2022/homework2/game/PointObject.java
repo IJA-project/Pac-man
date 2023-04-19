@@ -4,14 +4,14 @@ import ija.ija2022.homework2.tool.common.CommonField;
 import ija.ija2022.homework2.tool.common.CommonMazeObject;
 
 public class PointObject implements CommonMazeObject{
-    private CommonField fld;
+    private CommonField field;
     public PointObject(CommonField field){
-       this.fld = field;
+       this.field = field;
    }
 
 
    public void takePoint(){
-        this.fld.remove(this);
+        this.field.remove(this);
    }
    @Override
    public boolean isPoint(){

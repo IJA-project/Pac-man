@@ -58,6 +58,8 @@ public class MazePlan implements CommonMaze {
                 }else if (symb == 'P'){
                     field = new PathField(i,j);
                     field.put(new PointObject(field));
+                }else if (symb == 'T'){
+                    field = new TargetField(i,j);
                 }
                 field.setMaze(this);
                 this.mazePlan[i][j] = field;

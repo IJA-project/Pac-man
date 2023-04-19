@@ -4,16 +4,16 @@ import ija.ija2022.homework2.tool.common.CommonField;
 import ija.ija2022.homework2.tool.common.CommonMazeObject;
 
 public class KeyObject implements CommonMazeObject {
-    private CommonField fld;
+    private CommonField field;
 
 
 
     public KeyObject(CommonField field){
-        this.fld = field;
+        this.field = field;
     }
 
     public void takeKey(){
-        this.fld.remove(this);
+        this.field.remove(this);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class KeyObject implements CommonMazeObject {
 
     @Override
     public CommonField getField() {
-        return fld;
+        return field;
     }
 
     @Override

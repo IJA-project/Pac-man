@@ -27,10 +27,11 @@ public class PacmanObject implements CommonMazeObject{
         catch (UnsupportedOperationException e){
             return false;
         }
-        return field instanceof PathField;
+        return field instanceof PathField || field instanceof TargetField;
     }
 
     public boolean move(CommonField.Direction dir){
+
         if (this.canMove(dir)){
             if (this.field.nextField(dir).isKey()){
                 this.canExit = true;
@@ -38,7 +39,15 @@ public class PacmanObject implements CommonMazeObject{
             } else if (this.field.nextField(dir).isPoint()) {
                 this.score +=1;
                 field.nextField(dir).remove(this.field.nextField(dir).get());
+            } else if (!this.field.nextField(dir).isEmpty()) {
+                System.out.println(213);
+                this.lives-=1;
+            } else if (this.field.nextField(dir) instanceof TargetField && this.canExit) {
+                this.field.remove(this);
+                this.field = null;
+                System.exit(0);
             }
+
             CommonField field = null;
             field = this.field.nextField(dir);
             this.field.remove(this);

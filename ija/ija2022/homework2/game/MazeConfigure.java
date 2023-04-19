@@ -28,7 +28,7 @@ public class MazeConfigure extends Object{
     }
 
     public boolean processLine(String line) {
-        if (line.isEmpty() || line.length() != this.cols || !(Pattern.matches("^[XSGPK.]+$", line)) || this.numOfLines >= this.rows ){
+        if (line.isEmpty() || line.length() != this.cols || !(Pattern.matches("^[XSGPKT.]+$", line)) || this.numOfLines >= this.rows ){
             this.errors = true;
             return false;
         }else{    

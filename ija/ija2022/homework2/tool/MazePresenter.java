@@ -31,7 +31,7 @@ public class MazePresenter {
         @Override
         public void keyPressed(KeyEvent e) {
             MazePresenter.state = e.getKeyChar();
-            System.out.println(e.getKeyChar());
+//            System.out.println(e.getKeyChar());
         }
 
         @Override
@@ -62,7 +62,7 @@ public class MazePresenter {
         JFrame frame = new JFrame("Pacman Demo");
         frame.setDefaultCloseOperation(3);
         frame.setSize(350, 400);
-        frame.setPreferredSize(new Dimension(350, 400));
+        frame.setPreferredSize(new Dimension(1920, 1080));
         frame.setResizable(false);
         int rows = this.maze.numRows();
         int cols = this.maze.numCols();
