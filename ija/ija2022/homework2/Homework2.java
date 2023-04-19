@@ -5,6 +5,7 @@
 package ija.ija2022.homework2;
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.util.List;
 import java.util.Scanner; // Import the Scanner class to read text files
 
 import java.awt.event.KeyEvent;
@@ -36,14 +37,22 @@ public class Homework2 {
     
     public static void main(String... args) {
         MazeConfigure cfg = new MazeConfigure();
-        cfg.startReading(10, 10);
+
 
 
         try {
             File myobj = new File("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\ija2022\\homework2\\filename.txt");
             Scanner myReader = new Scanner(myobj);
+            int count = 0;
             while (myReader.hasNextLine()) {
-                cfg.processLine(myReader.nextLine());
+                if (count ==0){
+                      String[] param = myReader.nextLine().split(" ");
+
+                    cfg.startReading(Integer.parseInt(param[0]), Integer.parseInt(param[1]));
+                }else{
+                    cfg.processLine(myReader.nextLine());
+                }
+                count++;
             }
             cfg.stopReading();
         }catch (FileNotFoundException e) {
