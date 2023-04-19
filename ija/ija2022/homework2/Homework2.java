@@ -63,9 +63,8 @@ public class Homework2 {
         MazePresenter presenter = new MazePresenter(maze);
         presenter.open();
 
-//        sleep(2000);
 
-        CommonMazeObject obj = maze.ghosts().get(0);
+//        CommonMazeObject obj = maze.ghosts().get(0);
         CommonMazeObject pacman = maze.getPacman();
 
 
@@ -93,24 +92,27 @@ public class Homework2 {
 
             Thread ghostThread = new Thread(() -> {
                 try {
-                    Random random = new Random();
-                    int randomWintNextIntWithinARange = random.nextInt(4 - 0) + 0;
-                    ProcessBuilder processBuilder = new ProcessBuilder("java", "ghost");
-                    Process process = processBuilder.start();
-                    if (randomWintNextIntWithinARange == 0) {
-                        sleep(400);
-                        obj.move(CommonField.Direction.U);
-                    } else if (randomWintNextIntWithinARange == 1) {
-                        sleep(400);
-                        obj.move(CommonField.Direction.D);
-                    } else if (randomWintNextIntWithinARange == 2) {
-                        sleep(400);
-                        obj.move(CommonField.Direction.R);
-                    } else if (randomWintNextIntWithinARange == 3) {
-                        sleep(400);
-                        obj.move(CommonField.Direction.L);
+
+                    for (CommonMazeObject obj:maze.ghosts()) {
+                        Random random = new Random();
+                        int randomWintNextIntWithinARange = random.nextInt(4 - 0) + 0;
+                        ProcessBuilder processBuilder = new ProcessBuilder("java", "ghost");
+                        Process process = processBuilder.start();
+                        if (randomWintNextIntWithinARange == 0) {
+                            sleep(150);
+                            obj.move(CommonField.Direction.U);
+                        } else if (randomWintNextIntWithinARange == 1) {
+                            sleep(150);
+                            obj.move(CommonField.Direction.D);
+                        } else if (randomWintNextIntWithinARange == 2) {
+                            sleep(150);
+                            obj.move(CommonField.Direction.R);
+                        } else if (randomWintNextIntWithinARange == 3) {
+                            sleep(150);
+                            obj.move(CommonField.Direction.L);
+                        }
+                        process.waitFor();
                     }
-                    process.waitFor();
                 } catch (IOException | InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -130,28 +132,6 @@ public class Homework2 {
     }
 
 
-        obj.move(CommonField.Direction.L);
-        pacman.move(CommonField.Direction.L);
-
-        sleep(2000);
-        obj.move(CommonField.Direction.L);
-
-        pacman.move(CommonField.Direction.U);
-        sleep(1000);
-        pacman.move(CommonField.Direction.U);
-        obj.move(CommonField.Direction.D);
-        sleep(1000);
-        obj.move(CommonField.Direction.D);
-        sleep(1000);
-        obj.move(CommonField.Direction.D);
-        sleep(1000);
-        obj.move(CommonField.Direction.D);
-        sleep(1000);
-        obj.move(CommonField.Direction.R);
-        sleep(1000);
-        obj.move(CommonField.Direction.L);
-        sleep(1000);
-        obj.move(CommonField.Direction.U);
     }
 
     /**
