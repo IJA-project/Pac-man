@@ -7,6 +7,7 @@ import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.List;
 import java.util.Scanner; // Import the Scanner class to read text files
+import java.io.IOException;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -39,23 +40,21 @@ public class Homework2 {
         MazeConfigure cfg = new MazeConfigure();
 
 
-
         try {
             File myobj = new File("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\ija2022\\homework2\\filename.txt");
             Scanner myReader = new Scanner(myobj);
             int count = 0;
             while (myReader.hasNextLine()) {
-                if (count ==0){
-                      String[] param = myReader.nextLine().split(" ");
-
+                if (count == 0) {
+                    String[] param = myReader.nextLine().split(" ");
                     cfg.startReading(Integer.parseInt(param[0]), Integer.parseInt(param[1]));
-                }else{
+                } else {
                     cfg.processLine(myReader.nextLine());
                 }
                 count++;
             }
             cfg.stopReading();
-        }catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
@@ -64,46 +63,71 @@ public class Homework2 {
         MazePresenter presenter = new MazePresenter(maze);
         presenter.open();
 
-        sleep(2000);
+//        sleep(2000);
 
         CommonMazeObject obj = maze.ghosts().get(0);
         CommonMazeObject pacman = maze.getPacman();
 
 
-        while (true){
-
-            Random random = new Random();
-            int randomWintNextIntWithinARange = random.nextInt(4 - 0) + 0;
-//            sleep(150);
+        while (true) {
             char tmp = presenter.GetChar();
-            if (randomWintNextIntWithinARange == 0){
-                sleep(400);
-                obj.move(CommonField.Direction.U);
-            } else if (randomWintNextIntWithinARange == 1) {
-                sleep(400);
-                obj.move(CommonField.Direction.D);
-            } else if (randomWintNextIntWithinARange == 2) {
-                sleep(400);
-                obj.move(CommonField.Direction.R);
-            } else if (randomWintNextIntWithinARange ==3) {
-                sleep(400);
-                obj.move(CommonField.Direction.L);
-            }
+            Thread pacmanThread = new Thread(() -> {
+                try {
+                    ProcessBuilder processBuilder = new ProcessBuilder("java", "pacman");
+                    Process process = processBuilder.start();
+                    if (Character.toLowerCase(tmp) == 'w') {
+                        pacman.move(CommonField.Direction.U);
+                    } else if (Character.toLowerCase(tmp) == 's') {
+                        pacman.move(CommonField.Direction.D);
+                    } else if (Character.toLowerCase(tmp) == 'a') {
+                        pacman.move(CommonField.Direction.L);
+                    } else if (Character.toLowerCase(tmp) == 'd') {
+                        pacman.move(CommonField.Direction.R);
+                    }
+                    process.waitFor();
+                } catch (IOException | InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
 
-            if (Character.toLowerCase(tmp)=='w'){
-                pacman.move(CommonField.Direction.U);
-            } else if (Character.toLowerCase(tmp)=='s') {
-                pacman.move(CommonField.Direction.D);
-            } else if (Character.toLowerCase(tmp)=='a') {
-                pacman.move(CommonField.Direction.L);
-            } else if (Character.toLowerCase(tmp)=='d') {
-                pacman.move(CommonField.Direction.R);
-            }
 
-            if (pacman.getLives()==0){
-                break;
-            }
+            Thread ghostThread = new Thread(() -> {
+                try {
+                    Random random = new Random();
+                    int randomWintNextIntWithinARange = random.nextInt(4 - 0) + 0;
+                    ProcessBuilder processBuilder = new ProcessBuilder("java", "ghost");
+                    Process process = processBuilder.start();
+                    if (randomWintNextIntWithinARange == 0) {
+                        sleep(400);
+                        obj.move(CommonField.Direction.U);
+                    } else if (randomWintNextIntWithinARange == 1) {
+                        sleep(400);
+                        obj.move(CommonField.Direction.D);
+                    } else if (randomWintNextIntWithinARange == 2) {
+                        sleep(400);
+                        obj.move(CommonField.Direction.R);
+                    } else if (randomWintNextIntWithinARange == 3) {
+                        sleep(400);
+                        obj.move(CommonField.Direction.L);
+                    }
+                    process.waitFor();
+                } catch (IOException | InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+        try {
+            pacmanThread.start();
+            ghostThread.start();
+            pacmanThread.join();
+            ghostThread.join();
+        }catch (InterruptedException e){
+            e.printStackTrace();
         }
+
+        if (pacman.getLives() == 0) {
+            break;
+        }
+    }
 
 
         obj.move(CommonField.Direction.L);
