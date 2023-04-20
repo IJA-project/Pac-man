@@ -81,15 +81,17 @@ public class MazePlan implements CommonMaze {
     }
 
     //Method for saving current state of the maze
+    @Override
     public void saveState() {
         int count_rows = 0;
         int health = 0;
         int points = 0;
-
+        boolean key = false;
         // Try to open file and create PrintWriter
         try {
-            FileOutputStream fos = new FileOutputStream("maze_state.txt");
+            FileOutputStream fos = new FileOutputStream(System.currentTimeMillis() + ".txt");
             PrintWriter pw = new PrintWriter(fos);
+            pw.println((this.rows-2) + " " + (this.cols-2));
 
             // Print maze layout to file
             for (CommonField[] i : this.mazePlan) {
@@ -117,6 +119,7 @@ public class MazePlan implements CommonMaze {
                         } else if (j.get().isPacman()) {
                             health = j.get().getLives();
                             points = j.get().getPoints();
+                            key = j.get().pacmanKey();
                             pw.print("S");
                         } else {
                             pw.print("G");
@@ -131,7 +134,7 @@ public class MazePlan implements CommonMaze {
             }
 
             // Print health and points to file
-            pw.print(health + " " + points);
+            pw.print(health + " " + points+ " " +key);
 
             // Close PrintWriter and FileOutputStream
             pw.close();
@@ -140,6 +143,7 @@ public class MazePlan implements CommonMaze {
             System.out.println("Error saving maze state to file: " + e.getMessage());
         }
     }
+
 
     @Override
     public int numRows(){

@@ -12,7 +12,7 @@ public interface CommonMazeObject{
     default boolean isPacman(){return false;};
 
     default boolean isKey(){return false;}
-
+    default boolean pacmanKey(){return false;}
     default boolean isPoint(){return false;}
 
 }

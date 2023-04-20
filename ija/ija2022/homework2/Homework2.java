@@ -34,32 +34,15 @@ public class Homework2 {
     public static void main(String... args) {
         MazeConfigure cfg = new MazeConfigure();
 
-
-        try {
-            File myobj = new File("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\ija2022\\homework2\\filename.txt");
-            Scanner myReader = new Scanner(myobj);
-            int count = 0;
-            while (myReader.hasNextLine()) {
-                if (count == 0) {
-                    String[] param = myReader.nextLine().split(" ");
-                    cfg.startReading(Integer.parseInt(param[0]), Integer.parseInt(param[1]));
-                } else {
-                    cfg.processLine(myReader.nextLine());
-                }
-                count++;
-            }
-            cfg.stopReading();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-
+        //Here you can choose how you want to load the maze from saving file or from txt file it's like satrt a new game. loadMaze is for txt file and loadSave is for saving file.
+        cfg.loadMaze("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\ija2022\\homework2\\filename.txt");
+        //cfg.loadSave("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\1681992873591.txt");
         CommonMaze maze = cfg.createMaze();
+        CommonMazeObject pacman = maze.getPacman();
         MazePresenter presenter = new MazePresenter(maze);
         presenter.open();
 
-        CommonMazeObject pacman = maze.getPacman();
-        maze.saveState();
+
 
         while (true) {
             char tmp = presenter.GetChar();
@@ -75,6 +58,9 @@ public class Homework2 {
                         pacman.move(CommonField.Direction.L);
                     } else if (Character.toLowerCase(tmp) == 'd') {
                         pacman.move(CommonField.Direction.R);
+                    } else if (Character.toLowerCase(tmp) == 'q') {
+                        maze.saveState();
+                        System.exit(0);
                     }
                     process.waitFor();
                 } catch (IOException | InterruptedException e) {

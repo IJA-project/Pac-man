@@ -5,18 +5,25 @@ import ija.ija2022.homework2.tool.common.CommonMazeObject;
 
 public class PacmanObject implements CommonMazeObject{
     private CommonField field;
-    private int lives;
+    static private int lives = 3;
 
-    private boolean canExit;
+    static private boolean canExit = false;
 
-    private int score;
+    static private int score = 0;
 
+    //Load state of pacman like lives, score and if he has key its loading when we start game from saved file
+    static public void load(int health, int scores, String key){
+        lives = health;
+        score = scores;
+        if (key.equals("true")){
+            canExit = true;
+        } else {
+            canExit = false;
+        }
+    }
 
     public PacmanObject(CommonField field){
         this.field = field;
-        this.lives = 3;
-        this.score = 0;
-        this.canExit = false;
     }
 
     public boolean canMove(CommonField.Direction dir){
@@ -73,5 +80,9 @@ public class PacmanObject implements CommonMazeObject{
     }
     public boolean isPacman(){
         return true;
+    }
+
+    public boolean pacmanKey(){
+        return canExit;
     }
 }
