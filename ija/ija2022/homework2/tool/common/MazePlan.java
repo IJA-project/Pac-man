@@ -1,5 +1,5 @@
 package ija.ija2022.homework2.tool.common;
-
+import java.io.*;
 import ija.ija2022.homework2.game.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -78,6 +78,67 @@ public class MazePlan implements CommonMaze {
         } catch(IndexOutOfBoundsException e){
             return null;
         } 
+    }
+
+    //Method for saving current state of the maze
+    public void saveState() {
+        int count_rows = 0;
+        int health = 0;
+        int points = 0;
+
+        // Try to open file and create PrintWriter
+        try {
+            FileOutputStream fos = new FileOutputStream("maze_state.txt");
+            PrintWriter pw = new PrintWriter(fos);
+
+            // Print maze layout to file
+            for (CommonField[] i : this.mazePlan) {
+                int count_cols = 0;
+                if (count_rows == 0 || count_rows == this.rows - 1) {
+                    count_rows++;
+                    continue;
+                }
+
+                for (CommonField j : i) {
+                    //Processing fields and when it is a wall, path, target or ghost
+                    if (count_cols == 0 || count_cols == this.cols - 1) {
+                        count_cols++;
+                        continue;
+                    }
+                    if (j instanceof WallField) {
+                        pw.print("X");
+                    } else if (j instanceof PathField) {
+                        if (j.get() == null) {
+                            pw.print(".");
+                        } else if (j.get().isKey()) {
+                            pw.print("K");
+                        } else if (j.get().isPoint()) {
+                            pw.print("P");
+                        } else if (j.get().isPacman()) {
+                            health = j.get().getLives();
+                            points = j.get().getPoints();
+                            pw.print("S");
+                        } else {
+                            pw.print("G");
+                        }
+                    } else if (j instanceof TargetField) {
+                        pw.print("T");
+                    }
+                    count_cols++;
+                }
+                pw.println();
+                count_rows++;
+            }
+
+            // Print health and points to file
+            pw.print(health + " " + points);
+
+            // Close PrintWriter and FileOutputStream
+            pw.close();
+            fos.close();
+        } catch (IOException e) {
+            System.out.println("Error saving maze state to file: " + e.getMessage());
+        }
     }
 
     @Override

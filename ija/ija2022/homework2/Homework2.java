@@ -59,7 +59,7 @@ public class Homework2 {
         presenter.open();
 
         CommonMazeObject pacman = maze.getPacman();
-
+        maze.saveState();
 
         while (true) {
             char tmp = presenter.GetChar();
