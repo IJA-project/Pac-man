@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package ija.ija2022.homework2.tool;
 
 import ija.ija2022.homework2.tool.common.CommonMaze;
@@ -20,23 +15,21 @@ import javax.swing.SwingUtilities;
 
 public class MazePresenter {
     private static char state;
-    private final CommonMaze maze;
-    private KeyListener listener = new KeyListener() {
+    private CommonMaze maze;
+    private static JFrame frame = new JFrame("Pacman Demo");
+    private final KeyListener listener = new KeyListener() {
 
         @Override
         public void keyTyped(KeyEvent e) {
-           // System.out.println(1);
         }
 
         @Override
         public void keyPressed(KeyEvent e) {
             MazePresenter.state = e.getKeyChar();
-//            System.out.println(e.getKeyChar());
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
-            //System.out.println(2);
         }
 
     };
@@ -45,8 +38,8 @@ public class MazePresenter {
     }
 
     public char GetChar(){
-        char tmp = this.state;
-        this.state = ' ';
+        char tmp = state;
+        state = ' ';
         return tmp;
     }
     public void open() {
@@ -57,9 +50,14 @@ public class MazePresenter {
         }
 
     }
+    public void update(CommonMaze maze){
+        frame.getContentPane().removeAll();
+        this.maze = maze;
+        this.open();
+    }
 
     private void initializeInterface() {
-        JFrame frame = new JFrame("Pacman Demo");
+
         frame.setDefaultCloseOperation(3);
         frame.setSize(350, 400);
         frame.setPreferredSize(new Dimension(1920, 1080));

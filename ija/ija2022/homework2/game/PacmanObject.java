@@ -15,54 +15,18 @@ public class PacmanObject implements CommonMazeObject{
 
     static private int score = 0;
 
+
+    public PacmanObject(CommonField field){
+        this.field = field;
+    }
     //Load state of pacman like lives, score and if he has key its loading when we start game from saved file
     static public void load(int health, int scores, String key){
         lives = health;
         score = scores;
         canExit = key.equals("true");
     }
-
-    public PacmanObject(CommonField field){
-        this.field = field;
-    }
-
-    public boolean canMove(CommonField.Direction dir){
-        CommonField field ;
-        try{
-            field = this.field.nextField(dir);
-        }
-        catch (UnsupportedOperationException e){
-            return false;
-        }
-        return field instanceof PathField || field instanceof TargetField;
-    }
-
-
-    public boolean move(CommonField.Direction dir){
-
-        if (this.canMove(dir)){
-            if (this.field.nextField(dir).isKey()){
-                canExit = true;
-                field.nextField(dir).remove(this.field.nextField(dir).get());
-            } else if (this.field.nextField(dir).isPoint()) {
-                score +=10;
-                field.nextField(dir).remove(this.field.nextField(dir).get());
-            } else if (!this.field.nextField(dir).isEmpty()) {
-                lives-=1;
-            } else if (this.field.nextField(dir) instanceof TargetField && canExit) {
-                this.field.remove(this);
-                this.field = null;
-                System.exit(0);
-            }
-
-            CommonField field;
-            field = this.field.nextField(dir);
-            this.field.remove(this);
-            field.put(this);
-            this.field = field;
-            return true;
-        }
-        return false;
+    public void heat() {
+        lives = lives - 1;
     }
     public void keyMoving(char key){
         //Move pacman to direction which we get from keyboard
@@ -129,24 +93,65 @@ public class PacmanObject implements CommonMazeObject{
 
 
         }
+
+    @Override
+    public boolean canMove(CommonField.Direction dir){
+        CommonField field ;
+        try{
+            field = this.field.nextField(dir);
+        }
+        catch (UnsupportedOperationException e){
+            return false;
+        }
+        return field instanceof PathField || field instanceof TargetField;
+    }
+
+    @Override
+    public boolean move(CommonField.Direction dir){
+
+        if (this.canMove(dir)){
+            if (this.field.nextField(dir).isKey()){
+                canExit = true;
+                field.nextField(dir).remove(this.field.nextField(dir).get());
+            } else if (this.field.nextField(dir).isPoint()) {
+                score +=10;
+                field.nextField(dir).remove(this.field.nextField(dir).get());
+            } else if (!this.field.nextField(dir).isEmpty()) {
+                lives-=1;
+            } else if (this.field.nextField(dir) instanceof TargetField && canExit) {
+                this.field.remove(this);
+                this.field = null;
+                System.exit(0);
+            }
+
+            CommonField field;
+            field = this.field.nextField(dir);
+            this.field.remove(this);
+            field.put(this);
+            this.field = field;
+            return true;
+        }
+        return false;
+    }
     @Override
     public int getPoints(){return score;}
 
+    @Override
     public CommonField getField(){
         return this.field;
     }
 
+    @Override
     public int getLives(){
         return lives;
     }
 
-    public void heat() {
-            lives = lives - 1;
-    }
+    @Override
     public boolean isPacman(){
         return true;
     }
 
+    @Override
     public boolean pacmanKey(){
         return canExit;
     }

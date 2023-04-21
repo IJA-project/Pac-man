@@ -17,14 +17,12 @@ public class PointObject implements CommonMazeObject{
    public boolean isPoint(){
         return true;
    }
-
     @Override
     public int getPoints(){throw new UnsupportedOperationException();}
     @Override
     public boolean canMove(CommonField.Direction dir) {
         return true;
     }
-
 
     @Override
     public boolean move(CommonField.Direction dir) {

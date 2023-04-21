@@ -13,12 +13,12 @@ public class TargetField extends AbstractObservableField {
     private CommonMazeObject mazeObject;
 
     public TargetField(int row, int col){
+        notifyObservers();
         this.row = row;
         this.col = col;
         mazeObject = null;
 
     }
-
 
     @Override
     public void setMaze(CommonMaze maze){
@@ -99,14 +99,17 @@ public class TargetField extends AbstractObservableField {
 
     }
 
+    @Override
     public int getCol(){
         return this.col;
     }
 
+    @Override
     public int getRow(){
         return this.row;
     }
 
+    @Override
     public boolean contains(CommonMazeObject object){
         return object == mazeObject;
     }
