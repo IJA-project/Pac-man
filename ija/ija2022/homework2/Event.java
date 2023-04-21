@@ -23,5 +23,4 @@ public class Event {
 
 //         }
 //     }
-// Zdroj: https://www.itnetwork.cz/java/swing/swing-bez-navrhare/tutorial-java-gui-4-dil
 }

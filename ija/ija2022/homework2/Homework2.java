@@ -20,7 +20,7 @@ public class Homework2 {
         MazeConfigure cfg = new MazeConfigure();
 
         //Here you can choose how you want to load the maze from saving file or from txt file it's like satrt a new game. loadMaze is for txt file and loadSave is for saving file.
-        cfg.loadMaze("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\ija2022\\homework2\\filename.txt");
+        cfg.loadMaze("ija\\ija2022\\homework2\\filename.txt");
         //cfg.loadSave("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\1682018088182.txt");
         CommonMaze maze = cfg.createMaze();
         CommonMazeObject pacman = maze.getPacman();
