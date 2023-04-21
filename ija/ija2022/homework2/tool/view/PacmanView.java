@@ -6,6 +6,8 @@
 package ija.ija2022.homework2.tool.view;
 
 import ija.ija2022.homework2.tool.common.CommonMazeObject;
+import javax.swing.ImageIcon;
+import java.awt.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -22,8 +24,8 @@ public class PacmanView implements ComponentView {
         this.parent = parent;
     }
 
+    @Override
     public void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D)g;
         Rectangle bounds = this.parent.getBounds();
         double w = bounds.getWidth();
         double h = bounds.getHeight();
@@ -31,11 +33,9 @@ public class PacmanView implements ComponentView {
         double diameter = Math.min(h, w) - 10.0;
         double x = (w - diameter) / 2.0;
         double y = (h - diameter) / 2.0;
-        Ellipse2D.Double ellipse = new Ellipse2D.Double(x, y, diameter, diameter);
-        g2.setColor(Color.green);
-        g2.fill(ellipse);
-        g2.setColor(Color.black);
-        g2.setFont(new Font("Serif", 1, 20));
-        g2.drawString("(" + this.model.getLives()+"/"+ this.model.getPoints() + ")", (int)(x + diameter) / 2, (int)(y + diameter + 10.0) / 2 + 5);
+        int scaledWidth = (int)diameter;
+        int scaledHeight = (int)diameter;
+        Image pacman_img = new ImageIcon("Pac-man\\img\\pacman.png").getImage();
+        g.drawImage(pacman_img, (int)x, (int)y, scaledWidth, scaledHeight, this.parent);
     }
 }

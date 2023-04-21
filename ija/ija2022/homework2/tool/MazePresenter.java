@@ -62,11 +62,13 @@ public class MazePresenter {
         JFrame frame = new JFrame("Pacman Demo");
         frame.setDefaultCloseOperation(3);
         frame.setSize(350, 400);
-        frame.setPreferredSize(new Dimension(1920, 1080));
+        frame.setPreferredSize(new Dimension(800, 800));
         frame.setResizable(false);
         int rows = this.maze.numRows();
         int cols = this.maze.numCols();
         GridLayout layout = new GridLayout(rows, cols);
+        layout.setHgap(0);
+        layout.setVgap(0);
         JPanel content = new JPanel(layout);
 
         for(int i = 0; i < rows; ++i) {
