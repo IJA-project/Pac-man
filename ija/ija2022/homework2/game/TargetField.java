@@ -99,11 +99,11 @@ public class TargetField extends AbstractObservableField {
 
     }
 
-    private int getCol(){
+    public int getCol(){
         return this.col;
     }
 
-    private int getRow(){
+    public int getRow(){
         return this.row;
     }
 

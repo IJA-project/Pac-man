@@ -13,7 +13,8 @@ public interface CommonField extends Observable {
     public boolean put(CommonMazeObject object);
     public boolean remove(CommonMazeObject object);
     public boolean isEmpty();
-
+    public int getRow();
+    public int getCol();
     public boolean isPacman();
 
     public boolean isKey();

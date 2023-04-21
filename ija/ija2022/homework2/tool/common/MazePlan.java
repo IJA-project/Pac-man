@@ -28,7 +28,6 @@ public class MazePlan implements CommonMaze {
         }
 
         for (int i = 1; i < rows-1; i++) {
-
             this.mazePlan[i][0] = Borders(i, 0);// create left border
             this.mazePlan[i][cols-1] = Borders(i, cols-1);// create right border
 
@@ -71,6 +70,13 @@ public class MazePlan implements CommonMaze {
         return field;
     }
 
+    private void Clean(){
+        for (CommonField[] i : this.mazePlan) {
+            for (CommonField j : i) {
+                j.remove(j.get());
+            }
+        }
+    }
     @Override
     public CommonField getField(int row, int col){
         try{
@@ -79,6 +85,7 @@ public class MazePlan implements CommonMaze {
             return null;
         } 
     }
+
 
     //Method for saving current state of the maze
     @Override
@@ -143,7 +150,6 @@ public class MazePlan implements CommonMaze {
             System.out.println("Error saving maze state to file: " + e.getMessage());
         }
     }
-
 
     @Override
     public int numRows(){

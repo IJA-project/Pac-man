@@ -71,11 +71,11 @@ public class WallField extends AbstractObservableField{
         return obj instanceof WallField && ((WallField)obj).getCol() == this.col && ((WallField)obj).getRow() == this.row;
     }
 
-    private int getCol(){
+    public int getCol(){
         return this.col;
     }
 
-    private int getRow(){
+    public int getRow(){
         return this.row;
     }
 

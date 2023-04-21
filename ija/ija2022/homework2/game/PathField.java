@@ -19,6 +19,7 @@ public class PathField extends AbstractObservableField {
 
     }
 
+
     @Override
     public void setMaze(CommonMaze maze){
         this.maze = maze;
@@ -99,11 +100,11 @@ public class PathField extends AbstractObservableField {
 
     }
 
-    private int getCol(){
+    public int getCol(){
         return this.col;
     }
 
-    private int getRow(){
+    public int getRow(){
         return this.row;
     }
 
