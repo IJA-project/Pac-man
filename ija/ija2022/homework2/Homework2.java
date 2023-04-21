@@ -41,7 +41,7 @@ public class Homework2 {
 
 
         try {
-            File myobj = new File("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\ija2022\\homework2\\filename.txt");
+            File myobj = new File("Pac-man\\ija\\ija2022\\homework2\\filename.txt");
             Scanner myReader = new Scanner(myobj);
             int count = 0;
             while (myReader.hasNextLine()) {

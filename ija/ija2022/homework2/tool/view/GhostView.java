@@ -12,6 +12,9 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 
+import javax.swing.ImageIcon;
+import java.awt.*;
+
 public class GhostView implements ComponentView {
     private final CommonMazeObject model;
     private final FieldView parent;
@@ -30,8 +33,9 @@ public class GhostView implements ComponentView {
         double diameter = Math.min(h, w) - 10.0;
         double x = (w - diameter) / 2.0;
         double y = (h - diameter) / 2.0;
-        Ellipse2D.Double ellipse = new Ellipse2D.Double(x, y, diameter, diameter);
-        g2.setColor(Color.red);
-        g2.fill(ellipse);
+        int scaledWidth = (int)diameter;
+        int scaledHeight = (int)diameter;
+        Image pacman_img = new ImageIcon("Pac-man\\img\\redghost.png").getImage();
+        g.drawImage(pacman_img, (int)x, (int)y, scaledWidth, scaledHeight, this.parent);
     }
 }
