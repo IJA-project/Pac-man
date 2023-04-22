@@ -21,29 +21,16 @@ public class Homework2 {
 
         //Here you can choose how you want to load the maze from saving file or from txt file it's like satrt a new game. loadMaze is for txt file and loadSave is for saving file.
         //cfg.loadMaze("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\ija2022\\homework2\\filename.txt");
-        //cfg.loadMaze("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\ija2022\\homework2\\filename.txt");
-        //CommonMaze maze = cfg.createMaze();
-
+//        cfg.loadMaze("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\ija2022\\homework2\\filename.txt");
+//        CommonMaze maze = cfg.createMaze();
 //        CommonMazeObject pacman = maze.getPacman();
-
-        cfg.loadSave("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\1.txt");
-;
 //        MazePresenter presenter = new MazePresenter(maze);
 //        presenter.open();
-//        maze = cfg.createMaze();
-//        sleep(1000);
-//        presenter.update(maze);
-//        sleep(1000);
-//        while (true){
-//            if (presenter.GetChar() == 'q'){
-//                break;
-//            }
-//
-//            cfg.loadSave("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\1682079217947.txt");
-//            maze = cfg.createMaze();
-//            presenter.setNewmaze(maze);
-//            sleep(100000000);
-//        }
+
+         cfg.loadSave("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\1.txt");
+
+
+
 
 //        While loop for moving pacman and ghosts using threads and process builder.
 //        while (true) {

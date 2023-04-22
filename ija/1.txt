@@ -7,11 +7,11 @@
 ..................
 .XXXX.XX.XX.XX.XXX
 .XXXX.XX.XX.XX.XXX
-......XX..X.XXG...
+......XX..XPXXG...
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXXGXXXXX.
 .XXXX.XXXXX.XXXXX.
-T.................
+T..........K......
 3 0 false
 1 state
 .....SXXXX........
@@ -21,11 +21,11 @@ T.................
 ..................
 .XXXX.XX.XX.XX.XXX
 .XXXX.XX.XX.XXGXXX
-......XX..X.XX....
+......XX..XPXX....
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXXGXXXXX.
 .XXXX.XXXXX.XXXXX.
-T.................
+T..........K......
 3 0 false
 2 state
 .....SXXXX........
@@ -35,163 +35,2403 @@ T.................
 ..................
 .XXXX.XX.XX.XX.XXX
 .XXXX.XX.XX.XXGXXX
-......XX..X.XX....
+......XX..XPXX....
 .XXXX.XXXXXGXXXXX.
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
-T.................
+T..........K......
 3 0 false
 3 state
-.....SXXXX........
+....S.XXXX........
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 ..................
 .XXXX.XX.XX.XX.XXX
 .XXXX.XX.XX.XXGXXX
-......XX..X.XX....
+......XX..XPXX....
 .XXXX.XXXXXGXXXXX.
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
-T.................
+T..........K......
 3 0 false
 4 state
-.....SXXXX........
+....S.XXXX........
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 ..................
 .XXXX.XX.XX.XXGXXX
 .XXXX.XX.XX.XX.XXX
-......XX..X.XX....
+......XX..XPXX....
 .XXXX.XXXXXGXXXXX.
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
-T.................
+T..........K......
 3 0 false
 5 state
-.....SXXXX........
+....S.XXXX........
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 ..................
 .XXXX.XX.XX.XXGXXX
 .XXXX.XX.XX.XX.XXX
-......XX..XGXX....
+......XX..XPXX....
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
-T.................
+T..........K......
 3 0 false
 6 state
-.....SXXXX........
+...S..XXXX........
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 ..................
 .XXXX.XX.XX.XXGXXX
 .XXXX.XX.XX.XX.XXX
-......XX..XGXX....
+......XX..XPXX....
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
-T.................
+T..........K......
 3 0 false
 7 state
-.....SXXXX........
+...S..XXXX........
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 ..............G...
 .XXXX.XX.XX.XX.XXX
 .XXXX.XX.XX.XX.XXX
-......XX..XGXX....
+......XX..XPXX....
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
-T.................
+T..........K......
 3 0 false
 8 state
-.....SXXXX........
+...S..XXXX........
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 ..............G...
 .XXXX.XX.XX.XX.XXX
 .XXXX.XX.XXGXX.XXX
-......XX..X.XX....
+......XX..XPXX....
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
-T.................
+T..........K......
 3 0 false
 9 state
-....S.XXXX........
+..S...XXXX........
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 ..............G...
 .XXXX.XX.XX.XX.XXX
 .XXXX.XX.XXGXX.XXX
-......XX..X.XX....
+......XX..XPXX....
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
-T.................
+T..........K......
 3 0 false
 10 state
-....S.XXXX........
+..S...XXXX........
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 .............G....
 .XXXX.XX.XX.XX.XXX
 .XXXX.XX.XXGXX.XXX
-......XX..X.XX....
+......XX..XPXX....
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
-T.................
+T..........K......
 3 0 false
 11 state
-....S.XXXX........
+..S...XXXX........
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 .............G....
 .XXXX.XX.XXGXX.XXX
 .XXXX.XX.XX.XX.XXX
-......XX..X.XX....
+......XX..XPXX....
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
-T.................
+T..........K......
 3 0 false
 12 state
-....S.XXXX........
+.S....XXXX........
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 .............G....
 .XXXX.XX.XXGXX.XXX
 .XXXX.XX.XX.XX.XXX
-......XX..X.XX....
+......XX..XPXX....
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
-T.................
+T..........K......
 3 0 false
 13 state
-....S.XXXX........
+.S....XXXX........
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 .XXXX.XXXXX.XXXX.X
 ............G.....
 .XXXX.XX.XXGXX.XXX
 .XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+14 state
+.S....XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+...........GG.....
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+15 state
+S.....XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+...........GG.....
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+16 state
+S.....XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+...........G......
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+17 state
+S.....XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..........G.......
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+18 state
+......XXXX........
+SXXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..........G.......
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+19 state
+......XXXX........
+SXXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..........G.......
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+20 state
+......XXXX........
+SXXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.........G........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+21 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+SXXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.........G........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+22 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+SXXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.........G........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+23 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+SXXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+........G.........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+24 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+SXXXX.XXXXX.XXXX.X
+........G.........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+25 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+SXXXX.XXXXX.XXXX.X
+........G.........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+26 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+SXXXX.XXXXX.XXXX.X
+.......G..........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+27 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+S......G..........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+28 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+S......G..........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+29 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+S.....G...........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+30 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+......G...........
+SXXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+31 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+......G...........
+SXXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+32 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.....G............
+SXXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+33 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.....G............
+.XXXX.XX.XX.XX.XXX
+SXXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+34 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.....G............
+.XXXX.XX.XX.XX.XXX
+SXXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+35 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+....G.............
+.XXXX.XX.XX.XX.XXX
+SXXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+36 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+....G.............
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+S.....XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+37 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+....G.............
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+S.....XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+38 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+...G..............
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+S.....XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+39 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+...G..............
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+SXXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+40 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+...G..............
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+SXXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+41 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..G...............
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+SXXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+42 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..G...............
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+SXXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+43 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..G...............
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+SXXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+44 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.G................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+SXXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+45 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.G................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+SXXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+46 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.G................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+SXXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+47 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+G.................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+SXXXX.XXXXX.XXXXX.
+T..........K......
+3 0 false
+48 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+G.................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+0 0 false
+49 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+G.................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+0 0 false
+50 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+GXXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........K......
+0 0 false
+51 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+GXXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+TS.........K......
+3 0 false
+52 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+GXXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+TS.........K......
+3 0 false
+53 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+GXXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+TS.........K......
+3 0 false
+54 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+GXXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.S........K......
+3 0 false
+55 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+GXXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.S........K......
+3 0 false
+56 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+G.....XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.S........K......
+3 0 false
+57 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+G.....XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..S.......K......
+3 0 false
+58 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+G.....XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..S.......K......
+3 0 false
+59 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+GXXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..S.......K......
+3 0 false
+60 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+GXXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T...S......K......
+3 0 false
+61 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+GXXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T...S......K......
+3 0 false
+62 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+GXXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T...S......K......
+3 0 false
+63 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+GXXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T....S.....K......
+3 0 false
+64 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+GXXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T....S.....K......
+3 0 false
+65 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+GXXXX.XXXXX.XXXXX.
+T....S.....K......
+3 0 false
+66 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+GXXXX.XXXXX.XXXXX.
+T.....S....K......
+3 0 false
+67 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+GXXXX.XXXXX.XXXXX.
+T.....S....K......
+3 0 false
+68 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.....S....K......
+3 0 false
+69 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T......S...K......
+3 0 false
+70 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T......S...K......
+3 0 false
+71 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+TG.....S...K......
+3 0 false
+72 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+TG......S..K......
+3 0 false
+73 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+TG......S..K......
+3 0 false
+74 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.G.....S..K......
+3 0 false
+75 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.G......S.K......
+3 0 false
+76 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.G......S.K......
+3 0 false
+77 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..G.....S.K......
+3 0 false
+78 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..G......SK......
+3 0 false
+79 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..G......SK......
+3 0 false
+80 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T...G.....SK......
+3 0 false
+81 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T...G......S......
+3 0 true
+82 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T...G......S......
+3 0 true
+83 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T....G.....S......
+3 0 true
+84 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXXSXXXXX.
+T....G............
+3 0 true
+85 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXXSXXXXX.
+T....G............
+3 0 true
+86 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXXSXXXXX.
+T.....G...........
+3 0 true
+87 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXXSXXXXX.
+.XXXX.XXXXX.XXXXX.
+T.....G...........
+3 0 true
+88 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXXSXXXXX.
+.XXXX.XXXXX.XXXXX.
+T.....G...........
+3 0 true
+89 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXXSXXXXX.
+.XXXX.XXXXX.XXXXX.
+T......G..........
+3 0 true
+90 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXXSXXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T......G..........
+3 0 true
+91 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXXSXXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T......G..........
+3 0 true
+92 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XPXX....
+.XXXX.XXXXXSXXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.......G.........
+3 0 true
+93 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XSXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.......G.........
+3 10 true
+94 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XSXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.......G.........
+3 10 true
+95 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XSXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T........G........
+3 10 true
+96 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XXSXX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T........G........
+3 10 true
+97 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XXSXX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T........G........
+3 10 true
+98 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XXSXX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.........G.......
+3 10 true
+99 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XXSXX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.........G.......
+3 10 true
+100 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XXSXX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.........G.......
+3 10 true
+101 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XXSXX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........G......
+3 10 true
+102 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+...........S......
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........G......
+3 10 true
+103 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+...........S......
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..........G......
+3 10 true
+104 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+...........S......
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXXGXXXXX.
+T.................
+3 10 true
+105 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..........S.......
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXXGXXXXX.
+T.................
+3 10 true
+106 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..........S.......
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXXGXXXXX.
+T.................
+3 10 true
+107 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..........S.......
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXXGXXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+108 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.........S........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXXGXXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+109 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.........S........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXXGXXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+110 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.........S........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXXGXXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+111 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+........S.........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXXGXXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+112 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+........S.........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXXGXXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+113 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+........S.........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XGXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+114 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.......S..........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XGXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+115 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.......S..........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..XGXX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+116 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.......S..........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XXGXX.XXX
 ......XX..X.XX....
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
 T.................
-3 0 false
+3 10 true
+117 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+......S...........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XXGXX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+118 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+......S...........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XXGXX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+119 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+......S...........
+.XXXX.XX.XXGXX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+120 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.....S............
+.XXXX.XX.XXGXX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+121 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.....S............
+.XXXX.XX.XXGXX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+122 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.....S.....G......
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+123 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+...........G......
+.XXXXSXX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+124 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+...........G......
+.XXXXSXX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+125 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..........G.......
+.XXXXSXX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+126 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..........G.......
+.XXXX.XX.XX.XX.XXX
+.XXXXSXX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+127 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..........G.......
+.XXXX.XX.XX.XX.XXX
+.XXXXSXX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+128 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.........G........
+.XXXX.XX.XX.XX.XXX
+.XXXXSXX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+129 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.........G........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+.....SXX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+130 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.........G........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+.....SXX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+131 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+........G.........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+.....SXX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+132 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+........G.........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+.....SXX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+133 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+........G.........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+.....SXX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+134 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XXGXX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+.....SXX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+135 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XXGXX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+.....SXX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+136 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XXGXX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+.....SXX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+137 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XXGXX.XX.XXX
+.....SXX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+138 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XXGXX.XX.XXX
+......XX..X.XX....
+.XXXXSXXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+139 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XXGXX.XX.XXX
+......XX..X.XX....
+.XXXXSXXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+140 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XXG.X.XX....
+.XXXXSXXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+141 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XXG.X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXXSXXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+142 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XXG.X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXXSXXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+143 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX.GX.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXXSXXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.................
+3 10 true
+144 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX.GX.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXXSXXXXX.XXXXX.
+T.................
+3 10 true
+145 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX.GX.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXXSXXXXX.XXXXX.
+T.................
+3 10 true
+146 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX.GX.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXXSXXXXX.XXXXX.
+T.................
+3 10 true
+147 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX.GX.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXXSXXXXX.XXXXX.
+T.................
+3 10 true
+148 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX.GX.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXXSXXXXX.XXXXX.
+T.................
+3 10 true
+149 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XXG.X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXXSXXXXX.XXXXX.
+T.................
+3 10 true
+150 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XXG.X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXXSXXXXX.XXXXX.
+T.................
+3 10 true
+151 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XXG.X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXXSXXXXX.XXXXX.
+T.................
+3 10 true
+152 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XXGXX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXXSXXXXX.XXXXX.
+T.................
+3 10 true
+153 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XXGXX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T....S............
+3 10 true
+154 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXX.XXGXX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T....S............
+3 10 true
+155 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XXGXX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T....S............
+3 10 true
+156 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XXGXX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T...S.............
+3 10 true
+157 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XXGXX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T...S.............
+3 10 true
+158 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+........G.........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T...S.............
+3 10 true
+159 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+........G.........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..S..............
+3 10 true
+160 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+........G.........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..S..............
+3 10 true
+161 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.......G..........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..S..............
+3 10 true
+162 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.......G..........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..S..............
+3 10 true
+163 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.......G..........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..S..............
+3 10 true
+164 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+......G...........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..S..............
+3 10 true
+165 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+......G...........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..S..............
+3 10 true
+166 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+......G...........
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..S..............
+3 10 true
+167 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.....G............
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T..S..............
+3 10 true
+168 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.....G............
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.S...............
+3 10 true
+169 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.....G............
+.XXXX.XX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.S...............
+3 10 true
+170 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXXGXX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+T.S...............
+3 10 true
+171 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXXGXX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+TS................
+3 10 true
+172 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXXGXX.XX.XX.XXX
+.XXXX.XX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+TS................
+3 10 true
+173 state
+......XXXX........
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+.XXXX.XXXXX.XXXX.X
+..................
+.XXXX.XX.XX.XX.XXX
+.XXXXGXX.XX.XX.XXX
+......XX..X.XX....
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+.XXXX.XXXXX.XXXXX.
+TS................
+3 10 true

@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class MazePresenter {
-    private static char state;
+    private static char state = ' ';
     private CommonMaze maze;
     private static JFrame frame = new JFrame("Pacman Demo");
     private final KeyListener listener = new KeyListener() {
@@ -40,6 +40,7 @@ public class MazePresenter {
     public char GetChar(){
         char tmp = state;
         state = ' ';
+        System.out.println("tmp");
         return tmp;
     }
     public void open() {

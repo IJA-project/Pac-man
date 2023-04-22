@@ -41,7 +41,6 @@ public class MazeConfigure extends Object{
             }
             this.stopReading();
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
             e.printStackTrace();
         }
     }
@@ -63,7 +62,8 @@ public class MazeConfigure extends Object{
     public boolean processLine(String line) {
         if (line.isEmpty() || line.length() != this.cols || !(Pattern.matches("^[XSGPKT.]+$", line)) || this.numOfLines >= this.rows ){
             this.errors = true;
-            System.out.println(line.length()+" "+ this.cols );
+            System.out.println("Error in line: " + line);
+            System.exit(1);
             return false;
         }else{
             this.lines[this.numOfLines] = line;
@@ -74,81 +74,63 @@ public class MazeConfigure extends Object{
 
 
     //Load state of maze like walls, points, keys, targets and pacman from saved file, also load state of pacman
-    public void loadSave(String str){
-        int row = 99999;
-        int col = 99999;
+    public void loadSave(String str) {
         MazePresenter presenter = null;
         CommonMaze maze;
-        Pattern pattern = Pattern.compile("^[0-9]{0,2} state$");
-        Pattern pattern2 = Pattern.compile("^[0-9]{0,2} [0-9]{0,2} (true|false)$");
-        try {
-            boolean First_state = false;
-            Scanner myReader = new Scanner(new File(str));
-            int counts = 0;
-            int cc = 0;
+
+        try (Scanner myReader = new Scanner(new File(str))) {
+            int count_line = 0;
+            boolean firstState = false;
+            String data = myReader.nextLine();
+            String[] parm = data.split(" ");
+            int row= Integer.parseInt(parm[0]);
+            int col = Integer.parseInt(parm[1]);
+            this.startReading(row, col);
             while (myReader.hasNextLine()) {
+                data = myReader.nextLine();
 
-                String data = myReader.nextLine();
-
-                if (counts == 0) {
-                    String[] parms = data.split(" ");
-                    row = Integer.parseInt(parms[0]);
-                    col = Integer.parseInt(parms[1]);
-                    this.startReading(row, col);
-                } else {
-                    if (pattern.matcher(data).matches()) {
-                        if (data.equals("0 state")) {
-                            First_state = true;
-                            continue;
-                        } else if(First_state){
-                            this.stopReading();
-                            First_state = false;
-                            cc=0;
-                            maze = this.createMaze();
-                            presenter = new MazePresenter(maze);
-                            presenter.open();
-                        }
-                        sleep(1000);
-                        this.clean();
-                        this.startReading(row, col);
-                    }else{
-                        if(First_state){
-                            if (counts == row + 1){
-                                String[] param = data.split(" ");
-                                int health = Integer.parseInt(param[0]);
-                                int score = Integer.parseInt(param[1]);
-                                String key = param[2];
-                                PacmanObject.load(health, score, key);
-                            }else {
-                                this.processLine(data);
-                            }
-
-                        }else {
-
-                            if (!pattern2.matcher(data).matches()) {
-                                this.processLine(data);
-                                cc++;
-                                if (cc == row) {
-                                    cc = 0;
-                                    this.stopReading();
-                                    maze = this.createMaze();
-                                    presenter.update(maze);
-                                    sleep(100);
-
-                                }
-                            }
-
-                        }
+                if (Pattern.compile("^[0-9]{1,9} state$").matcher(data).matches()){
+                    if (data.equals("0 state")){
+                        firstState = true;
+                        continue;
+                    }else if (firstState){
+                        this.stopReading();
+                        firstState = false;
+                        count_line = 0;
+                        maze = this.createMaze();
+                        presenter = new MazePresenter(maze);
+                        Key = presenter.GetChar();
+                        presenter.open();
                     }
-
+                    this.clean();
+                    this.startReading(row, col);
+                }else{
+                    if (!Pattern.compile("^[0-9]{1,9} [0-9]{1,9} (true|false)$").matcher(data).matches()) {
+                        this.processLine(data);
+                        count_line++;
+                        if (count_line == row && !firstState) {
+                            count_line = 0;
+                            this.stopReading();
+                            maze = this.createMaze();
+                            presenter.update(maze);
+                            Key = presenter.GetChar();
+                        }
+                    }else {
+                        String[] param = data.split(" ");
+                        int health = Integer.parseInt(param[0]);
+                        int score = Integer.parseInt(param[1]);
+                        String key = param[2];
+                        PacmanObject.load(health, score, key);
+                    }
                 }
-                counts++;
+                sleep(25);
             }
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
     }
+
 
     public boolean stopReading() {
         if (this.numOfLines == this.rows){
@@ -163,10 +145,8 @@ public class MazeConfigure extends Object{
         if (this.errors){
             return null;
         }
-        System.out.println("Create maze");
         rows+=2;
         cols+=2;
-        System.out.println("Rows: "+rows+" Cols: "+cols + " Lines: "+lines.length);
         CommonMaze maze = new MazePlan(this.rows, this.cols, this.lines);
         return maze;
     }
