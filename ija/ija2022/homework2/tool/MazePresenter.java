@@ -40,7 +40,6 @@ public class MazePresenter {
     public char GetChar(){
         char tmp = state;
         state = ' ';
-        System.out.println("tmp");
         return tmp;
     }
     public void open() {

@@ -62,8 +62,6 @@ public class MazeConfigure extends Object{
     public boolean processLine(String line) {
         if (line.isEmpty() || line.length() != this.cols || !(Pattern.matches("^[XSGPKT.]+$", line)) || this.numOfLines >= this.rows ){
             this.errors = true;
-            System.out.println("Error in line: " + line);
-            System.exit(1);
             return false;
         }else{
             this.lines[this.numOfLines] = line;
@@ -99,7 +97,6 @@ public class MazeConfigure extends Object{
                         count_line = 0;
                         maze = this.createMaze();
                         presenter = new MazePresenter(maze);
-                        Key = presenter.GetChar();
                         presenter.open();
                     }
                     this.clean();
@@ -113,7 +110,6 @@ public class MazeConfigure extends Object{
                             this.stopReading();
                             maze = this.createMaze();
                             presenter.update(maze);
-                            Key = presenter.GetChar();
                         }
                     }else {
                         String[] param = data.split(" ");

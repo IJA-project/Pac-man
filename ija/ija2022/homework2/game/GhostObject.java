@@ -9,6 +9,8 @@ public class GhostObject implements CommonMazeObject{
     private CommonField field;
     private char dir = ' ';
     private int wait = 0;
+
+    private int dontMove = 0;
     public GhostObject(CommonField field){
         this.field = field;
     }
@@ -23,13 +25,17 @@ public class GhostObject implements CommonMazeObject{
             }
             field = this.field.nextField(dir);
             if(field instanceof PathField || field instanceof TargetField){
-//                if (field.get()!=null){
-//                    if (field.get().isPacman() || field.get().isKey() || field.get().isPoint()){
-//                        return true;
-//                    }else {
-//                        return false;
-//                    }
-//                }
+                if (field.get()!=null){
+                    if (field.get().isPacman() || field.get().isKey() || field.get().isPoint()){
+                        return true;
+                    }else {
+                        if (dontMove>5){
+                            dontMove = 0;
+                            return true;
+                        }
+                        return false;
+                    }
+                }
                 return true;
             }else {
                 return false;
@@ -48,6 +54,7 @@ public class GhostObject implements CommonMazeObject{
                     //add wait for ghost, so he can't kill pacman in one move
                     wait = 50;
                     ptr.heat();
+                    dontMove = 0;
                     return true;
                 }
             }
@@ -57,8 +64,10 @@ public class GhostObject implements CommonMazeObject{
             this.field.remove(this);
             field.put(this);
             this.field = field;
+            dontMove = 0;
             return true;
         }
+        dontMove++;
         return false;
     }    
 
