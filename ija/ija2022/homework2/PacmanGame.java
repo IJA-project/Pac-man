@@ -31,7 +31,7 @@ public class PacmanGame {
         //cfg.loadSave("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\1682018088182.txt");
         CommonMaze maze = cfg.createMaze();
         CommonMazeObject pacman = maze.getPacman();
-        MazePresenter presenter = new MazePresenter(maze);
+        MazePresenter presenter = new MazePresenter(maze, (PacmanObject)pacman);
 
         presenter.button();
 
@@ -51,20 +51,20 @@ public class PacmanGame {
         //          }
         //     }
             // // try {
-                
                 Thread pacmanThread = new Thread(() -> {
                     // try {
                         // //moving pacman using kyboard or mouse
-                        while(true){
-                            char tmp = presenter.GetChar();
+                        // while(true){
+                        //     char tmp = presenter.GetChar();
                             
                             // System.out.println("1");
                             // ProcessBuilder processBuilder = new ProcessBuilder("java", "pacman");
                             // Process process = processBuilder.start();
-                            ((PacmanObject)pacman).keyMoving(tmp);
-                            // process.waitFor();
+                            // ((PacmanObject)pacman).keyMoving(tmp);
+                        //     System.out.println(((PacmanObject)pacman).getField());
+                        //     // process.waitFor();
 
-                        }
+                        // }
                         //((PacmanObject)pacman).mouseMoving(1,12, maze);
                     // } catch (IOException | InterruptedException e) {
                     //     e.printStackTrace();

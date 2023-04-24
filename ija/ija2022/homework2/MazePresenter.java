@@ -5,6 +5,7 @@
 
 package ija.ija2022.homework2;
 
+import ija.ija2022.homework2.game.PacmanObject;
 import ija.ija2022.homework2.tool.common.CommonMaze;
 import ija.ija2022.homework2.tool.view.FieldView;
 import java.awt.Dimension;
@@ -23,37 +24,40 @@ public class MazePresenter {
     public JFrame frame;
     private static char state;
     private final CommonMaze maze;
+    private final PacmanObject pacmanObj;
     private MenuPresenter menuPresenter;
-    private KeyListener listener = new KeyListener() {
+    // private KeyListener listener = new KeyListener() {
 
-        @Override
-        public void keyTyped(KeyEvent e) {
-           // System.out.println(1);
-        }
+    //     @Override
+    //     public void keyTyped(KeyEvent e) {
+    //        // System.out.println(1);
+    //     }
 
-        @Override
-        public void keyPressed(KeyEvent e) {
-            MazePresenter.state = e.getKeyChar();
-        //    System.out.println(e.getKeyChar());
-        }
+    //     @Override
+    //     public void keyPressed(KeyEvent e) {
+    //         MazePresenter.state = e.getKeyChar();
+    //     //    System.out.println(e.getKeyChar());
+    //     }
 
-        @Override
-        public void keyReleased(KeyEvent e) {
-            //System.out.println(2);
-        }
+    //     @Override
+    //     public void keyReleased(KeyEvent e) {
+    //         MazePresenter.state = ' ';
+    //         //System.out.println(2);
+    //     }
 
-    };
-    public MazePresenter(CommonMaze maze) {
+    // };
+    public MazePresenter(CommonMaze maze, PacmanObject pacmanObj) {
         this.maze = maze;
+        this.pacmanObj = pacmanObj;
         // this.frame = frame;
         // SwingUtilities.invokeLater(this::initializeInterface);
     }
 
-    public char GetChar(){
-        char tmp = this.state;
-        this.state = ' ';
-        return tmp;
-    }
+    // public char GetChar(){
+    //     char tmp = this.state;
+    //     this.state = ' ';
+    //     return tmp;
+    // }
 
     // public void open() {
 
@@ -75,6 +79,7 @@ public class MazePresenter {
 
     private void initializeInterface() {
         JFrame frame2 = new JFrame();
+        MyKeyListener keyListener = new MyKeyListener(pacmanObj);
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame2.setSize(350, 400);
         frame2.setPreferredSize(new Dimension(800, 800));
@@ -93,7 +98,7 @@ public class MazePresenter {
             }
         }
         frame2.add(content, "Center");
-        frame2.addKeyListener(listener);
+        frame2.addKeyListener(keyListener);
         // frame.setFocusable(true);
         // frame.requestFocusInWindow();
         // frame.pack();
