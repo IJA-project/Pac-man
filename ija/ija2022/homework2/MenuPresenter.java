@@ -33,11 +33,10 @@ public class MenuPresenter{
         JFrame frame = new JFrame();
         frame.setSize(300, 200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(null);
         
         JButton playButton = new JButton("Play Pacman");
         // Create the button
-        frame.getContentPane().add(playButton);;
+        frame.add(playButton);
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0){
