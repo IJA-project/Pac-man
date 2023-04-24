@@ -40,7 +40,7 @@ public class MenuPresenter{
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0){
-                frame.setVisible(false);
+                // frame.setVisible(false);
                 PacmanGame pacmanGame = new PacmanGame();
             }
         });

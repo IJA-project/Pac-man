@@ -34,7 +34,7 @@ public class MazePresenter {
         @Override
         public void keyPressed(KeyEvent e) {
             MazePresenter.state = e.getKeyChar();
-//            System.out.println(e.getKeyChar());
+        //    System.out.println(e.getKeyChar());
         }
 
         @Override

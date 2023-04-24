@@ -15,6 +15,7 @@ import javax.swing.event.SwingPropertyChangeSupport;
 import ija.ija2022.homework2.game.GhostObject;
 import ija.ija2022.homework2.game.MazeConfigure;
 import ija.ija2022.homework2.game.PacmanObject;
+import ija.ija2022.homework2.tool.common.CommonField;
 import ija.ija2022.homework2.tool.common.CommonMaze;
 import ija.ija2022.homework2.tool.common.CommonMazeObject;
 import ija.ija2022.homework2.MazePresenter;
@@ -35,74 +36,79 @@ public class PacmanGame {
         presenter.button();
 
         //While loop for moving pacman and ghosts using threads and process builder.
-            char tmp = presenter.GetChar();
-            while(true){
-                ((PacmanObject)pacman).keyMoving(tmp);
-                maze.saveState();
-                 for (CommonMazeObject obj : maze.ghosts()) {
-                    ((GhostObject)obj).processMoving(pacman.getField().getRow(), pacman.getField().getCol(), maze);
-                    maze.saveState();
-                    if (pacman.getLives() == 0) {
-                        break;
-                    }
-                 }
-            }
+        // sleep(10000);
+        //     char tmp = presenter.GetChar();
+        //     while(true){
+        //         sleep(300);
+        //         ((PacmanObject)pacman).keyMoving(tmp);
+        //         // maze.saveState();
+        //          for (CommonMazeObject obj : maze.ghosts()) {
+        //             ((GhostObject)obj).processMoving(pacman.getField().getRow(), pacman.getField().getCol(), maze);
+        //             // maze.saveState();
+        //             if (pacman.getLives() == 0) {
+        //                 break;
+        //             }
+        //          }
+        //     }
             // // try {
-            //     Thread pacmanThread = new Thread(() -> {
-            //         // try {
-            //             //moving pacman using kyboard or mouse
-            //             while(true){
-            //                 // System.out.println("1");
-            //                 // ProcessBuilder processBuilder = new ProcessBuilder("java", "pacman");
-            //                 // Process process = processBuilder.start();
-            //                 ((PacmanObject)pacman).keyMoving(tmp);
-            //                 // process.waitFor();
+                
+                Thread pacmanThread = new Thread(() -> {
+                    // try {
+                        // //moving pacman using kyboard or mouse
+                        while(true){
+                            char tmp = presenter.GetChar();
+                            
+                            // System.out.println("1");
+                            // ProcessBuilder processBuilder = new ProcessBuilder("java", "pacman");
+                            // Process process = processBuilder.start();
+                            ((PacmanObject)pacman).keyMoving(tmp);
+                            // process.waitFor();
 
-            //             }
-            //             //((PacmanObject)pacman).mouseMoving(1,12, maze);
-            //         // } catch (IOException | InterruptedException e) {
-            //         //     e.printStackTrace();
-            //         // }
-            //     });
-            //     List<Thread> list = new ArrayList<>();
-            //     for (CommonMazeObject obj : maze.ghosts()) {
-            //         list.add( new Thread(() -> {
-            //             try {
-            //             //     //moving ghost to field where pacman is
-            //                 while(true){     
-            //                     Thread.sleep(250);
-            //             //         Random random = new Random();
-            //             //         ProcessBuilder processBuilder = new ProcessBuilder("java", "ghost");
-            //                     // Process process = processBuilder.start();                       
-            //                     ((GhostObject)obj).processMoving(pacman.getField().getRow(), pacman.getField().getCol(), maze);
-            //                         // System.out.println(((GhostObject)obj).getField());
-            //             //         process.waitFor();
+                        }
+                        //((PacmanObject)pacman).mouseMoving(1,12, maze);
+                    // } catch (IOException | InterruptedException e) {
+                    //     e.printStackTrace();
+                    // }
+                });
+                List<Thread> list = new ArrayList<>();
+                for (CommonMazeObject obj : maze.ghosts()) {
+                    list.add( new Thread(() -> {
+                        try {
+                        //     //moving ghost to field where pacman is
+                            while(true){     
+                                Thread.sleep(250);
+                        //         Random random = new Random();
+                        //         ProcessBuilder processBuilder = new ProcessBuilder("java", "ghost");
+                                // Process process = processBuilder.start();                       
+                                ((GhostObject)obj).processMoving(pacman.getField().getRow(), pacman.getField().getCol(), maze);
+                                    // System.out.println(((GhostObject)obj).getField());
+                        //         process.waitFor();
 
-            //                 }
-            //             } catch (InterruptedException e) {
-            //                 e.printStackTrace();
-            //             }
-            //         }));
+                            }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }));
                     
-            //         // ghostThread.start();
-            //     }
-            //     for (Thread obj : list){
-            //         obj.start();
-            //     }
+                    // ghostThread.start();
+                }
+                for (Thread obj : list){
+                    obj.start();
+                }
 
-            // pacmanThread.start();
+            pacmanThread.start();
             
             // System.out.println("2");
-            // // pacmanThread.join();
+            // pacmanThread.join();
             
             
-            // // } catch (InterruptedException e) {
-            // //     e.printStackTrace();
-            // // }
+            // } catch (InterruptedException e) {
+            //     e.printStackTrace();
+            // }
 
-            // // if (pacman.getLives() == 0) {
-            // //     break;
-            // // }
+            // if (pacman.getLives() == 0) {
+            //     break;
+            // }
 
 
 
