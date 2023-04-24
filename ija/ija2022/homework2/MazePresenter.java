@@ -3,7 +3,7 @@
 // (powered by FernFlower decompiler)
 //
 
-package ija.ija2022.homework2.tool;
+package ija.ija2022.homework2;
 
 import ija.ija2022.homework2.tool.common.CommonMaze;
 import ija.ija2022.homework2.tool.view.FieldView;
@@ -17,10 +17,13 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 public class MazePresenter {
+    public JFrame frame;
     private static char state;
     private final CommonMaze maze;
+    private MenuPresenter menuPresenter;
     private KeyListener listener = new KeyListener() {
 
         @Override
@@ -42,6 +45,8 @@ public class MazePresenter {
     };
     public MazePresenter(CommonMaze maze) {
         this.maze = maze;
+        // this.frame = frame;
+        // SwingUtilities.invokeLater(this::initializeInterface);
     }
 
     public char GetChar(){
@@ -49,21 +54,31 @@ public class MazePresenter {
         this.state = ' ';
         return tmp;
     }
-    public void open() {
-        try {
-            SwingUtilities.invokeAndWait(this::initializeInterface);
-        } catch (InvocationTargetException | InterruptedException var2) {
-            Logger.getLogger(MazePresenter.class.getName()).log(Level.SEVERE, (String)null, var2);
-        }
 
+    // public void open() {
+
+        
+    //     try {
+    //         System.out.println("kkkkkk");
+
+            
+    //         SwingUtilities.invokeAndWait(this::initializeInterface);
+            
+    //     } catch (InvocationTargetException | InterruptedException var2) {
+    //         Logger.getLogger(MazePresenter.class.getName()).log(Level.SEVERE, (String)null, var2);
+    //     }
+    // }
+
+    public void button(){
+        this.initializeInterface();
     }
 
     private void initializeInterface() {
-        JFrame frame = new JFrame("Pacman Demo");
-        frame.setDefaultCloseOperation(3);
-        frame.setSize(350, 400);
-        frame.setPreferredSize(new Dimension(800, 800));
-        frame.setResizable(false);
+        JFrame frame2 = new JFrame();
+        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame2.setSize(350, 400);
+        frame2.setPreferredSize(new Dimension(800, 800));
+        frame2.setResizable(false);
         int rows = this.maze.numRows();
         int cols = this.maze.numCols();
         GridLayout layout = new GridLayout(rows, cols);
@@ -77,13 +92,15 @@ public class MazePresenter {
                 content.add(field);
             }
         }
-
-        frame.getContentPane().add(content, "Center");
-        frame.addKeyListener(listener);
-        frame.setFocusable(true);
-        frame.requestFocusInWindow();
-        frame.pack();
-        frame.setVisible(true);
+        frame2.add(content, "Center");
+        frame2.addKeyListener(listener);
+        // frame.setFocusable(true);
+        // frame.requestFocusInWindow();
+        // frame.pack();
+        frame2.setVisible(true);
+        frame2.revalidate();
+        frame2.repaint();
+        // frame.getTopLevelAncestor().revalidate();
     }
 
 }
