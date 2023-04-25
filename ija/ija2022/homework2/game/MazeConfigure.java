@@ -142,7 +142,7 @@ public class MazeConfigure extends Object{
 
             lines = Files.lines(path).count();
             int max = (int)lines-(row+2);
-            lines = lines-(row+2);
+            lines = (int)lines-(row+2);
 
             while (!line_cur.equals("0 state")){
                 int count = 0;
@@ -150,8 +150,9 @@ public class MazeConfigure extends Object{
 
                 while ( count != row){
                     try {
-                        line_cur = Files.readAllLines(path).get((int)lines+count+1);
-                        this.processLine(line_cur);
+                        String line_curs = Files.readAllLines(path).get((int)lines+count+1);
+//                        System.out.println(line_curs + " " + count+(int)count+1);
+                        this.processLine(line_curs);
                         count++;
                     }catch (IndexOutOfBoundsException e){
                         System.out.println("Index out of bounds");
@@ -159,14 +160,19 @@ public class MazeConfigure extends Object{
                     }
                 }
 
+                String[] param1 = Files.readAllLines(path).get((int)lines+count+1).split(" ");
+                int health = Integer.parseInt(param1[0]);
+                int score = Integer.parseInt(param1[1]);
+                String key = param1[2];
+                PacmanObject.load(health, score, key);
+                this.stopReading();
                 if (lines == max){
-                    this.stopReading();
-                    this.stopReading();
+
                     maze = this.createMaze();
                     presenter = new MazePresenter(maze);
                     presenter.open();
-
                 }else {
+
                     maze = this.createMaze();
                     presenter.update(maze);
                 }

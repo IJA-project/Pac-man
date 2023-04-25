@@ -1,9 +1,13 @@
 
 package ija.ija2022.homework2;
+import java.io.IOException;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import ija.ija2022.homework2.game.GhostObject;
 import ija.ija2022.homework2.game.MazeConfigure;
+import ija.ija2022.homework2.game.PacmanObject;
 import ija.ija2022.homework2.tool.MazePresenter;
 import ija.ija2022.homework2.tool.common.CommonMaze;
 import ija.ija2022.homework2.tool.common.CommonMazeObject;
@@ -16,7 +20,7 @@ public class Homework2 {
         MazeConfigure cfg = new MazeConfigure();
 
  //     Here you can choose how you want to load the maze from saving file or from txt file it's like satrt a new game. loadMaze is for txt file and loadSave is for saving file.
-        //cfg.loadMaze("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\ija2022\\homework2\\filename.txt");
+//        cfg.loadMaze("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\ija2022\\homework2\\filename.txt");
         CommonMaze maze = cfg.createMaze();
         CommonMazeObject pacman = maze.getPacman();
         MazePresenter presenter = new MazePresenter(maze);
@@ -38,7 +42,7 @@ public class Homework2 {
 //                        //moving pacman using kyboard or mouse
 //                        ((PacmanObject)pacman).keyMoving(tmp);
 //                        //((PacmanObject)pacman).mouseMoving(1,12, maze);
-//                        //maze.saveState();
+//                        maze.saveState();
 //                        process.waitFor();
 //
 //                    } catch (IOException | InterruptedException e) {
@@ -57,7 +61,7 @@ public class Homework2 {
 //
 //                            //moving ghost to field where pacman is
 //                            ((GhostObject)obj).processMoving(pacman.getField().getRow(), pacman.getField().getCol(), maze);
-//                            //maze.saveState();
+//                            maze.saveState();
 //                            process.waitFor();
 //
 //                        }
