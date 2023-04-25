@@ -8,9 +8,7 @@ public interface CommonMazeObject{
 
     public int getPoints();
     public int getLives();
-
     default boolean isPacman(){return false;};
-
     default boolean isKey(){return false;}
     default boolean pacmanKey(){return false;}
     default boolean isPoint(){return false;}

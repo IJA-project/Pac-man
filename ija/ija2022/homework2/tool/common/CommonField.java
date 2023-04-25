@@ -22,5 +22,6 @@ public interface CommonField extends Observable {
     public boolean isPoint();
     public CommonMazeObject get();
     public boolean canMove();
+
     
 }

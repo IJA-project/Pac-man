@@ -6,6 +6,7 @@ import java.util.List;
 
 public class MazePlan implements CommonMaze {
     private int rows;
+    static int count = 0;
     private int cols;
     private CommonField[][] mazePlan;
     private List<CommonMazeObject> ghost_lst;
@@ -86,7 +87,6 @@ public class MazePlan implements CommonMaze {
         } 
     }
 
-
     //Method for saving current state of the maze
     @Override
     public void saveState() {
@@ -96,9 +96,12 @@ public class MazePlan implements CommonMaze {
         boolean key = false;
         // Try to open file and create PrintWriter
         try {
-            FileOutputStream fos = new FileOutputStream(System.currentTimeMillis() + ".txt");
-            PrintWriter pw = new PrintWriter(fos);
-            pw.println((this.rows-2) + " " + (this.cols-2));
+            FileWriter fos = new FileWriter(1 + ".txt", true);
+            BufferedWriter   pw = new BufferedWriter  (fos);
+            if (count == 0){
+                pw.write((this.rows-2) + " " + (this.cols-2)+"\n");
+            }
+            pw.write(count +" state" + "\n");
 
             // Print maze layout to file
             for (CommonField[] i : this.mazePlan) {
@@ -115,37 +118,38 @@ public class MazePlan implements CommonMaze {
                         continue;
                     }
                     if (j instanceof WallField) {
-                        pw.print("X");
+                        pw.write("X");
                     } else if (j instanceof PathField) {
                         if (j.get() == null) {
-                            pw.print(".");
+                            pw.write(".");
                         } else if (j.get().isKey()) {
-                            pw.print("K");
+                            pw.write("K");
                         } else if (j.get().isPoint()) {
-                            pw.print("P");
+                            pw.write("P");
                         } else if (j.get().isPacman()) {
                             health = j.get().getLives();
                             points = j.get().getPoints();
                             key = j.get().pacmanKey();
-                            pw.print("S");
+                            pw.write("S");
                         } else {
-                            pw.print("G");
+                            pw.write("G");
                         }
                     } else if (j instanceof TargetField) {
-                        pw.print("T");
+                        pw.write("T");
                     }
                     count_cols++;
                 }
-                pw.println();
+                pw.write("\n");
                 count_rows++;
             }
 
             // Print health and points to file
-            pw.print(health + " " + points+ " " +key);
+            pw.write(health + " " + points+ " " +key+"\n");
 
             // Close PrintWriter and FileOutputStream
             pw.close();
             fos.close();
+            count++;
         } catch (IOException e) {
             System.out.println("Error saving maze state to file: " + e.getMessage());
         }

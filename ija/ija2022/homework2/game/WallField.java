@@ -10,9 +10,9 @@ public class WallField extends AbstractObservableField{
     private int row;
     private int col;
     private CommonMaze maze;
-    private CommonMazeObject mazeObject;
 
     public WallField(int row, int col){
+        notifyObservers();
         this.row = row;
         this.col = col;
     }
@@ -58,7 +58,7 @@ public class WallField extends AbstractObservableField{
 
     @Override
     public CommonMazeObject get(){
-        return this.mazeObject;
+        return null;
     }
 
     @Override
@@ -71,10 +71,12 @@ public class WallField extends AbstractObservableField{
         return obj instanceof WallField && ((WallField)obj).getCol() == this.col && ((WallField)obj).getRow() == this.row;
     }
 
+    @Override
     public int getCol(){
         return this.col;
     }
 
+    @Override
     public int getRow(){
         return this.row;
     }
