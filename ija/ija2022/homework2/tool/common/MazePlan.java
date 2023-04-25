@@ -27,7 +27,6 @@ public class MazePlan implements CommonMaze {
             this.mazePlan[0][j] = Borders(0, j);
             this.mazePlan[rows-1][j] = Borders(rows-1, j);
         }
-
         for (int i = 1; i < rows-1; i++) {
             this.mazePlan[i][0] = Borders(i, 0);// create left border
             this.mazePlan[i][cols-1] = Borders(i, cols-1);// create right border

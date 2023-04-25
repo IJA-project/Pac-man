@@ -15,10 +15,10 @@ import javax.swing.event.SwingPropertyChangeSupport;
 import ija.ija2022.homework2.game.GhostObject;
 import ija.ija2022.homework2.game.MazeConfigure;
 import ija.ija2022.homework2.game.PacmanObject;
+import ija.ija2022.homework2.tool.MazePresenter;
 import ija.ija2022.homework2.tool.common.CommonField;
 import ija.ija2022.homework2.tool.common.CommonMaze;
 import ija.ija2022.homework2.tool.common.CommonMazeObject;
-import ija.ija2022.homework2.MazePresenter;
 
 public class PacmanGame {
 
@@ -31,7 +31,8 @@ public class PacmanGame {
             cfg.loadMaze("ija\\ija2022\\homework2\\filename.txt");
         }
         else{
-            cfg.loadSave("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\1682018088182.txt");//must be deleted
+            //cfg.loadSave("ija\\1.txt");//must be deleted
+            cfg.loadReverseSave("ija\\1.txt");
         }
         
         //cfg.loadReverseSave("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\1.txt");
@@ -39,33 +40,35 @@ public class PacmanGame {
         CommonMazeObject pacman = maze.getPacman();
         MazePresenter presenter = new MazePresenter(maze, (PacmanObject)pacman);
 
-        presenter.button();
+        // presenter.button();
 
-        if (isGame){
-            cfg.loadMaze("ija\\ija2022\\homework2\\filename.txt");
-        }
+        // if (isGame){
+        //     //cfg.loadMaze("ija\\ija2022\\homework2\\filename.txt");
+        //     // for loadsave move packman
+        //     List<Thread> list = new ArrayList<>();
+        //     for (CommonMazeObject obj : maze.ghosts()) {
+        //         list.add( new Thread(() -> {
+        //             try {
+        //                 // moving ghost to field where pacman is
+        //                 while(true){     
+        //                     Thread.sleep(250);   
+        //                     if (pacman.getLives() == 0) {
+        //                         break;
+        //                     }              
+        //                     ((GhostObject)obj).processMoving(pacman.getField().getRow(), pacman.getField().getCol(), maze);
+    
+        //                 }
+        //             } catch (InterruptedException e) {
+        //                 e.printStackTrace();
+        //             }
+        //         }));
+        //     }
+        //     for (Thread obj : list){
+        //         obj.start();
+        //     }
+        // }
         
-        List<Thread> list = new ArrayList<>();
-        for (CommonMazeObject obj : maze.ghosts()) {
-            list.add( new Thread(() -> {
-                try {
-                    // moving ghost to field where pacman is
-                    while(true){     
-                        Thread.sleep(250);   
-                        if (pacman.getLives() == 0) {
-                            break;
-                        }              
-                        ((GhostObject)obj).processMoving(pacman.getField().getRow(), pacman.getField().getCol(), maze);
 
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }));
-        }
-        for (Thread obj : list){
-            obj.start();
-        }
     }
 
     public static void sleep(int ms) {

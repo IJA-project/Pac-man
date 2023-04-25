@@ -1,12 +1,12 @@
 package ija.ija2022.homework2;
 
+import ija.ija2022.homework2.tool.MazePresenter;
 import ija.ija2022.homework2.tool.common.CommonMaze;
 import ija.ija2022.homework2.tool.view.FieldView;
 import ija.ija2022.homework2.game.GhostObject;
 import ija.ija2022.homework2.game.MazeConfigure;
 import ija.ija2022.homework2.game.PacmanObject;
 import ija.ija2022.homework2.tool.common.CommonMaze;
-import ija.ija2022.homework2.MazePresenter;
 import ija.ija2022.homework2.tool.common.CommonMazeObject;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -41,7 +41,7 @@ public class MenuPresenter{
             @Override
             public void actionPerformed(ActionEvent arg0){
                 frame.setVisible(false);
-                PacmanGame pacmanGame = new PacmanGame(true);
+                PacmanGame pacmanGame = new PacmanGame(false);
             }
         });
 

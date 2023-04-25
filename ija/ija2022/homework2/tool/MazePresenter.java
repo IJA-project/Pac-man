@@ -3,8 +3,10 @@
 // (powered by FernFlower decompiler)
 //
 
-package ija.ija2022.homework2;
+package ija.ija2022.homework2.tool;
 
+import ija.ija2022.homework2.MenuPresenter;
+import ija.ija2022.homework2.MyKeyListener;
 import ija.ija2022.homework2.game.PacmanObject;
 import ija.ija2022.homework2.tool.common.CommonMaze;
 import ija.ija2022.homework2.tool.view.FieldView;
@@ -21,13 +23,17 @@ import javax.swing.SwingUtilities;
 import javax.swing.*;
 
 public class MazePresenter {
-    public JFrame frame;
+    public JFrame frame2 = new JFrame();
     private static char state;
-    private final CommonMaze maze;
-    private final PacmanObject pacmanObj;
+    public CommonMaze maze;
+    public PacmanObject pacmanObj;
     private MenuPresenter menuPresenter;
  
     public MazePresenter(CommonMaze maze, PacmanObject pacmanObj) {
+        this.frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame2.setSize(350, 400);
+        this.frame2.setPreferredSize(new Dimension(800, 800));
+        this.frame2.setResizable(false);
         this.maze = maze;
         this.pacmanObj = pacmanObj;
     }
@@ -35,41 +41,37 @@ public class MazePresenter {
     public void button(){
         this.initializeInterface();
     }
-    
+
     public void update(CommonMaze maze){
-        frame.getContentPane().removeAll();
+        frame2.getContentPane().removeAll();
         this.maze = maze;
-        this.open();
+        this.initializeInterface();
     }
 
     private void initializeInterface() {
-        JFrame frame2 = new JFrame();
-        MyKeyListener keyListener = new MyKeyListener(pacmanObj);
-        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame2.setSize(350, 400);
-        frame2.setPreferredSize(new Dimension(800, 800));
-        frame2.setResizable(false);
         int rows = this.maze.numRows();
         int cols = this.maze.numCols();
         GridLayout layout = new GridLayout(rows, cols);
         layout.setHgap(0);
         layout.setVgap(0);
         JPanel content = new JPanel(layout);
-
         for(int i = 0; i < rows; ++i) {
             for(int j = 0; j < cols; ++j) {
                 FieldView field = new FieldView(this.maze.getField(i, j));
                 content.add(field);
             }
         }
-        frame2.add(content, "Center");
-        frame2.addKeyListener(keyListener);
-        // frame.setFocusable(true);
-        // frame.requestFocusInWindow();
-        // frame.pack();
-        frame2.setVisible(true);
-        frame2.revalidate();
-        frame2.repaint();
+        this.frame2.add(content, "Center");
+        if (pacmanObj != null){
+            MyKeyListener keyListener = new MyKeyListener(pacmanObj);
+            this.frame2.addKeyListener(keyListener);
+        }
+        this.frame2.setFocusable(true);
+        this.frame2.requestFocusInWindow();
+        this.frame2.pack();
+        this.frame2.setVisible(true);
+        this.frame2.revalidate();
+        this.frame2.repaint();
     }
 
 }

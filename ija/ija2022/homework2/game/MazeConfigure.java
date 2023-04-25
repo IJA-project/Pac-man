@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import static ija.ija2022.homework2.Homework2.sleep;
+import static ija.ija2022.homework2.PacmanGame.sleep;
 
 public class MazeConfigure extends Object{
     private String[] lines;
@@ -88,6 +88,7 @@ public class MazeConfigure extends Object{
             while (myReader.hasNextLine()) {
                 data = myReader.nextLine();
 
+                System.out.println(data);
                 if (Pattern.compile("^[0-9]{1,9} state$").matcher(data).matches()){
                     if (data.equals("0 state")){
                         firstState = true;
@@ -97,8 +98,8 @@ public class MazeConfigure extends Object{
                         firstState = false;
                         count_line = 0;
                         maze = this.createMaze();
-                        presenter = new MazePresenter(maze);
-                        presenter.open();
+                        presenter = new MazePresenter(maze, null);//
+                        presenter.button();//
                     }
                     this.clean();
                     this.startReading(row, col);
@@ -120,7 +121,7 @@ public class MazeConfigure extends Object{
                         PacmanObject.load(health, score, key);
                     }
                 }
-                sleep(25);
+                // sleep(25);
             }
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
@@ -130,8 +131,8 @@ public class MazeConfigure extends Object{
 
     public void loadReverseSave(String str){
         Path path = Paths.get(str);
-        MazePresenter presenter = null;
         CommonMaze maze;
+        MazePresenter presenter = null;
 
         long lines;
         String line_cur = "";
@@ -150,8 +151,8 @@ public class MazeConfigure extends Object{
 
                 while ( count != row){
                     try {
-                        line_cur = Files.readAllLines(path).get((int)lines+count+1);
-                        this.processLine(line_cur);
+                        String line_curs = Files.readAllLines(path).get((int)lines+count+1);
+                        this.processLine(line_curs);
                         count++;
                     }catch (IndexOutOfBoundsException e){
                         System.out.println("Index out of bounds");
@@ -159,22 +160,31 @@ public class MazeConfigure extends Object{
                     }
                 }
 
+                String[] param1 = Files.readAllLines(path).get((int)lines+count+1).split(" ");
+                int health = Integer.parseInt(param1[0]);
+                int score = Integer.parseInt(param1[1]);
+                String key = param1[2];
+                PacmanObject.load(health, score, key);
+                this.stopReading();
+                
                 if (lines == max){
-                    this.stopReading();
-                    this.stopReading();
                     maze = this.createMaze();
-                    presenter = new MazePresenter(maze);
-                    presenter.open();
+                    maze = this.createMaze();
+                    presenter = new MazePresenter(maze, null);;
+                    presenter.button();
+
 
                 }else {
                     maze = this.createMaze();
                     presenter.update(maze);
                 }
                 this.clean();
+                
                 line_cur = Files.readAllLines(path).get((int)lines);
                 lines = lines-(row+2);
-                sleep(250);
+                sleep(25);
             }
+            
 
         }catch (IOException e){
             e.printStackTrace();
@@ -193,11 +203,10 @@ public class MazeConfigure extends Object{
     public CommonMaze createMaze() {
         if (this.errors){
             return null;
-        }
-
-        rows+=2;
-        cols+=2;
-        CommonMaze maze = new MazePlan(this.rows, this.cols, this.lines);
+        };
+        int rws = this.rows + 2;
+        int cls = this.cols + 2;
+        CommonMaze maze = new MazePlan(rws, cls, this.lines);
         return maze;
     }
 
