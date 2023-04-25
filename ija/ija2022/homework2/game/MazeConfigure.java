@@ -136,8 +136,6 @@ public class MazeConfigure extends Object{
         long lines;
         String line_cur = "";
         try {
-
-
             String[] param = Files.readAllLines(path).get(0).split(" ");
             int row = Integer.parseInt(param[0]);
             int col = Integer.parseInt(param[1]);
@@ -147,18 +145,14 @@ public class MazeConfigure extends Object{
             lines = lines-(row+2);
 
             while (!line_cur.equals("0 state")){
-
                 int count = 0;
-
                 this.startReading(row, col);
 
                 while ( count != row){
                     try {
-
                         line_cur = Files.readAllLines(path).get((int)lines+count+1);
                         this.processLine(line_cur);
                         count++;
-
                     }catch (IndexOutOfBoundsException e){
                         System.out.println("Index out of bounds");
                         System.exit(0);
@@ -173,10 +167,8 @@ public class MazeConfigure extends Object{
                     presenter.open();
 
                 }else {
-
                     maze = this.createMaze();
                     presenter.update(maze);
-
                 }
                 this.clean();
                 line_cur = Files.readAllLines(path).get((int)lines);
