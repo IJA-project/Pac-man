@@ -3,10 +3,11 @@ package ija.ija2022.homework2.game;
 import ija.ija2022.homework2.tool.MazePresenter;
 import ija.ija2022.homework2.tool.common.CommonMaze;
 import ija.ija2022.homework2.tool.common.MazePlan;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -127,6 +128,66 @@ public class MazeConfigure extends Object{
         }
     }
 
+    public void loadReverseSave(String str){
+        Path path = Paths.get(str);
+        MazePresenter presenter = null;
+        CommonMaze maze;
+
+        long lines;
+        String line_cur = "";
+        try {
+
+
+            String[] param = Files.readAllLines(path).get(0).split(" ");
+            int row = Integer.parseInt(param[0]);
+            int col = Integer.parseInt(param[1]);
+
+            lines = Files.lines(path).count();
+            int max = (int)lines-(row+2);
+            lines = lines-(row+2);
+
+            while (!line_cur.equals("0 state")){
+
+                int count = 0;
+
+                this.startReading(row, col);
+
+                while ( count != row){
+                    try {
+
+                        line_cur = Files.readAllLines(path).get((int)lines+count+1);
+                        this.processLine(line_cur);
+                        count++;
+
+                    }catch (IndexOutOfBoundsException e){
+                        System.out.println("Index out of bounds");
+                        System.exit(0);
+                    }
+                }
+
+                if (lines == max){
+                    this.stopReading();
+                    this.stopReading();
+                    maze = this.createMaze();
+                    presenter = new MazePresenter(maze);
+                    presenter.open();
+
+                }else {
+
+                    maze = this.createMaze();
+                    presenter.update(maze);
+
+                }
+                this.clean();
+                line_cur = Files.readAllLines(path).get((int)lines);
+                lines = lines-(row+2);
+                sleep(250);
+            }
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
     public boolean stopReading() {
         if (this.numOfLines == this.rows){
@@ -141,6 +202,7 @@ public class MazeConfigure extends Object{
         if (this.errors){
             return null;
         }
+
         rows+=2;
         cols+=2;
         CommonMaze maze = new MazePlan(this.rows, this.cols, this.lines);
