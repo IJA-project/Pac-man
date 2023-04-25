@@ -40,25 +40,26 @@ public class MenuPresenter{
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0){
-                // frame.setVisible(false);
-                PacmanGame pacmanGame = new PacmanGame();
+                frame.setVisible(false);
+                PacmanGame pacmanGame = new PacmanGame(true);
             }
         });
 
-        // if (button_pressed == 1){
-        //     frame.getContentPane().removeAll();;
-        //     PacmanGame pacmanGame = new PacmanGame(frame);
-        //     frame.revalidate();
-        //     frame.repaint();
-        // }
-        //frame.add(frameContainer);
-        // Add the button to the frame
+        // JButton loadButton = new JButton("Load Pacman");
+        // frame.add(loadButton);aaa
+        // loadButton.addActionListener(new ActionListener() {
+        //     @Override
+        //     public void actionPerformed(ActionEvent arg0){
+        //         frame.setVisible(false);
+        //         PacmanGame pacmanGame = new PacmanGame(false);
+        //     }
+        // });
         
 
         // Show the frame
         frame.setVisible(true);
-        // frame.revalidate();
-        // frame.repaint();
+        frame.revalidate();
+        frame.repaint();
 
     }
 }

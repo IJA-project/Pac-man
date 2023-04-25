@@ -13,6 +13,7 @@ import ija.ija2022.homework2.tool.common.Observable;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -32,6 +33,36 @@ public class FieldView extends JPanel implements Observable.Observer {
         model.addObserver(this);
     }
 
+    // protected void paintComponent(Graphics g) {
+    //     super.paintComponent(g);
+    //     Rectangle bounds = this.getBounds();
+    //     double w = bounds.getWidth();
+    //     double h = bounds.getHeight();
+    //     Math.max(h, w);
+    //     double diameter = Math.min(h, w) - 10.0;
+    //     double x = (w - diameter) / 2.0;
+    //     double y = (h - diameter) / 2.0;
+    //     int scaledWidth = (int)diameter;
+    //     int scaledHeight = (int)diameter;
+    //     if(this.model instanceof TargetField){
+    //         Image door_img = new ImageIcon("img\\door.png").getImage();
+    //         g.drawImage(door_img, (int)x, (int)y, scaledWidth, scaledHeight, this);
+
+    //     }else if (this.model instanceof WallField){
+    //         Image wall_img = new ImageIcon("img\\wallbrick.png").getImage();
+    //         g.drawImage(wall_img, 0, 0, (int)w, (int)h, this);
+    //     }
+    //     try{
+    //         this.objects.forEach((v) -> {
+    //             v.paintComponent(g);
+    //         });
+    //     }
+    //     catch(ConcurrentModificationException e){
+    //         e.printStackTrace();
+
+    //     }
+    // }
+
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Rectangle bounds = this.getBounds();
@@ -41,19 +72,19 @@ public class FieldView extends JPanel implements Observable.Observer {
         double diameter = Math.min(h, w) - 10.0;
         double x = (w - diameter) / 2.0;
         double y = (h - diameter) / 2.0;
-        int scaledWidth = (int)diameter;
-        int scaledHeight = (int)diameter;
-        if(this.model instanceof TargetField){
+        int scaledWidth = (int) diameter;
+        int scaledHeight = (int) diameter;
+        if (this.model instanceof TargetField) {
             Image door_img = new ImageIcon("img\\door.png").getImage();
-            g.drawImage(door_img, (int)x, (int)y, scaledWidth, scaledHeight, this);
-
-        }else if (this.model instanceof WallField){
+            g.drawImage(door_img, (int) x, (int) y, scaledWidth, scaledHeight, this);
+        } else if (this.model instanceof WallField) {
             Image wall_img = new ImageIcon("img\\wallbrick.png").getImage();
-            g.drawImage(wall_img, 0, 0, (int)w, (int)h, this);
+            g.drawImage(wall_img, 0, 0, (int) w, (int) h, this);
         }
-        this.objects.forEach((v) -> {
+        List<ComponentView> copyObjects = new ArrayList<>(this.objects);
+        for (ComponentView v : copyObjects) {
             v.paintComponent(g);
-        });
+        }
     }
 
     private void privUpdate() {

@@ -26,52 +26,11 @@ public class MazePresenter {
     private final CommonMaze maze;
     private final PacmanObject pacmanObj;
     private MenuPresenter menuPresenter;
-    // private KeyListener listener = new KeyListener() {
-
-    //     @Override
-    //     public void keyTyped(KeyEvent e) {
-    //        // System.out.println(1);
-    //     }
-
-    //     @Override
-    //     public void keyPressed(KeyEvent e) {
-    //         MazePresenter.state = e.getKeyChar();
-    //     //    System.out.println(e.getKeyChar());
-    //     }
-
-    //     @Override
-    //     public void keyReleased(KeyEvent e) {
-    //         MazePresenter.state = ' ';
-    //         //System.out.println(2);
-    //     }
-
-    // };
+ 
     public MazePresenter(CommonMaze maze, PacmanObject pacmanObj) {
         this.maze = maze;
         this.pacmanObj = pacmanObj;
-        // this.frame = frame;
-        // SwingUtilities.invokeLater(this::initializeInterface);
     }
-
-    // public char GetChar(){
-    //     char tmp = this.state;
-    //     this.state = ' ';
-    //     return tmp;
-    // }
-
-    // public void open() {
-
-        
-    //     try {
-    //         System.out.println("kkkkkk");
-
-            
-    //         SwingUtilities.invokeAndWait(this::initializeInterface);
-            
-    //     } catch (InvocationTargetException | InterruptedException var2) {
-    //         Logger.getLogger(MazePresenter.class.getName()).log(Level.SEVERE, (String)null, var2);
-    //     }
-    // }
 
     public void button(){
         this.initializeInterface();
@@ -105,7 +64,6 @@ public class MazePresenter {
         frame2.setVisible(true);
         frame2.revalidate();
         frame2.repaint();
-        // frame.getTopLevelAncestor().revalidate();
     }
 
 }

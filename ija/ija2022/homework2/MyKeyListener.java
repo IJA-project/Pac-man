@@ -14,13 +14,13 @@ public class MyKeyListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println(" key pressed: " + KeyEvent.getKeyText(e.getKeyCode()));
+        // System.out.println(" key pressed: " + KeyEvent.getKeyText(e.getKeyCode()));
         ((PacmanObject)this.obj).keyMoving(e.getKeyChar());
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        System.out.println(" key released: " + KeyEvent.getKeyText(e.getKeyCode()));
+        // System.out.println(" key released: " + KeyEvent.getKeyText(e.getKeyCode()));
     }
 
     @Override
