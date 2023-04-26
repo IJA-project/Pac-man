@@ -109,7 +109,6 @@ T..........K......
 .XXXX.XXXXX.XXXXX.
 .XXXXSXXXXX.XXXXX.
 .XXXX.XXXXX.XXXXX.
-.XXXX.XXXXX.XXXXX.
 T..........K......
 3 0 false
 8 state
