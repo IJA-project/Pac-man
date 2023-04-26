@@ -22,52 +22,57 @@ import ija.ija2022.homework2.tool.common.CommonMazeObject;
 
 public class PacmanGame {
 
-    public PacmanGame(boolean isGame){
+    public PacmanGame(int mode){
         // This code runs when the button is clicked
         MazeConfigure cfg = new MazeConfigure();
 
         //Here you can choose how you want to load the maze from saving file or from txt file it's like satrt a new game. loadMaze is for txt file and loadSave is for saving file.
-        if (isGame){
+        if (mode == 1){
             cfg.loadMaze("ija\\ija2022\\homework2\\filename.txt");
+            CommonMaze maze = cfg.createMaze();
+            CommonMazeObject pacman = maze.getPacman();
+            MazePresenter presenter = new MazePresenter(maze, (PacmanObject)pacman);
+                        //cfg.loadMaze("ija\\ija2022\\homework2\\filename.txt");
+            // for loadsave move packman
+            presenter.initializeInterface();
+            List<Thread> list = new ArrayList<>();
+            for (CommonMazeObject obj : maze.ghosts()) {
+                list.add( new Thread(() -> {
+                    try {
+                        // moving ghost to field where pacman is
+                        while(true){     
+                            Thread.sleep(250);   
+                            if (pacman.getLives() == 0) {
+                                break;
+                            }              
+                            ((GhostObject)obj).processMoving(pacman.getField().getRow(), pacman.getField().getCol(), maze);
+    
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }));
+            }
+            for (Thread obj : list){
+                obj.start();
+            }
         }
-        else{
-            //cfg.loadSave("ija\\1.txt");//must be deleted
+        else if (mode == 2){
+            cfg.loadSave("ija\\1.txt");//must be deleted
+            CommonMaze maze = cfg.createMaze();
+            MazePresenter presenter = new MazePresenter(maze, null);
+            
+        }else{
             cfg.loadReverseSave("ija\\1.txt");
+            CommonMaze maze = cfg.createMaze();
+            MazePresenter presenter = new MazePresenter(maze,null);
         }
         
         //cfg.loadReverseSave("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\1.txt");
-        CommonMaze maze = cfg.createMaze();
-        CommonMazeObject pacman = maze.getPacman();
-        MazePresenter presenter = new MazePresenter(maze, (PacmanObject)pacman);
 
-        // presenter.button();
 
-        // if (isGame){
-        //     //cfg.loadMaze("ija\\ija2022\\homework2\\filename.txt");
-        //     // for loadsave move packman
-        //     List<Thread> list = new ArrayList<>();
-        //     for (CommonMazeObject obj : maze.ghosts()) {
-        //         list.add( new Thread(() -> {
-        //             try {
-        //                 // moving ghost to field where pacman is
-        //                 while(true){     
-        //                     Thread.sleep(250);   
-        //                     if (pacman.getLives() == 0) {
-        //                         break;
-        //                     }              
-        //                     ((GhostObject)obj).processMoving(pacman.getField().getRow(), pacman.getField().getCol(), maze);
-    
-        //                 }
-        //             } catch (InterruptedException e) {
-        //                 e.printStackTrace();
-        //             }
-        //         }));
-        //     }
-        //     for (Thread obj : list){
-        //         obj.start();
-        //     }
-        // }
-        
+
+
 
     }
 

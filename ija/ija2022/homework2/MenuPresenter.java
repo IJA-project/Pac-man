@@ -22,44 +22,54 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.*;
+import java.awt.*;
 
 public class MenuPresenter{
-    
-    
-    public int button_pressed = 0;
-    public final JPanel frameContainer = new JPanel();
 
     public MenuPresenter(){
-        JFrame frame = new JFrame();
-        frame.setSize(300, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        JButton playButton = new JButton("Play Pacman");
-        // Create the button
-        frame.add(playButton);
-        playButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0){
-                frame.setVisible(false);
-                PacmanGame pacmanGame = new PacmanGame(false);
-            }
-        });
-
-        // JButton loadButton = new JButton("Load Pacman");
-        // frame.add(loadButton);aaa
-        // loadButton.addActionListener(new ActionListener() {
-        //     @Override
-        //     public void actionPerformed(ActionEvent arg0){
-        //         frame.setVisible(false);
-        //         PacmanGame pacmanGame = new PacmanGame(false);
-        //     }
-        // });
-        
-
-        // Show the frame
-        frame.setVisible(true);
-        frame.revalidate();
-        frame.repaint();
-
+            JFrame frame = new JFrame();
+            frame.setSize(300, 200);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            
+            JPanel buttonPanel = new JPanel();
+            buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+            
+            JButton playButton = new JButton("Play Pacman");
+            playButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+            playButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0){
+                    frame.setVisible(false);
+                    PacmanGame pacmanGame = new PacmanGame(1);
+                }
+            });
+            buttonPanel.add(playButton);
+            
+            JButton savedGameButton = new JButton("Saved Game");
+            savedGameButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+            savedGameButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0){
+                    // Code to view high scores goes here
+                    frame.setVisible(false);
+                    PacmanGame pacmanGame = new PacmanGame(2);
+                }
+            });
+            buttonPanel.add(savedGameButton);
+            
+            JButton reverseButton = new JButton("Reverse Save");
+            reverseButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+            reverseButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0){
+                    // Code to show options goes here
+                    frame.setVisible(false);
+                    PacmanGame pacmanGame = new PacmanGame(3);
+                }
+            });
+            buttonPanel.add(reverseButton);
+            
+            frame.add(buttonPanel);
+            frame.setVisible(true);
     }
 }

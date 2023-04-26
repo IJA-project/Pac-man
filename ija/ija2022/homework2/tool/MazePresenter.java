@@ -9,7 +9,11 @@ import ija.ija2022.homework2.MenuPresenter;
 import ija.ija2022.homework2.MyKeyListener;
 import ija.ija2022.homework2.game.PacmanObject;
 import ija.ija2022.homework2.tool.common.CommonMaze;
+import ija.ija2022.homework2.tool.common.MazePlan;
 import ija.ija2022.homework2.tool.view.FieldView;
+
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
@@ -22,13 +26,14 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.*;
 
-public class MazePresenter {
+public class MazePresenter extends JComponent {
     public JFrame frame2 = new JFrame();
     private static char state;
-    public CommonMaze maze;
-    public PacmanObject pacmanObj;
+    private CommonMaze maze;
+    private PacmanObject pacmanObj;
     private MenuPresenter menuPresenter;
- 
+    private JPanel mainPanel;
+
     public MazePresenter(CommonMaze maze, PacmanObject pacmanObj) {
         this.frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame2.setSize(350, 400);
@@ -36,42 +41,76 @@ public class MazePresenter {
         this.frame2.setResizable(false);
         this.maze = maze;
         this.pacmanObj = pacmanObj;
+        this.mainPanel = new JPanel();
     }
 
-    public void button(){
-        this.initializeInterface();
-    }
+    public void updateMaze(CommonMaze maze){
 
-    public void update(CommonMaze maze){
-        frame2.getContentPane().removeAll();
         this.maze = maze;
-        this.initializeInterface();
     }
 
-    private void initializeInterface() {
+    public void update(CommonMaze maze) {
+        if (maze != null ){
+        this.maze = maze;
         int rows = this.maze.numRows();
         int cols = this.maze.numCols();
-        GridLayout layout = new GridLayout(rows, cols);
-        layout.setHgap(0);
-        layout.setVgap(0);
-        JPanel content = new JPanel(layout);
         for(int i = 0; i < rows; ++i) {
             for(int j = 0; j < cols; ++j) {
-                FieldView field = new FieldView(this.maze.getField(i, j));
-                content.add(field);
+                FieldView field = getFieldView(i, j);
+                if (field != null) {
+                    field.update(this.maze.getField(i, j));
+                }
             }
         }
-        this.frame2.add(content, "Center");
-        if (pacmanObj != null){
-            MyKeyListener keyListener = new MyKeyListener(pacmanObj);
-            this.frame2.addKeyListener(keyListener);
+        this.initializeInterface();
+        this.frame2.getContentPane().revalidate();
+        this.frame2.getContentPane().repaint();
         }
-        this.frame2.setFocusable(true);
-        this.frame2.requestFocusInWindow();
-        this.frame2.pack();
-        this.frame2.setVisible(true);
-        this.frame2.revalidate();
-        this.frame2.repaint();
+    }
+    
+    private FieldView getFieldView(int row, int col) {
+        Component[] components = this.mainPanel.getComponents();
+        int index = row * this.maze.numCols() + col;
+        if (index >= 0 && index < this.mainPanel.getWidth()*this.mainPanel.getHeight()) {
+            return (FieldView) components[index];
+        } else {
+            return null; // or throw an exception or return a default value
+        }
+        
     }
 
+    public void initializeInterface() {
+        if(this.maze != null){
+            int rows = this.maze.numRows();
+            int cols = this.maze.numCols();
+            GridLayout layout = new GridLayout(rows, cols);
+            layout.setHgap(0);
+            layout.setVgap(0);
+            JPanel content = new JPanel(layout);
+            content.setPreferredSize(new Dimension(700, 700));
+            
+            for(int i = 0; i < rows; ++i) {
+                for(int j = 0; j < cols; ++j) {
+                    FieldView field = new FieldView(this.maze.getField(i, j));
+                    content.add(field);
+                }
+            }
+            
+            // Remove the old main panel and add the new content panel to it
+            JPanel mainPanel = (JPanel) this.frame2.getContentPane();
+            mainPanel.removeAll();
+            mainPanel.add(content);
+            
+            if (pacmanObj != null){
+                MyKeyListener keyListener = new MyKeyListener(pacmanObj);
+                this.frame2.addKeyListener(keyListener);
+            }
+            this.frame2.setFocusable(true);
+            this.frame2.requestFocusInWindow();
+            this.frame2.pack();
+            this.frame2.setVisible(true);
+            mainPanel.revalidate();
+            mainPanel.repaint();
+        }
+    }
 }
