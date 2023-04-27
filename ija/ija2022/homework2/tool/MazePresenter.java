@@ -18,6 +18,8 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -91,7 +93,29 @@ public class MazePresenter extends JComponent {
             
             for(int i = 0; i < rows; ++i) {
                 for(int j = 0; j < cols; ++j) {
+                    final int row = i;
+                    final int col = j;
+                    final CommonMaze maze = this.maze;
                     FieldView field = new FieldView(this.maze.getField(i, j));
+                    field.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            // Handle the click event
+                            Thread thread = new Thread(()->{
+                                while(pacmanObj.getField() != maze.getField(row, col)){
+                                    // System.out.println(row+col);
+                                    pacmanObj.mouseMoving(row, col, maze);
+                                    try {
+                                        Thread.sleep(40);
+                                    } catch (InterruptedException e1) {
+                                        // TODO Auto-generated catch block
+                                        e1.printStackTrace();
+                                    }
+                                }
+                            });
+                            thread.start();
+                        }
+                    });
                     content.add(field);
                 }
             }
