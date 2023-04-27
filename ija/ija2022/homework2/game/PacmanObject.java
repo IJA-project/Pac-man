@@ -9,6 +9,7 @@ public class PacmanObject implements CommonMazeObject{
     private CommonField field;
     static private int lives = 3;
 
+    static private boolean Win = false;
     static private boolean canExit = false;
 
     static private char dir = ' ';
@@ -40,6 +41,8 @@ public class PacmanObject implements CommonMazeObject{
             this.move(CommonField.Direction.R);
         }
     }
+
+
     public void mouseMoving(int x, int y, CommonMaze maze) {
         //Move pacman to coordinates which we get from mouse click, the same moving algorithm as in ghost
         CommonField field = maze.getField(x, y);
@@ -93,7 +96,6 @@ public class PacmanObject implements CommonMazeObject{
 
 
         }
-
     @Override
     public boolean canMove(CommonField.Direction dir){
         CommonField field ;
@@ -106,9 +108,15 @@ public class PacmanObject implements CommonMazeObject{
         return field instanceof PathField || field instanceof TargetField;
     }
 
+    public boolean isWin(){
+        return Win;
+    }
+
+    public boolean isDead(){
+        return lives == 0;
+    }
     @Override
     public boolean move(CommonField.Direction dir){
-
         if (this.canMove(dir)){
             if (this.field.nextField(dir).isKey()){
                 canExit = true;
@@ -121,7 +129,7 @@ public class PacmanObject implements CommonMazeObject{
             } else if (this.field.nextField(dir) instanceof TargetField && canExit) {
                 this.field.remove(this);
                 this.field = null;
-                System.exit(0);
+                this.Win = true;
             }
 
             CommonField field;
