@@ -47,53 +47,52 @@ public class PacmanObject implements CommonMazeObject{
         //Move pacman to coordinates which we get from mouse click, the same moving algorithm as in ghost
         CommonField field = maze.getField(x, y);
 
-        if (field instanceof WallField) {
-            throw new UnsupportedOperationException("You can't move pacman to wall");
-        }
+            if (!(field instanceof WallField)) {
 
-            double wayL = 99999, wayR = 99999, wayU = 99999, wayD = 99999, waylow = 99999;
 
-            if (field.getRow()!= this.field.getRow() || field.getCol() != this.field.getCol()) {
-                if (this.canMove(CommonField.Direction.L) && dir != 'R') {
-                    wayL = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.L).getRow(), 2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.L).getCol(), 2));
+                double wayL = 99999, wayR = 99999, wayU = 99999, wayD = 99999, waylow = 99999;
+
+                if (field.getRow() != this.field.getRow() || field.getCol() != this.field.getCol()) {
+                    if (this.canMove(CommonField.Direction.L) && dir != 'R') {
+                        wayL = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.L).getRow(), 2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.L).getCol(), 2));
+                    }
+                    if (this.canMove(CommonField.Direction.R) && dir != 'L') {
+                        wayR = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.R).getRow(), 2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.R).getCol(), 2));
+                    }
+                    if (this.canMove(CommonField.Direction.U) && dir != 'D') {
+                        wayU = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.U).getRow(), 2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.U).getCol(), 2));
+                    }
+                    if (this.canMove(CommonField.Direction.D) && dir != 'U') {
+                        wayD = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.D).getRow(), 2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.D).getCol(), 2));
+                    }
+                    if (wayL <= waylow) {
+                        waylow = wayL;
+                        dir = 'L';
+                    }
+                    if (wayR <= waylow) {
+                        waylow = wayR;
+                        dir = 'R';
+                    }
+                    if (wayU <= waylow) {
+                        waylow = wayU;
+                        dir = 'U';
+                    }
+                    if (wayD <= waylow) {
+                        dir = 'D';
+                    }
+                    if (dir == 'L') {
+                        this.move(CommonField.Direction.L);
+                    } else if (dir == 'R') {
+                        this.move(CommonField.Direction.R);
+                    } else if (dir == 'U') {
+                        this.move(CommonField.Direction.U);
+                    } else if (dir == 'D') {
+                        this.move(CommonField.Direction.D);
+                    }
+                } else {
+                    dir = ' ';
                 }
-                if (this.canMove(CommonField.Direction.R) && dir != 'L') {
-                    wayR = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.R).getRow(), 2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.R).getCol(), 2));
-                }
-                if (this.canMove(CommonField.Direction.U) && dir != 'D') {
-                    wayU = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.U).getRow(), 2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.U).getCol(), 2));
-                }
-                if (this.canMove(CommonField.Direction.D) && dir != 'U') {
-                    wayD = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.D).getRow(), 2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.D).getCol(), 2));
-                }
-                if (wayL <= waylow) {
-                    waylow = wayL;
-                    dir = 'L';
-                }
-                if (wayR <= waylow) {
-                    waylow = wayR;
-                    dir = 'R';
-                }
-                if (wayU <= waylow) {
-                    waylow = wayU;
-                    dir = 'U';
-                }
-                if (wayD <= waylow) {
-                    dir = 'D';
-                }
-                if (dir == 'L') {
-                    this.move(CommonField.Direction.L);
-                } else if (dir == 'R') {
-                    this.move(CommonField.Direction.R);
-                } else if (dir == 'U') {
-                    this.move(CommonField.Direction.U);
-                } else if (dir == 'D') {
-                    this.move(CommonField.Direction.D);
-                }
-            } else {
-                dir = ' ';
             }
-
 
         }
     @Override
