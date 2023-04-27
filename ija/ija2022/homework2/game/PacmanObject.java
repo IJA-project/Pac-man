@@ -9,6 +9,9 @@ public class PacmanObject implements CommonMazeObject{
     private CommonField field;
     static private int lives = 3;
 
+
+    static private int tmp_row = 0;
+    static private int tmp_col = 0;
     static private boolean Win = false;
     static private boolean canExit = false;
 
@@ -45,11 +48,14 @@ public class PacmanObject implements CommonMazeObject{
 
     public void mouseMoving(int x, int y, CommonMaze maze) {
         //Move pacman to coordinates which we get from mouse click, the same moving algorithm as in ghost
-        CommonField field = maze.getField(x, y);
+            CommonField field = maze.getField(x, y);
+            if (tmp_row != x || tmp_col!=y){
+                dir = ' ';
+            }
+            tmp_row = x;
+            tmp_col = y;
 
             if (!(field instanceof WallField)) {
-
-
                 double wayL = 99999, wayR = 99999, wayU = 99999, wayD = 99999, waylow = 99999;
 
                 if (field.getRow() != this.field.getRow() || field.getCol() != this.field.getCol()) {
