@@ -75,10 +75,10 @@ public class FieldView extends JPanel implements Observable.Observer {
         int scaledWidth = (int) diameter;
         int scaledHeight = (int) diameter;
         if (this.model instanceof TargetField) {
-            Image door_img = new ImageIcon("img\\door.png").getImage();
+            Image door_img = new ImageIcon("Pac-man\\img\\door.png").getImage();
             g.drawImage(door_img, (int) x, (int) y, scaledWidth, scaledHeight, this);
         } else if (this.model instanceof WallField) {
-            Image wall_img = new ImageIcon("img\\wallbrick.png").getImage();
+            Image wall_img = new ImageIcon("Pac-man\\img\\wallbrick.png").getImage();
             g.drawImage(wall_img, 0, 0, (int) w, (int) h, this);
         }
         List<ComponentView> copyObjects = new ArrayList<>(this.objects);

@@ -118,17 +118,17 @@ public class PacmanObject implements CommonMazeObject{
     }
 
     public boolean isDead(){
-        return lives == 0;
+        return lives <= 0;
     }
     @Override
     public boolean move(CommonField.Direction dir){
         if (this.canMove(dir)){
             if (this.field.nextField(dir).isKey()){
                 canExit = true;
-                field.nextField(dir).remove(this.field.nextField(dir).get());
+                this.field.nextField(dir).remove(this.field.nextField(dir).get());
             } else if (this.field.nextField(dir).isPoint()) {
                 score +=10;
-                field.nextField(dir).remove(this.field.nextField(dir).get());
+                this.field.nextField(dir).remove(this.field.nextField(dir).get());
             } else if (!this.field.nextField(dir).isEmpty()) {
                 lives-=1;
             } else if (this.field.nextField(dir) instanceof TargetField && canExit) {
@@ -136,18 +136,27 @@ public class PacmanObject implements CommonMazeObject{
                 this.field = null;
                 this.Win = true;
             }
+            if (this.lives == 0){
+                this.field = null;
+            }
+            if (this.Win == false && this.lives != 0){
+                CommonField field;
+                field = this.field.nextField(dir);
+                this.field.remove(this);
+                field.put(this);
+                this.field = field;
+            }
 
-            CommonField field;
-            field = this.field.nextField(dir);
-            this.field.remove(this);
-            field.put(this);
-            this.field = field;
             return true;
         }
         return false;
     }
     @Override
     public int getPoints(){return score;}
+
+    static public int staticGetPoints(){
+        return score;
+    }
 
     @Override
     public CommonField getField(){
@@ -156,6 +165,10 @@ public class PacmanObject implements CommonMazeObject{
 
     @Override
     public int getLives(){
+        return lives;
+    }
+
+    static public int staticGetLives(){
         return lives;
     }
 

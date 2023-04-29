@@ -1,6 +1,7 @@
 
 package ija.ija2022.homework2;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,13 +29,18 @@ public class PacmanGame {
 
         //Here you can choose how you want to load the maze from saving file or from txt file it's like satrt a new game. loadMaze is for txt file and loadSave is for saving file.
         if (mode == 1){
-            cfg.loadMaze("ija\\ija2022\\homework2\\filename.txt");
+            String filePath = "1.txt";
+            File file = new File(filePath);
+            if (file.exists() && file.isFile()) {
+                file.delete();
+            }
+            cfg.loadMaze("Pac-man\\ija\\ija2022\\homework2\\filename.txt");
             CommonMaze maze = cfg.createMaze();
             CommonMazeObject pacman = maze.getPacman();
             MazePresenter presenter = new MazePresenter(maze, (PacmanObject)pacman);
                         //cfg.loadMaze("ija\\ija2022\\homework2\\filename.txt");
             // for loadsave move packman
-            presenter.initializeInterface();
+            presenter.initializeInterface(3, 0);
             List<Thread> list = new ArrayList<>();
             for (CommonMazeObject obj : maze.ghosts()) {
                 list.add( new Thread(() -> {
@@ -42,10 +48,11 @@ public class PacmanGame {
                         // moving ghost to field where pacman is
                         while(true){     
                             Thread.sleep(250);   
-                            if (pacman.getLives() == 0) {
+                            if (pacman.getLives() == 0 || ((PacmanObject)pacman).isWin()) {
                                 break;
                             }              
                             ((GhostObject)obj).processMoving(pacman.getField().getRow(), pacman.getField().getCol(), maze);
+                            maze.saveState();
     
                         }
                     } catch (InterruptedException e) {
@@ -58,12 +65,12 @@ public class PacmanGame {
             }
         }
         else if (mode == 2){
-            cfg.loadSave("ija\\1.txt");//must be deleted
+            cfg.loadSave("1.txt");//must be deleted
             CommonMaze maze = cfg.createMaze();
             MazePresenter presenter = new MazePresenter(maze, null);
             
         }else{
-            cfg.loadReverseSave("ija\\1.txt");
+            cfg.loadReverseSave("1.txt");
             CommonMaze maze = cfg.createMaze();
             MazePresenter presenter = new MazePresenter(maze,null);
         }

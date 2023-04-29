@@ -139,16 +139,14 @@ public class MazeConfigure extends Object{
                 e.printStackTrace();
             }
             });
-            
-    
-            
             Thread thread2 = new Thread(()->{
                 try{
                     while (true) {
                         Thread.sleep(40);
                         // System.out.println(maze+"llllll");
                         presenter.updateMaze(maze);
-                        presenter.initializeInterface();//
+                        presenter.initializeInterface(PacmanObject.staticGetLives(), PacmanObject.staticGetPoints());//
+                        
 
                     }
             }catch( InterruptedException e){
@@ -232,7 +230,7 @@ public class MazeConfigure extends Object{
                     Thread.sleep(75);
                     // System.out.println(maze+"llllll");
                     presenter.updateMaze(maze);
-                    presenter.initializeInterface();//
+                    presenter.initializeInterface(PacmanObject.staticGetLives(), PacmanObject.staticGetPoints());//
 
                 }
         }catch( InterruptedException e){

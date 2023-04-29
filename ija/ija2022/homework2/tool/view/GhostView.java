@@ -35,7 +35,7 @@ public class GhostView implements ComponentView {
         double y = (h - diameter) / 2.0;
         int scaledWidth = (int)diameter;
         int scaledHeight = (int)diameter;
-        Image pacman_img = new ImageIcon("img\\redghost.png").getImage();
+        Image pacman_img = new ImageIcon("Pac-man\\img\\redghost.png").getImage();
         g.drawImage(pacman_img, (int)x, (int)y, scaledWidth, scaledHeight, this.parent);
     }
 }
