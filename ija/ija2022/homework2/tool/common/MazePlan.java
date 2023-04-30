@@ -17,6 +17,7 @@ public class MazePlan implements CommonMaze {
         return this.pacman;
     }
     public MazePlan(int rows, int cols, String[] lines){
+        count = 0;
         this.rows = rows;
         this.cols = cols;
         this.mazePlan = new CommonField[rows][cols];

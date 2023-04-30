@@ -5,6 +5,7 @@
 
 package ija.ija2022.homework2.tool;
 
+import ija.ija2022.homework2.GameOverContent;
 import ija.ija2022.homework2.MenuPresenter;
 import ija.ija2022.homework2.MyKeyListener;
 import ija.ija2022.homework2.game.PacmanObject;
@@ -76,11 +77,11 @@ public class MazePresenter extends JComponent {
 
     public void gameOver(){
         //System.out.println("11111");
-        mazePanel.removeAll();
-        JLabel gameover = new JLabel("Gameover");
-        mazePanel.add(gameover, BorderLayout.CENTER);
-        mazePanel.revalidate();
-        mazePanel.repaint();
+        mainPanel.removeAll();
+        JPanel gameover = new GameOverContent(this.pacmanObj.isWin(), frame2);
+        mainPanel.add(gameover, BorderLayout.CENTER);
+        mainPanel.revalidate();
+        mainPanel.repaint();
 
     }
 
@@ -98,25 +99,29 @@ public class MazePresenter extends JComponent {
         Image scaledImage = icon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         if (this.pacmanObj.getLives() == 3){
+            this.heartLabelThree.setText(null);
             this.heartLabelOne.setIcon(scaledIcon);
             this.heartLabelTwo.setIcon(scaledIcon);
             this.heartLabelThree.setIcon(scaledIcon);
         }
         if (this.pacmanObj.getLives() == 2){
+            this.heartLabelThree.setText(null);
             this.heartLabelOne.setIcon(scaledIcon);
             this.heartLabelTwo.setIcon(scaledIcon);
             this.heartLabelThree.setIcon(null);
         }
         if (this.pacmanObj.getLives() == 1){
+            this.heartLabelThree.setText(null);
             this.heartLabelOne.setIcon(scaledIcon);
             this.heartLabelTwo.setIcon(null);
             this.heartLabelThree.setIcon(null);
         }
         if (this.pacmanObj.getLives() <= 0){
-            heartPanel.setPreferredSize(new Dimension(100, 30));
             this.heartLabelOne.setIcon(null);
+            this.heartLabelOne.setText("Game Over");
             this.heartLabelTwo.setIcon(null);
-            this.heartLabelThree.setText("Game Over");
+            this.heartLabelThree.setIcon(null);
+            
 
         }
     }
@@ -258,18 +263,21 @@ public class MazePresenter extends JComponent {
             Image scaledImage = icon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(scaledImage);
             if (lives == 3){
+                this.heartLabelOne.setText(null);
                 this.heartLabelOne.setIcon(scaledIcon);
                 this.heartLabelTwo.setIcon(scaledIcon);
                 this.heartLabelThree.setIcon(scaledIcon);
             }
             else
             if (lives == 2){
+                this.heartLabelOne.setText(null);
                 this.heartLabelOne.setIcon(scaledIcon);
                 this.heartLabelTwo.setIcon(scaledIcon);
                 this.heartLabelThree.setIcon(null);
             }
             else
             if (lives == 1){
+                this.heartLabelOne.setText(null);
                 this.heartLabelOne.setIcon(scaledIcon);
                 this.heartLabelTwo.setIcon(null);
                 this.heartLabelThree.setIcon(null);

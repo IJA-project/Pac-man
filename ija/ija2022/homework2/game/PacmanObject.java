@@ -21,6 +21,13 @@ public class PacmanObject implements CommonMazeObject{
 
 
     public PacmanObject(CommonField field){
+        lives = 3;
+        tmp_row = 0;
+        tmp_col = 0;
+        Win = false;
+        canExit = false;
+        dir = ' ';
+        score = 0;
         this.field = field;
     }
     //Load state of pacman like lives, score and if he has key its loading when we start game from saved file
