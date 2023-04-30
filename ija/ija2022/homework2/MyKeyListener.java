@@ -20,9 +20,10 @@ public class MyKeyListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        
+        // System.out.println("8");
         if (((PacmanObject)this.obj).isWin() == false && ((PacmanObject)this.obj).isDead() == false){
             // System.out.println(" key pressed: " + ((PacmanObject)this.obj).getLives());
+            
             ((PacmanObject)this.obj).keyMoving(e.getKeyChar());
             maze.saveState();
             presenter.updateLives();

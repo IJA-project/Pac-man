@@ -23,7 +23,7 @@ import ija.ija2022.homework2.tool.common.CommonMazeObject;
 
 public class PacmanGame {
 
-    public PacmanGame(int mode){
+    public PacmanGame(int mode, int buttonMode){
         // This code runs when the button is clicked
         MazeConfigure cfg = new MazeConfigure();
 
@@ -34,13 +34,13 @@ public class PacmanGame {
             if (file.exists() && file.isFile()) {
                 file.delete();
             }
-            cfg.loadMaze("Pac-man\\ija\\ija2022\\homework2\\filename.txt");
+            cfg.loadMaze("ija\\ija2022\\homework2\\filename.txt");
             CommonMaze maze = cfg.createMaze();
             CommonMazeObject pacman = maze.getPacman();
             MazePresenter presenter = new MazePresenter(maze, (PacmanObject)pacman);
                         //cfg.loadMaze("ija\\ija2022\\homework2\\filename.txt");
             // for loadsave move packman
-            presenter.initializeInterface(3, 0);
+            presenter.initializeInterface();
             List<Thread> list = new ArrayList<>();
             for (CommonMazeObject obj : maze.ghosts()) {
                 list.add( new Thread(() -> {
@@ -53,6 +53,17 @@ public class PacmanGame {
                             }              
                             ((GhostObject)obj).processMoving(pacman.getField().getRow(), pacman.getField().getCol(), maze);
                             maze.saveState();
+                            presenter.updateLives();
+                            presenter.updateScores();
+                            if(((PacmanObject)maze.getPacman()).isWin() == true || ((PacmanObject)maze.getPacman()).isDead() == true){
+                                try {
+                                    Thread.sleep(75);
+                                } catch (InterruptedException e1) {
+                                    // TODO Auto-generated catch block
+                                    e1.printStackTrace();
+                                }
+                                presenter.gameOver();
+                            }
     
                         }
                     } catch (InterruptedException e) {
@@ -60,27 +71,47 @@ public class PacmanGame {
                     }
                 }));
             }
+
+            // Thread thread2 = new Thread(()->{
+            //     presenter.updateLives();
+            //     presenter.updateScores();
+            //     if(((PacmanObject)pacman).isWin() == true ||((PacmanObject)pacman).isDead() == true){
+            //         try {
+            //             Thread.sleep(75);
+            //         } catch (InterruptedException e1) {
+            //             // TODO Auto-generated catch block
+            //             e1.printStackTrace();
+            //         }
+            //         presenter.gameOver();
+            //     }
+
+            // });
             for (Thread obj : list){
                 obj.start();
             }
+            // thread2.start();
+            
         }
         else if (mode == 2){
-            cfg.loadSave("1.txt");//must be deleted
-            CommonMaze maze = cfg.createMaze();
-            MazePresenter presenter = new MazePresenter(maze, null);
-            
+            if (buttonMode == 1){
+                cfg.loadSave("1.txt");//must be deleted
+                CommonMaze maze = cfg.createMaze();
+                MazePresenter presenter = new MazePresenter(maze, null);
+            }
+            else if(buttonMode == 2){
+
+            }            
         }else{
-            cfg.loadReverseSave("1.txt");
-            CommonMaze maze = cfg.createMaze();
-            MazePresenter presenter = new MazePresenter(maze,null);
+            if(buttonMode == 1){
+                cfg.loadReverseSave("1.txt");
+                CommonMaze maze = cfg.createMaze();
+                MazePresenter presenter = new MazePresenter(maze,null);
+            }
+            else if(buttonMode == 2){
+                
+            }
+
         }
-        
-        //cfg.loadReverseSave("C:\\Users\\Lenovo\\IdeaProjects\\java_homework_2\\ija\\1.txt");
-
-
-
-
-
     }
 
     public static void sleep(int ms) {

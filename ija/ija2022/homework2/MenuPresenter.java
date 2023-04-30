@@ -40,7 +40,7 @@ public class MenuPresenter{
                 @Override
                 public void actionPerformed(ActionEvent arg0){
                     frame.setVisible(false);
-                    PacmanGame pacmanGame = new PacmanGame(1);
+                    PacmanGame pacmanGame = new PacmanGame(1, 0);
                 }
             });
             buttonPanel.add(playButton);
@@ -52,22 +52,22 @@ public class MenuPresenter{
                 public void actionPerformed(ActionEvent arg0){
                     // Code to view high scores goes here
                     frame.setVisible(false);
-                    PacmanGame pacmanGame = new PacmanGame(2);
+                    new SettingPresenter();
                 }
             });
             buttonPanel.add(savedGameButton);
             
-            JButton reverseButton = new JButton("Reverse Save");
-            reverseButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-            reverseButton.addActionListener(new ActionListener() {
+            JButton exitButton = new JButton("Exit");
+            exitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+            exitButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0){
                     // Code to show options goes here
-                    frame.setVisible(false);
-                    PacmanGame pacmanGame = new PacmanGame(3);
+                    System.exit(0);
+                    
                 }
             });
-            buttonPanel.add(reverseButton);
+            buttonPanel.add(exitButton);
             
             frame.add(buttonPanel);
             frame.setVisible(true);

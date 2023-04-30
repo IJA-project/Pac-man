@@ -99,7 +99,7 @@ public class MazeConfigure extends Object{
                 while (myReader.hasNextLine()) {
                     data = myReader.nextLine();
     
-                    System.out.println(data);
+                    // System.out.println(data);
                     if (Pattern.compile("^[0-9]{1,9} state$").matcher(data).matches()) {
                         if (data.equals("0 state")) {
                             firstState = true;
@@ -145,7 +145,7 @@ public class MazeConfigure extends Object{
                         Thread.sleep(40);
                         // System.out.println(maze+"llllll");
                         presenter.updateMaze(maze);
-                        presenter.initializeInterface(PacmanObject.staticGetLives(), PacmanObject.staticGetPoints());//
+                        presenter.initializeInterfaceSaves(PacmanObject.staticGetLives(), PacmanObject.staticGetPoints());//
                         
 
                     }
@@ -186,7 +186,7 @@ public class MazeConfigure extends Object{
                     while ( count != row){
                         try {
                             String line_curs = Files.readAllLines(path).get((int)lines+count+1);
-//                        System.out.println(line_curs + " " + count+(int)count+1);
+                            //System.out.println(line_curs + " " + count+(int)count+1);
                             this.processLine(line_curs);
                             count++;
                         }catch (IndexOutOfBoundsException e){
@@ -230,7 +230,7 @@ public class MazeConfigure extends Object{
                     Thread.sleep(75);
                     // System.out.println(maze+"llllll");
                     presenter.updateMaze(maze);
-                    presenter.initializeInterface(PacmanObject.staticGetLives(), PacmanObject.staticGetPoints());//
+                    presenter.initializeInterfaceSaves(PacmanObject.staticGetLives(), PacmanObject.staticGetPoints());//
 
                 }
         }catch( InterruptedException e){

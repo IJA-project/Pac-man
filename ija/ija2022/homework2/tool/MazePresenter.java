@@ -42,6 +42,10 @@ public class MazePresenter extends JComponent {
     public JPanel scorePanel;
     public JPanel mainPanel;
     public JPanel mainAttributesPanel;
+    public JLabel heartLabelOne;
+    public JLabel heartLabelTwo;
+    public JLabel heartLabelThree;
+    public JLabel scoreLabel;
 
     public MazePresenter(CommonMaze maze, PacmanObject pacmanObj) {
         this.frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,96 +58,70 @@ public class MazePresenter extends JComponent {
         this.mazePanel = new JPanel();
         this.heartPanel = new JPanel();
         this.scorePanel = new JPanel();
+        this.scoreLabel = new JLabel();
         this.mainPanel = new JPanel(new BorderLayout());
         this.mainAttributesPanel =  new JPanel(new BorderLayout());
+        this.heartLabelOne = new JLabel();
+        this.heartLabelTwo = new JLabel();
+        this.heartLabelThree = new JLabel();
     }
 
     public void updateMaze(CommonMaze maze){
-
         this.maze = maze;
+        if (maze != null){
+            this.pacmanObj = ((PacmanObject)maze.getPacman());
+        }
+        
     }
 
-    // public void update(CommonMaze maze) {
-    //     if (maze != null ){
-    //     this.maze = maze;
-    //     int rows = this.maze.numRows();
-    //     int cols = this.maze.numCols();
-    //     for(int i = 0; i < rows; ++i) {
-    //         for(int j = 0; j < cols; ++j) {
-    //             FieldView field = getFieldView(i, j);
-    //             if (field != null) {
-    //                 field.update(this.maze.getField(i, j));
-    //             }
-    //         }
-    //     }
-    //     this.initializeInterface();
-    //     this.frame2.getContentPane().revalidate();
-    //     this.frame2.getContentPane().repaint();
-    //     }
-    // }
-    
-    // private FieldView getFieldView(int row, int col) {
-    //     Component[] components = this.oldMainPanel.getComponents();
-    //     int index = row * this.maze.numCols() + col;
-    //     if (index >= 0 && index < this.oldMainPanel.getWidth()*this.oldMainPanel.getHeight()) {
-    //         return (FieldView) components[index];
-    //     } else {
-    //         return null; // or throw an exception or return a default value
-    //     }
-        
-    // }
-
     public void gameOver(){
-        mainAttributesPanel.removeAll();
-        mainPanel.removeAll();
+        //System.out.println("11111");
+        mazePanel.removeAll();
         JLabel gameover = new JLabel("Gameover");
-        mainPanel.add(gameover, BorderLayout.CENTER);
-        mainPanel.add(mainAttributesPanel, BorderLayout.SOUTH);
+        mazePanel.add(gameover, BorderLayout.CENTER);
+        mazePanel.revalidate();
+        mazePanel.repaint();
 
     }
 
     public void updateScores(){
-        scorePanel.removeAll();
-        scorePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        // Add heart images based on the player's remaining lives
-        scorePanel.setPreferredSize(new Dimension(100, 30));
-        if (((PacmanObject)maze.getPacman()).getLives() <= 0){
-            JLabel label = new JLabel("0");
-            scorePanel.add(label);
+        if (this.pacmanObj.getLives() <= 0){
+            scoreLabel.setText("0");
         }
         else{
-            JLabel label = new JLabel(Integer.toString(((PacmanObject)maze.getPacman()).getPoints()));
-            scorePanel.add(label);
+            scoreLabel.setText(Integer.toString(this.pacmanObj.getPoints()));
         }
-
-        scorePanel.revalidate();
-        scorePanel.repaint();
     }
 
     public void updateLives(){
-        heartPanel.removeAll();
-        heartPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        // Add heart images based on the player's remaining lives
-        heartPanel.setPreferredSize(new Dimension(100, 30));
-        ImageIcon imageIcon = new ImageIcon("Pac-man\\img\\cherrypoint.png");
-        Image scaledImage = imageIcon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
+        ImageIcon icon = new ImageIcon("img\\cherrypoint.png");  
+        Image scaledImage = icon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
-        if (((PacmanObject)maze.getPacman()).getLives() <= 0 ){
-            JLabel label = new JLabel("Game Over");
-            heartPanel.add(label);
+        if (this.pacmanObj.getLives() == 3){
+            this.heartLabelOne.setIcon(scaledIcon);
+            this.heartLabelTwo.setIcon(scaledIcon);
+            this.heartLabelThree.setIcon(scaledIcon);
         }
-        else{
-            for(int i = ((PacmanObject)maze.getPacman()).getLives(); i > 0; --i) {
-                JLabel label = new JLabel(scaledIcon);
-                heartPanel.add(label);
-            }
+        if (this.pacmanObj.getLives() == 2){
+            this.heartLabelOne.setIcon(scaledIcon);
+            this.heartLabelTwo.setIcon(scaledIcon);
+            this.heartLabelThree.setIcon(null);
         }
+        if (this.pacmanObj.getLives() == 1){
+            this.heartLabelOne.setIcon(scaledIcon);
+            this.heartLabelTwo.setIcon(null);
+            this.heartLabelThree.setIcon(null);
+        }
+        if (this.pacmanObj.getLives() <= 0){
+            heartPanel.setPreferredSize(new Dimension(100, 30));
+            this.heartLabelOne.setIcon(null);
+            this.heartLabelTwo.setIcon(null);
+            this.heartLabelThree.setText("Game Over");
 
-        heartPanel.revalidate();
-        heartPanel.repaint();
+        }
     }
 
-    public void initializeInterface(int lives, int points) {
+    public void initializeInterface() {
         if(this.maze != null){
             int rows = this.maze.numRows();
             int cols = this.maze.numCols();
@@ -184,17 +162,26 @@ public class MazePresenter extends JComponent {
                                 thread.start();    
                             // }
                             Thread thread2 = new Thread(()->{
-                                updateLives();
-                                updateScores();
-                                if(((PacmanObject)maze.getPacman()).isWin() == true || ((PacmanObject)maze.getPacman()).isDead() == true){
-                                    try {
-                                        Thread.sleep(75);
-                                    } catch (InterruptedException e1) {
-                                        // TODO Auto-generated catch block
-                                        e1.printStackTrace();
+                                // while(maze.getPacman().getField() != maze.getField(row, col)){
+                                //     try {
+                                //         Thread.sleep(75);
+                                //     } catch (InterruptedException e1) {
+                                //         // TODO Auto-generated catch block
+                                //         e1.printStackTrace();
+                                //     }
+                                    updateLives();
+                                    updateScores();
+                                    if(((PacmanObject)maze.getPacman()).isWin() == true || ((PacmanObject)maze.getPacman()).isDead() == true){
+                                        try {
+                                            Thread.sleep(500);
+                                        } catch (InterruptedException e1) {
+                                            // TODO Auto-generated catch block
+                                            e1.printStackTrace();
+                                        }
+                                        gameOver();
+                                        // break;
                                     }
-                                    gameOver();
-                                }
+                                // }
 
                             });
                             thread2.start();
@@ -208,37 +195,21 @@ public class MazePresenter extends JComponent {
             this.mazePanel.removeAll();
             this.mazePanel.add(content);
 
-            heartPanel.removeAll();
-            heartPanel.revalidate();
-            heartPanel.repaint();
+            updateLives();
             heartPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-            // Add heart images based on the player's remaining lives
             heartPanel.setPreferredSize(new Dimension(100, 30));
-            ImageIcon imageIcon = new ImageIcon("Pac-man\\img\\cherrypoint.png");
-            Image scaledImage = imageIcon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-            ImageIcon scaledIcon = new ImageIcon(scaledImage);
-            for(int i = lives; i > 0; --i) {
-                JLabel label = new JLabel(scaledIcon);
-                heartPanel.add(label);
-            }
-            scorePanel.removeAll();
+            heartPanel.add(heartLabelOne);
+            heartPanel.add(heartLabelTwo);
+            heartPanel.add(heartLabelThree);
+
+            updateScores();
             scorePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-            // Add heart images based on the player's remaining lives
             scorePanel.setPreferredSize(new Dimension(100, 30));
-            if (lives <= 0){
-                JLabel label1 = new JLabel("0");
-                scorePanel.add(label1);
-            }
-            else{
-                JLabel label1 = new JLabel(Integer.toString((points)));
-                scorePanel.add(label1);
-            }
-            scorePanel.revalidate();
-            scorePanel.repaint();
-            // Add the game panel and heart panel to the main panel
-            mainPanel.removeAll();
-            mainPanel.revalidate();
-            mainPanel.repaint();
+            scorePanel.add(scoreLabel);
+
+            // mainPanel.removeAll();
+            // mainPanel.revalidate();
+            // mainPanel.repaint();
             mainPanel.setPreferredSize(new Dimension(700, 700));
             mainPanel.add(this.mazePanel, BorderLayout.CENTER);
             mainAttributesPanel.removeAll();
@@ -256,6 +227,91 @@ public class MazePresenter extends JComponent {
                 MyKeyListener keyListener = new MyKeyListener(pacmanObj, this.maze, this);
                 this.frame2.addKeyListener(keyListener);
             }
+            this.frame2.setFocusable(true);
+            this.frame2.requestFocusInWindow();
+            this.frame2.pack();
+            this.frame2.setVisible(true);
+            oldMainPanel.revalidate();
+            oldMainPanel.repaint();
+        }
+    }
+    public void initializeInterfaceSaves(int lives, int points) {
+        if(this.maze != null){
+            int rows = this.maze.numRows();
+            int cols = this.maze.numCols();
+            GridLayout layout = new GridLayout(rows, cols);
+            layout.setHgap(0);
+            layout.setVgap(0);
+            JPanel content = new JPanel(layout);
+            content.setPreferredSize(new Dimension(600, 600));
+            for(int i = 0; i < rows; ++i) {
+                for(int j = 0; j < cols; ++j) {
+                    FieldView field = new FieldView(this.maze.getField(i, j));
+                    content.add(field);
+                }
+            }
+            // Remove the old main panel and add the new content panel to it
+            this.mazePanel.removeAll();
+            this.mazePanel.add(content);
+
+            ImageIcon icon = new ImageIcon("img\\cherrypoint.png");  
+            Image scaledImage = icon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
+            ImageIcon scaledIcon = new ImageIcon(scaledImage);
+            if (lives == 3){
+                this.heartLabelOne.setIcon(scaledIcon);
+                this.heartLabelTwo.setIcon(scaledIcon);
+                this.heartLabelThree.setIcon(scaledIcon);
+            }
+            else
+            if (lives == 2){
+                this.heartLabelOne.setIcon(scaledIcon);
+                this.heartLabelTwo.setIcon(scaledIcon);
+                this.heartLabelThree.setIcon(null);
+            }
+            else
+            if (lives == 1){
+                this.heartLabelOne.setIcon(scaledIcon);
+                this.heartLabelTwo.setIcon(null);
+                this.heartLabelThree.setIcon(null);
+            }
+            else
+            if (lives <= 0 && maze.getPacman() != null){
+                heartPanel.setPreferredSize(new Dimension(100, 30));
+                this.heartLabelOne.setIcon(null);
+                this.heartLabelOne.setText("Game Over");
+                this.heartLabelTwo.setIcon(null);
+                this.heartLabelThree.setIcon(null);
+    
+            }
+            heartPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+            heartPanel.setPreferredSize(new Dimension(100, 30));
+            heartPanel.add(heartLabelOne);
+            heartPanel.add(heartLabelTwo);
+            heartPanel.add(heartLabelThree);
+
+            if (lives <= 0){
+                scoreLabel.setText("0");
+            }
+            else{
+                scoreLabel.setText(Integer.toString(points));
+            }
+            scorePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+            scorePanel.setPreferredSize(new Dimension(100, 30));
+            scorePanel.add(scoreLabel);
+
+            mainPanel.setPreferredSize(new Dimension(700, 700));
+            mainPanel.add(this.mazePanel, BorderLayout.CENTER);
+            mainAttributesPanel.removeAll();
+            mainAttributesPanel.revalidate();
+            mainAttributesPanel.repaint();
+            mainAttributesPanel.add(heartPanel, BorderLayout.WEST);
+            mainAttributesPanel.add(scorePanel, BorderLayout.EAST);
+            mainPanel.add(mainAttributesPanel, BorderLayout.SOUTH);
+
+            // Remove the old main panel and add the new content panel to it
+            JPanel oldMainPanel = (JPanel) this.frame2.getContentPane();
+            oldMainPanel.removeAll();
+            oldMainPanel.add(mainPanel);
             this.frame2.setFocusable(true);
             this.frame2.requestFocusInWindow();
             this.frame2.pack();
