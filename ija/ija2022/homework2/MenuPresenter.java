@@ -40,7 +40,7 @@ public class MenuPresenter{
                 @Override
                 public void actionPerformed(ActionEvent arg0){
                     frame.setVisible(false);
-                    PacmanGame pacmanGame = new PacmanGame(1, 0);
+                    new MazeSelection();
                 }
             });
             buttonPanel.add(playButton);

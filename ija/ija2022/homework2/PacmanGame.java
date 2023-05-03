@@ -23,7 +23,7 @@ import ija.ija2022.homework2.tool.common.CommonMazeObject;
 
 public class PacmanGame {
 
-    public PacmanGame(int mode, int buttonMode){
+    public PacmanGame(int mode, int buttonMode, String filename){
         // This code runs when the button is clicked
         MazeConfigure cfg = new MazeConfigure();
 
@@ -34,7 +34,7 @@ public class PacmanGame {
             if (file.exists() && file.isFile()) {
                 file.delete();
             }
-            cfg.loadMaze("ija\\ija2022\\homework2\\filename.txt");
+            cfg.loadMaze(filename);
             CommonMaze maze = cfg.createMaze();
             CommonMazeObject pacman = maze.getPacman();
             MazePresenter presenter = new MazePresenter(maze, (PacmanObject)pacman);
