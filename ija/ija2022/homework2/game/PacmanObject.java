@@ -139,14 +139,13 @@ public class PacmanObject implements CommonMazeObject{
             } else if (!this.field.nextField(dir).isEmpty()) {
                 lives-=1;
             } else if (this.field.nextField(dir) instanceof TargetField && canExit) {
-                this.field.remove(this);
-                this.field = null;
                 this.Win = true;
+                field.notifyObservers();
             }
-            if (this.lives == 0){
-                this.field = null;
+            if (this.lives <= 0){
+                field.notifyObservers();
             }
-            if (this.Win == false && this.lives != 0){
+            if (this.Win == false && this.lives > 0){
                 CommonField field;
                 field = this.field.nextField(dir);
                 this.field.remove(this);

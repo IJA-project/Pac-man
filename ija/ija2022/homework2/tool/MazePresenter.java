@@ -8,17 +8,21 @@ package ija.ija2022.homework2.tool;
 import ija.ija2022.homework2.GameOverContent;
 import ija.ija2022.homework2.MenuPresenter;
 import ija.ija2022.homework2.MyKeyListener;
+import ija.ija2022.homework2.game.MazeConfigure;
 import ija.ija2022.homework2.game.PacmanObject;
 import ija.ija2022.homework2.tool.common.CommonMaze;
 import ija.ija2022.homework2.tool.common.MazePlan;
 import ija.ija2022.homework2.tool.view.FieldView;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
@@ -26,9 +30,7 @@ import java.awt.event.MouseEvent;
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+
 import javax.swing.*;
 
 public class MazePresenter extends JComponent {
@@ -47,41 +49,57 @@ public class MazePresenter extends JComponent {
     public JLabel heartLabelTwo;
     public JLabel heartLabelThree;
     public JLabel scoreLabel;
-
-    public MazePresenter(CommonMaze maze, PacmanObject pacmanObj) {
+    public MazeConfigure cfg;
+    static char key = '`';
+    public MazePresenter(MazeConfigure cfg, CommonMaze maze, PacmanObject pacmanObj, int mode) {
+        this.cfg = cfg;
+        System.out.println(cfg);
         this.frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.frame2.setSize(350, 400);
-        this.frame2.setPreferredSize(new Dimension(700, 700));
-        this.frame2.setResizable(false);
+        this.frame2.setSize(700, 700);
+        //this.frame2.setPreferredSize(new Dimension(700, 700));
+        //this.frame2.setResizable(false);
+        this.frame2.setLocationRelativeTo(null);
+        this.frame2.setBackground(Color.BLACK);
         this.maze = maze;
         this.pacmanObj = pacmanObj;
         this.oldMainPanel = new JPanel();
         this.mazePanel = new JPanel();
+        this.mazePanel.setBackground(Color.BLACK);
         this.heartPanel = new JPanel();
+        this.heartPanel.setBackground(Color.BLACK);
         this.scorePanel = new JPanel();
+        this.scorePanel.setBackground(Color.BLACK);
         this.scoreLabel = new JLabel();
         this.mainPanel = new JPanel(new BorderLayout());
+        this.mainPanel.setBackground(Color.BLACK);
         this.mainAttributesPanel =  new JPanel(new BorderLayout());
+        this.mainAttributesPanel.setBackground(Color.BLACK);
+        if (mode == 2){
+            addNextButton();
+        }
         this.heartLabelOne = new JLabel();
         this.heartLabelTwo = new JLabel();
         this.heartLabelThree = new JLabel();
+        addMenuButton();
+
+        
     }
 
     public void updateMaze(CommonMaze maze){
         this.maze = maze;
-        if (maze != null){
+        if (maze != null && ((PacmanObject)maze.getPacman()!= null)){
             this.pacmanObj = ((PacmanObject)maze.getPacman());
         }
         
     }
 
     public void gameOver(){
-        //System.out.println("11111");
-        mainPanel.removeAll();
-        JPanel gameover = new GameOverContent(this.pacmanObj.isWin(), frame2);
-        mainPanel.add(gameover, BorderLayout.CENTER);
-        mainPanel.revalidate();
-        mainPanel.repaint();
+        //System.out.println(this.pacmanObj.isWin());
+        if (this.pacmanObj.isDead() || this.pacmanObj.isWin()){
+            //System.out.println("11111");
+            frame2.setVisible(false);
+            GameOverContent gameover = new GameOverContent(this.pacmanObj.isWin(), this.pacmanObj.getLives(), this.pacmanObj.getPoints());
+        }
 
     }
 
@@ -95,7 +113,7 @@ public class MazePresenter extends JComponent {
     }
 
     public void updateLives(){
-        ImageIcon icon = new ImageIcon("img\\cherrypoint.png");  
+        ImageIcon icon = new ImageIcon("img\\heart.png");  
         Image scaledImage = icon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         if (this.pacmanObj.getLives() == 3){
@@ -134,6 +152,7 @@ public class MazePresenter extends JComponent {
             layout.setHgap(0);
             layout.setVgap(0);
             JPanel content = new JPanel(layout);
+            content.setBackground(Color.BLACK);
             content.setPreferredSize(new Dimension(600, 600));
             
             for(int i = 0; i < rows; ++i) {
@@ -141,7 +160,7 @@ public class MazePresenter extends JComponent {
                     final int row = i;
                     final int col = j;
                     final CommonMaze maze = this.maze;
-                    FieldView field = new FieldView(this.maze.getField(i, j));
+                    FieldView field = new FieldView(this.maze.getField(i, j), this);
                     field.addMouseListener(new MouseAdapter() {
                         @Override
                         public void mouseClicked(MouseEvent e) {
@@ -176,16 +195,16 @@ public class MazePresenter extends JComponent {
                                 //     }
                                     updateLives();
                                     updateScores();
-                                    if(((PacmanObject)maze.getPacman()).isWin() == true || ((PacmanObject)maze.getPacman()).isDead() == true){
-                                        try {
-                                            Thread.sleep(500);
-                                        } catch (InterruptedException e1) {
-                                            // TODO Auto-generated catch block
-                                            e1.printStackTrace();
-                                        }
-                                        gameOver();
-                                        // break;
-                                    }
+                                    // if(((PacmanObject)maze.getPacman()).isWin() == true || ((PacmanObject)maze.getPacman()).isDead() == true){
+                                    //     try {
+                                    //         Thread.sleep(500);
+                                    //     } catch (InterruptedException e1) {
+                                    //         // TODO Auto-generated catch block
+                                    //         e1.printStackTrace();
+                                    //     }
+                                    //     gameOver();
+                                    //     // break;
+                                    // }
                                 // }
 
                             });
@@ -240,7 +259,8 @@ public class MazePresenter extends JComponent {
             oldMainPanel.repaint();
         }
     }
-    public void initializeInterfaceSaves(int lives, int points) {
+
+    public void initializeInterfaceSaves(int lives, int points, boolean isButton) {
         if(this.maze != null){
             int rows = this.maze.numRows();
             int cols = this.maze.numCols();
@@ -248,10 +268,11 @@ public class MazePresenter extends JComponent {
             layout.setHgap(0);
             layout.setVgap(0);
             JPanel content = new JPanel(layout);
+            content.setBackground(Color.BLACK);
             content.setPreferredSize(new Dimension(600, 600));
             for(int i = 0; i < rows; ++i) {
                 for(int j = 0; j < cols; ++j) {
-                    FieldView field = new FieldView(this.maze.getField(i, j));
+                    FieldView field = new FieldView(this.maze.getField(i, j), this);
                     content.add(field);
                 }
             }
@@ -259,7 +280,7 @@ public class MazePresenter extends JComponent {
             this.mazePanel.removeAll();
             this.mazePanel.add(content);
 
-            ImageIcon icon = new ImageIcon("img\\cherrypoint.png");  
+            ImageIcon icon = new ImageIcon("img\\heart.png");  
             Image scaledImage = icon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(scaledImage);
             if (lives == 3){
@@ -309,23 +330,104 @@ public class MazePresenter extends JComponent {
 
             mainPanel.setPreferredSize(new Dimension(700, 700));
             mainPanel.add(this.mazePanel, BorderLayout.CENTER);
-            mainAttributesPanel.removeAll();
+            //mainAttributesPanel.removeAll();
             mainAttributesPanel.revalidate();
             mainAttributesPanel.repaint();
             mainAttributesPanel.add(heartPanel, BorderLayout.WEST);
             mainAttributesPanel.add(scorePanel, BorderLayout.EAST);
             mainPanel.add(mainAttributesPanel, BorderLayout.SOUTH);
+            this.frame2.addKeyListener(new KeyListener() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    key = e.getKeyChar();
 
+                }
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    // Not used
+                }
+            
+                @Override
+                public void keyTyped(KeyEvent e) {
+                    // Not used
+                }
+            });
             // Remove the old main panel and add the new content panel to it
             JPanel oldMainPanel = (JPanel) this.frame2.getContentPane();
             oldMainPanel.removeAll();
             oldMainPanel.add(mainPanel);
             this.frame2.setFocusable(true);
             this.frame2.requestFocusInWindow();
-            this.frame2.pack();
+            //this.frame2.pack();
             this.frame2.setVisible(true);
             oldMainPanel.revalidate();
             oldMainPanel.repaint();
         }
     }
+
+    public char getKey(){
+        char tmp = this.key;
+        this.key = '~';
+        return tmp;
+    }
+
+    public void addNextButton() {
+        cfg = this.cfg;
+        this.mazePanel.addKeyListener(new KeyListener() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                e.getKeyChar();
+                System.out.println("11111");
+                cfg.loadSaveOneByOne("1.txt");
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // Not used
+            }
+        
+            @Override
+            public void keyTyped(KeyEvent e) {
+                // Not used
+            }
+        });
+        JButton nextButton = new JButton("next");
+        nextButton.setForeground(Color.yellow);
+        nextButton.setPreferredSize(new Dimension(200, 200));
+        nextButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        nextButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent arg0){
+                    // new MazeSelection();
+                }
+            });
+        this.frame2.add(nextButton, BorderLayout.NORTH);
+        mainAttributesPanel.revalidate();
+        mainAttributesPanel.repaint();
+    }
+
+    public void addMenuButton() {
+        ImageIcon icon = new ImageIcon("img\\pacman_font.png");  
+        Image scaledImage = icon.getImage().getScaledInstance(230, 40, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+        
+        JLabel imageLabel = new JLabel(scaledIcon);
+        imageLabel.setSize(700, 50);
+
+        ImageIcon menu_icon = new ImageIcon("img\\menu_button.png");
+        Image scaledMenuImage = menu_icon.getImage().getScaledInstance(100, 24, Image.SCALE_SMOOTH);
+        JButton menuButton = new JButton(new ImageIcon(scaledMenuImage));
+        menuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                // // Code to view high scores goes here
+                // frame.setVisible(false);
+                // new MenuPresenter();
+                
+            }
+        });
+        menuButton.setBounds(530, 10,99, 25 );
+        imageLabel.add(menuButton, BorderLayout.CENTER);
+        this.mainPanel.add(imageLabel, BorderLayout.NORTH);
+    }
+
 }

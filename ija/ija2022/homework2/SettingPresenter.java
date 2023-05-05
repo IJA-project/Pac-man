@@ -33,6 +33,8 @@ public class SettingPresenter extends JFrame implements ActionListener {
 
     public SettingPresenter() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
         // Create the switch buttons
         toggleButton1 = new JToggleButton("OFF");
         toggleButton2 = new JToggleButton("OFF");

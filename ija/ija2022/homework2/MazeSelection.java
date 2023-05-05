@@ -1,5 +1,6 @@
 package ija.ija2022.homework2;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,12 +13,15 @@ import javax.swing.JPanel;
 public class MazeSelection {
     public MazeSelection(){
             JFrame frame = new JFrame();
-            frame.setSize(300, 200);
+            frame.setSize(1200, 700);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setLocationRelativeTo(null);
+            frame.setResizable(false);
+            frame.setBackground(Color.BLACK);
             
             JPanel buttonPanel = new JPanel();
             buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
-            
+            buttonPanel.setBackground(Color.BLACK);
             JButton playButton = new JButton("Maze 1");
             playButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             playButton.addActionListener(new ActionListener() {

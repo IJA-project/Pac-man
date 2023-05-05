@@ -13,7 +13,7 @@ public class TargetField extends AbstractObservableField {
     private CommonMazeObject mazeObject;
 
     public TargetField(int row, int col){
-        notifyObservers();
+        //notifyObservers();
         this.row = row;
         this.col = col;
         mazeObject = null;
@@ -46,7 +46,7 @@ public class TargetField extends AbstractObservableField {
             notifyObservers();
             return true;
         }else{
-            notifyObservers();
+            //notifyObservers();
             return false;
         }
     }
@@ -58,7 +58,7 @@ public class TargetField extends AbstractObservableField {
             notifyObservers();
             return true;
         }else {
-            notifyObservers();
+            //notifyObservers();
             return false;
         }
     }

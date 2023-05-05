@@ -37,7 +37,7 @@ public class PacmanGame {
             cfg.loadMaze(filename);
             CommonMaze maze = cfg.createMaze();
             CommonMazeObject pacman = maze.getPacman();
-            MazePresenter presenter = new MazePresenter(maze, (PacmanObject)pacman);
+            MazePresenter presenter = new MazePresenter(cfg, maze, (PacmanObject)pacman, 1);
                         //cfg.loadMaze("ija\\ija2022\\homework2\\filename.txt");
             // for loadsave move packman
             presenter.initializeInterface();
@@ -55,15 +55,15 @@ public class PacmanGame {
                             maze.saveState();
                             presenter.updateLives();
                             presenter.updateScores();
-                            if(((PacmanObject)maze.getPacman()).isWin() == true || ((PacmanObject)maze.getPacman()).isDead() == true){
-                                try {
-                                    Thread.sleep(75);
-                                } catch (InterruptedException e1) {
-                                    // TODO Auto-generated catch block
-                                    e1.printStackTrace();
-                                }
-                                presenter.gameOver();
-                            }
+                            // if(((PacmanObject)maze.getPacman()).isWin() == true || ((PacmanObject)maze.getPacman()).isDead() == true){
+                            //     try {
+                            //         Thread.sleep(75);
+                            //     } catch (InterruptedException e1) {
+                            //         // TODO Auto-generated catch block
+                            //         e1.printStackTrace();
+                            //     }
+                            //     presenter.gameOver();
+                            // }
     
                         }
                     } catch (InterruptedException e) {
@@ -94,18 +94,21 @@ public class PacmanGame {
         }
         else if (mode == 2){
             if (buttonMode == 1){
-                cfg.loadSave("1.txt");//must be deleted
+                cfg.loadSave("1.txt");
                 CommonMaze maze = cfg.createMaze();
-                MazePresenter presenter = new MazePresenter(maze, null);
+                MazePresenter presenter = new MazePresenter(cfg, maze, null, 1);
             }
             else if(buttonMode == 2){
-
+                cfg.loadSaveOneByOne("1.txt");
+                CommonMaze maze = cfg.createMaze();
+                MazePresenter presenter = new MazePresenter(cfg, maze, null, 2);
+                
             }            
         }else{
             if(buttonMode == 1){
                 cfg.loadReverseSave("1.txt");
                 CommonMaze maze = cfg.createMaze();
-                MazePresenter presenter = new MazePresenter(maze,null);
+                MazePresenter presenter = new MazePresenter(cfg, maze,null, 1);
             }
             else if(buttonMode == 2){
                 

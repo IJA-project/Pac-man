@@ -16,7 +16,7 @@ public class PathField extends AbstractObservableField {
         this.row = row;
         this.col = col;
         mazeObject = null;
-        notifyObservers();
+        //notifyObservers();
 
     }
 
@@ -43,13 +43,13 @@ public class PathField extends AbstractObservableField {
 
     @Override
     public boolean put(CommonMazeObject object){
-        notifyObservers();
+        //notifyObservers();
         if (mazeObject == null){
             mazeObject = object;
             notifyObservers();
             return true;
         }else{
-            notifyObservers();
+            //notifyObservers();
             return false;
         }
     }
@@ -61,7 +61,7 @@ public class PathField extends AbstractObservableField {
             notifyObservers();
             return true;
         }else {
-            notifyObservers();
+            //notifyObservers();
             return false;
         }
     }

@@ -12,7 +12,7 @@ public class WallField extends AbstractObservableField{
     private CommonMaze maze;
 
     public WallField(int row, int col){
-        notifyObservers();
+        //notifyObservers();
         this.row = row;
         this.col = col;
     }

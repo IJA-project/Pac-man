@@ -29,15 +29,15 @@ public class MyKeyListener implements KeyListener {
             presenter.updateLives();
             presenter.updateScores();
         }
-        if(((PacmanObject)maze.getPacman()).isWin() == true || ((PacmanObject)maze.getPacman()).isDead() == true){
-            try {
-                Thread.sleep(75);
-            } catch (InterruptedException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-            presenter.gameOver();
-        }
+        // if(((PacmanObject)maze.getPacman()).isWin() == true || ((PacmanObject)maze.getPacman()).isDead() == true){
+        //     try {
+        //         Thread.sleep(75);
+        //     } catch (InterruptedException e1) {
+        //         // TODO Auto-generated catch block
+        //         e1.printStackTrace();
+        //     }
+        //     presenter.gameOver();
+        // }
     }
 
     @Override
