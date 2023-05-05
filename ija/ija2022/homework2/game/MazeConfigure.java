@@ -156,7 +156,7 @@ public class MazeConfigure extends Object{
     // private MazePresenter presenter = new MazePresenter(this, null, null, 0);
 
 public void loadSaveOneByOne(String str) {
-     final MazePresenter presenter = new MazePresenter(null, null, null, 0);
+     final MazePresenter presenter = new MazePresenter(null, null, null, 2);
     
         
         Thread thread1 = new Thread(() -> {
