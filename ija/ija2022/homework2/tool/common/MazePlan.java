@@ -3,10 +3,14 @@ import java.io.*;
 import ija.ija2022.homework2.game.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class MazePlan implements CommonMaze {
     private int rows;
     static int count = 0;
+
+    private final Lock lock = new ReentrantLock();
     private int cols;
     private CommonField[][] mazePlan;
     private List<CommonMazeObject> ghost_lst;
@@ -90,68 +94,75 @@ public class MazePlan implements CommonMaze {
     //Method for saving current state of the maze
     @Override
     public void saveState() {
-        int count_rows = 0;
-        int health = 0;
-        int points = 0;
-        boolean key = false;
-        // Try to open file and create PrintWriter
         try {
-            FileWriter fos = new FileWriter(1 + ".txt", true);
-            BufferedWriter   pw = new BufferedWriter  (fos);
-            if (count == 0){
-                pw.write((this.rows-2) + " " + (this.cols-2)+"\n");
-            }
-            pw.write(count +" state" + "\n");
+            this.lock.lock();
 
-            // Print maze layout to file
-            for (CommonField[] i : this.mazePlan) {
-                int count_cols = 0;
-                if (count_rows == 0 || count_rows == this.rows - 1) {
-                    count_rows++;
-                    continue;
+
+            int count_rows = 0;
+            int health = 0;
+            int points = 0;
+            boolean key = false;
+            // Try to open file and create PrintWriter
+            try {
+                FileWriter fos = new FileWriter(1 + ".txt", true);
+                BufferedWriter pw = new BufferedWriter(fos);
+                if (count == 0) {
+                    pw.write((this.rows - 2) + " " + (this.cols - 2) + "\n");
                 }
+                pw.write(count + " state" + "\n");
 
-                for (CommonField j : i) {
-                    //Processing fields and when it is a wall, path, target or ghost
-                    if (count_cols == 0 || count_cols == this.cols - 1) {
-                        count_cols++;
+                // Print maze layout to file
+                for (CommonField[] i : this.mazePlan) {
+                    int count_cols = 0;
+                    if (count_rows == 0 || count_rows == this.rows - 1) {
+                        count_rows++;
                         continue;
                     }
-                    if (j instanceof WallField) {
-                        pw.write("X");
-                    } else if (j instanceof PathField) {
-                        if (j.get() == null) {
-                            pw.write(".");
-                        } else if (j.get().isKey()) {
-                            pw.write("K");
-                        } else if (j.get().isPoint()) {
-                            pw.write("P");
-                        } else if (j.get().isPacman()) {
-                            health = j.get().getLives();
-                            points = j.get().getPoints();
-                            key = j.get().pacmanKey();
-                            pw.write("S");
-                        } else {
-                            pw.write("G");
+
+                    for (CommonField j : i) {
+                        //Processing fields and when it is a wall, path, target or ghost
+                        if (count_cols == 0 || count_cols == this.cols - 1) {
+                            count_cols++;
+                            continue;
                         }
-                    } else if (j instanceof TargetField) {
-                        pw.write("T");
+                        if (j instanceof WallField) {
+                            pw.write("X");
+                        } else if (j instanceof PathField) {
+                            if (j.get() == null) {
+                                pw.write(".");
+                            } else if (j.get().isKey()) {
+                                pw.write("K");
+                            } else if (j.get().isPoint()) {
+                                pw.write("P");
+                            } else if (j.get().isPacman()) {
+                                health = j.get().getLives();
+                                points = j.get().getPoints();
+                                key = j.get().pacmanKey();
+                                pw.write("S");
+                            } else {
+                                pw.write("G");
+                            }
+                        } else if (j instanceof TargetField) {
+                            pw.write("T");
+                        }
+                        count_cols++;
                     }
-                    count_cols++;
+                    pw.write("\n");
+                    count_rows++;
                 }
-                pw.write("\n");
-                count_rows++;
+
+                // Print health and points to file
+                pw.write(health + " " + points + " " + key + "\n");
+
+                // Close PrintWriter and FileOutputStream
+                pw.close();
+                fos.close();
+                count++;
+            } catch (IOException e) {
+                System.out.println("Error saving maze state to file: " + e.getMessage());
             }
-
-            // Print health and points to file
-            pw.write(health + " " + points+ " " +key+"\n");
-
-            // Close PrintWriter and FileOutputStream
-            pw.close();
-            fos.close();
-            count++;
-        } catch (IOException e) {
-            System.out.println("Error saving maze state to file: " + e.getMessage());
+        } finally {
+            this.lock.unlock();
         }
     }
 

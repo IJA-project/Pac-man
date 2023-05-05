@@ -11,7 +11,6 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import static ija.ija2022.homework2.PacmanGame.sleep;
 
 public class MazeConfigure extends Object{
     private String[] lines;
@@ -161,21 +160,14 @@ public void loadSaveOneByOne(String str) {
         
         Thread thread1 = new Thread(() -> {
         try (Scanner myReader = new Scanner(new File(str))) {
-                int count_line = 0;
-                boolean firstState = false;
 
                 String data = myReader.nextLine();
-
                 
                 String[] parm = data.split(" ");
                 int row = Integer.parseInt(parm[0]);
                 int col = Integer.parseInt(parm[1]);
 
-                boolean canMove_next = false;
                 CommonMaze maze = null;
-    
-                boolean enter = false;
-
                 while(myReader.hasNextLine()) {
 
                     data = myReader.nextLine();
@@ -190,10 +182,8 @@ public void loadSaveOneByOne(String str) {
                         int score = Integer.parseInt(param[1]);
                         String key = param[2];
                         PacmanObject.load(health, score, key);
-
                         this.stopReading();
                         maze = this.createMaze();
-                        //System.out.println(maze);
                         break;
                     }
 
@@ -202,37 +192,32 @@ public void loadSaveOneByOne(String str) {
                 while (myReader.hasNextLine()) {
 
 
-
                     if ( presenter.getKey() != '~' || mustMove) {
                         data = myReader.nextLine();
 
+                        if (Pattern.compile("^[0-9]{1,9} state$").matcher(data).matches() ) {
+                            this.clean();
+                            this.startReading(row, col);
+                            mustMove = true;
 
-                    // System.out.println(data);
-                    if (Pattern.compile("^[0-9]{1,9} state$").matcher(data).matches() ) {
-                        this.clean();
-                        this.startReading(row, col);
-                        mustMove = true;
-
-                    } else {
-                        if (!Pattern.compile("^[0-9]{1,9} [0-9]{1,9} (true|false)$").matcher(data).matches()) {
-                            this.processLine(data);
-                            count_line++;
                         } else {
-                            mustMove = false;
-                            String[] param = data.split(" ");
-                            int health = Integer.parseInt(param[0]);
-                            int score = Integer.parseInt(param[1]);
-                            String keys = param[2];
-                            PacmanObject.load(health, score, keys);
-                            count_line = 0;
-                            this.stopReading();
-                            maze = this.createMaze();
+                            if (!Pattern.compile("^[0-9]{1,9} [0-9]{1,9} (true|false)$").matcher(data).matches()) {
+                                this.processLine(data);
+                            } else {
+                                mustMove = false;
+                                String[] param = data.split(" ");
+                                int health = Integer.parseInt(param[0]);
+                                int score = Integer.parseInt(param[1]);
+                                String keys = param[2];
+                                PacmanObject.load(health, score, keys);
+                                this.stopReading();
+                                maze = this.createMaze();
+                            }
                         }
-                    }
                     
-                    Thread.sleep(40);
+                        Thread.sleep(40);
 
-                }
+                    }
                 }
             } catch (FileNotFoundException | InterruptedException e) {
                 System.out.println("An error occurred.");
@@ -254,147 +239,42 @@ public void loadSaveOneByOne(String str) {
             thread1.start(); // start the thread
             thread2.start(); // start the thread
 
-
-
-
-
 }
 
-
-//     public void loadSaveOneByOne(String str) {
-        
-    
-    
-//     try (Scanner myReader = new Scanner(new File(str))) {
-        
-//         int count_line = 0;
-//         boolean firstState = false;
-//         String data= myReader.nextLine();
-
-//         String[] parm = data.split(" ");
-//         int row = Integer.parseInt(parm[0]);
-//         int col = Integer.parseInt(parm[1]);
-        
-//         if (currentStateIndex !=0){
-//             while (myReader.hasNextLine()) {
-//             data = myReader.nextLine();
-
-//             if (Pattern.compile("^"+currentStateIndex+" state$").matcher(data).matches()) {
-//                 break;
-//             }
-//         }
-//         }else{
-//             data = myReader.nextLine();
-//             this.startReading(row, col);
-//             CommonMaze maze = null;
-//         }
-        
-
-//         System.out.println(currentStateIndex);
-
-        
-        
-        
-//         boolean FlaggState = false;
-//         while (myReader.hasNextLine()) {
-
-//             if (currentStateIndex != 0 || presenter.getKey() != '~'){
-
-            
-//             if (FlaggState){
-//                 data = myReader.nextLine();
-//             }
-//             System.out.println(data);
-            
-//             //System.out.println(currentStateIndex);
-//             if (Pattern.compile("^[0-9]{1,9} state$").matcher(data).matches()) {
-//                 FlaggState =true;
-//                 System.out.println(currentStateIndex);
-//                 if (data.equals("0 state")) {
-//                     System.out.println("ZALUPAOCHKOGOVNO#2");
-//                     firstState = true;
-//                     currentStateIndex++;
-//                     continue;
-//                 } else if (firstState) {
-//                     System.out.println("ZALUPAOCHKOGOVNO#3");
-//                     this.stopReading();
-//                     firstState = false;
-//                     count_line = 0;
-//                     maze = this.createMaze();
-//                     currentStateIndex++;
-//                 }
-//                 this.clean();
-//                 this.startReading(row, col);
-//                 //System.out.println("ZALUPAOCHKOGOVNO");
-                
-//             } else {
-//                  System.out.println("ZALUPAOCHKO6");
-//                 if (!Pattern.compile("^[0-9]{1,9} [0-9]{1,9} (true|false)$").matcher(data).matches()) {
-//                     this.processLine(data);
-//                     count_line++;
-//                     if (count_line == row && !firstState) {
-//                         System.out.println("ZALUPAOCHKO62");
-//                         count_line = 0;
-//                         System.out.println(this.stopReading());
-//                         maze = this.createMaze();
-//                         System.out.println(maze);
-//                         currentStateIndex++;
-//                         // presenter.update(maze);
-//                     }
-//                 } else {
-//                     String[] param = data.split(" ");
-//                     int health = Integer.parseInt(param[0]);
-//                     int score = Integer.parseInt(param[1]);
-//                     String key = param[2];
-//                     PacmanObject.load(health, score, key);
-//                 }
-//             }
-//             }
-//         }
-//         this.presenter.updateMaze(maze);
-//         this.presenter.initializeInterfaceSaves(PacmanObject.staticGetLives(), PacmanObject.staticGetPoints(), true);
-//     } catch (FileNotFoundException e) {
-//         System.out.println("An error occurred.");
-//         e.printStackTrace();
-//     }
-// }
 
     public void loadReverseSave(String str){
         final MazePresenter presenter = new MazePresenter(null, null, null, 0);
         Thread thread1 = new Thread(()->{
             Path path = Paths.get(str);
             CommonMaze maze;
-            
-    
+
             long lines;
             String line_cur = "";
             try {
                 String[] param = Files.readAllLines(path).get(0).split(" ");
                 int row = Integer.parseInt(param[0]);
                 int col = Integer.parseInt(param[1]);
-    
+
                 lines = Files.lines(path).count();
                 int max = (int)lines-(row+2);
                 lines = (int)lines-(row+2);
-    
+
                 while (!line_cur.equals("0 state")){
                     int count = 0;
                     this.startReading(row, col);
-    
+
                     while ( count != row){
                         try {
                             String line_curs = Files.readAllLines(path).get((int)lines+count+1);
-                            //System.out.println(line_curs + " " + count+(int)count+1);
                             this.processLine(line_curs);
                             count++;
                         }catch (IndexOutOfBoundsException e){
                             System.out.println("Index out of bounds");
                             System.exit(0);
-                            
                         }
                         Thread.sleep(40);
                     }
-                
+
 
                     String[] param1 = Files.readAllLines(path).get((int)lines+count+1).split(" ");
                     int health = Integer.parseInt(param1[0]);
@@ -402,14 +282,11 @@ public void loadSaveOneByOne(String str) {
                     String key = param1[2];
                     PacmanObject.load(health, score, key);
                     this.stopReading();
+
                     if (lines == max){
-
                         maze = this.createMaze();
-
                     }else {
-
                         maze = this.createMaze();
-
                     }
                     this.clean();
                     line_cur = Files.readAllLines(path).get((int)lines);
@@ -420,13 +297,12 @@ public void loadSaveOneByOne(String str) {
             e.printStackTrace();
         }
         });
-       
+
 
         Thread thread2 = new Thread(()->{
             try{
                 while (true) {
                     Thread.sleep(75);
-                    // System.out.println(maze+"llllll");
                     presenter.updateMaze(maze);
                     presenter.initializeInterfaceSaves(PacmanObject.staticGetLives(), PacmanObject.staticGetPoints(), true);//
 
@@ -440,6 +316,91 @@ public void loadSaveOneByOne(String str) {
         thread2.start();
     }
 
+
+    public void loadReverseSaveOneByOne(String str){
+        final MazePresenter presenter = new MazePresenter(null, null, null, 0);
+        Thread thread1 = new Thread(()->{
+            Path path = Paths.get(str);
+            CommonMaze maze;
+
+            long lines;
+            String line_cur = "";
+            try {
+                String[] param = Files.readAllLines(path).get(0).split(" ");
+                int row = Integer.parseInt(param[0]);
+                int col = Integer.parseInt(param[1]);
+
+                lines = Files.lines(path).count();
+                int max = (int)lines-(row+2);
+                lines = (int)lines-(row+2);
+                char keys = presenter.getKey();
+                while (!line_cur.equals("0 state")) {
+
+                   System.out.println(keys);
+                    if(keys != '~'){
+                        keys = '~';
+                        System.out.println("key pressed");
+
+                        int count = 0;
+                        this.startReading(row, col);
+
+                        while (count != row) {
+                            try {
+                                String line_curs = Files.readAllLines(path).get((int) lines + count + 1);
+                                this.processLine(line_curs);
+                                count++;
+                            } catch (IndexOutOfBoundsException e) {
+                                System.out.println("Index out of bounds");
+                                System.exit(0);
+                            }
+                            Thread.sleep(40);
+                        }
+
+
+                        String[] param1 = Files.readAllLines(path).get((int) lines + count + 1).split(" ");
+                        int health = Integer.parseInt(param1[0]);
+                        int score = Integer.parseInt(param1[1]);
+                        String key = param1[2];
+                        PacmanObject.load(health, score, key);
+                        this.stopReading();
+
+                        if (lines == max) {
+                            maze = this.createMaze();
+                        } else {
+                            maze = this.createMaze();
+                        }
+
+                        this.clean();
+                        line_cur = Files.readAllLines(path).get((int) lines);
+                        lines = lines - (row + 2);
+
+                    }
+                    Thread.sleep(85);
+                    keys = presenter.getKey();
+
+                }
+            }catch (IOException | InterruptedException e){
+                e.printStackTrace();
+            }
+        });
+
+
+        Thread thread2 = new Thread(()->{
+            try{
+                while (true) {
+                    Thread.sleep(75);
+                    presenter.updateMaze(maze);
+                    presenter.initializeInterfaceSaves(PacmanObject.staticGetLives(), PacmanObject.staticGetPoints(), true);//
+
+                }
+            }catch( InterruptedException e){
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+        });
+        thread1.start();
+        thread2.start();
+    }
     public boolean stopReading() {
         if (this.numOfLines == this.rows){
 
