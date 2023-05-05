@@ -12,18 +12,22 @@ public class MyKeyListener implements KeyListener {
     public CommonMaze maze;
     public MazePresenter presenter;
 
+
+
     public MyKeyListener(PacmanObject pacmanObj, CommonMaze maze, MazePresenter presenter) {
         this.obj = pacmanObj;
         this.maze = maze;
         this.presenter = presenter;
     }
 
+
     @Override
     public void keyPressed(KeyEvent e) {
         // System.out.println("8");
         if (((PacmanObject)this.obj).isWin() == false && ((PacmanObject)this.obj).isDead() == false){
             // System.out.println(" key pressed: " + ((PacmanObject)this.obj).getLives());
-            
+
+
             ((PacmanObject)this.obj).keyMoving(e.getKeyChar());
             maze.saveState();
             presenter.updateLives();
