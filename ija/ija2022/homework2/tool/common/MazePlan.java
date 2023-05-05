@@ -135,13 +135,14 @@ public class MazePlan implements CommonMaze {
                             } else if (j.get().isPoint()) {
                                 pw.write("P");
                             } else if (j.get().isPacman()) {
-                                health = j.get().getLives();
-                                points = j.get().getPoints();
-                                key = j.get().pacmanKey();
+
                                 pw.write("S");
                             } else {
                                 pw.write("G");
                             }
+                            health = PacmanObject.lives;
+                            points = PacmanObject.score;
+                            key = PacmanObject.canExit;
                         } else if (j instanceof TargetField) {
                             pw.write("T");
                         }
