@@ -55,6 +55,7 @@ public class GhostObject implements CommonMazeObject{
                     wait = 50;
                     ptr.heat();
                     dontMove = 0;
+                    field.notifyObservers();
                     return true;
                 }
             }
