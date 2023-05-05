@@ -170,65 +170,63 @@ public void loadSaveOneByOne(String str) {
                 String[] parm = data.split(" ");
                 int row = Integer.parseInt(parm[0]);
                 int col = Integer.parseInt(parm[1]);
-                this.startReading(row, col);
 
+                boolean canMove_next = false;
                 CommonMaze maze = null;
     
-                boolean enter = true;
-                boolean enter2 = false;
+                boolean enter = false;
+
+                while(myReader.hasNextLine()) {
+
+                    data = myReader.nextLine();
+                    if (data.equals("0 state")){
+                        this.startReading(row, col);
+                    } else if(!Pattern.compile("^[0-9]{1,9} [0-9]{1,9} (true|false)$").matcher(data).matches()) {
+
+                        this.processLine(data);
+                    }else {
+                        String[] param = data.split(" ");
+                        int health = Integer.parseInt(param[0]);
+                        int score = Integer.parseInt(param[1]);
+                        String key = param[2];
+                        PacmanObject.load(health, score, key);
+
+                        this.stopReading();
+                        maze = this.createMaze();
+                        //System.out.println(maze);
+                        break;
+                    }
+
+                }
+                boolean mustMove = false;
                 while (myReader.hasNextLine()) {
 
-                    if (presenter.getKey() != '~' ){
-                        enter = true;
-                    }else{
-                        enter = false;
-                    }
-
-                    if (firstState){
-                        enter = true;
-                    }
-
-                    if (   count_line != row && !firstState && count_line != 0){
-                        enter = true;
-                    }
 
 
+                    if ( presenter.getKey() != '~' || mustMove) {
+                        data = myReader.nextLine();
 
-                    if (enter || enter2) {
-                    data = myReader.nextLine();
-                    
-                    
+
                     // System.out.println(data);
-                    if (Pattern.compile("^[0-9]{1,9} state$").matcher(data).matches()) {
-                        if (data.equals("0 state")) {
-                            firstState = true;
-                            continue;
-                        } else if (firstState) {
-                            this.stopReading();
-                            firstState = false;
-                            count_line = 0;
-                            maze = this.createMaze();
-                        }
+                    if (Pattern.compile("^[0-9]{1,9} state$").matcher(data).matches() ) {
                         this.clean();
                         this.startReading(row, col);
-                        enter2 = true;
+                        mustMove = true;
+
                     } else {
                         if (!Pattern.compile("^[0-9]{1,9} [0-9]{1,9} (true|false)$").matcher(data).matches()) {
                             this.processLine(data);
                             count_line++;
-                            if (count_line == row && !firstState) {
-                                count_line = 0;
-                                this.stopReading();
-                                maze = this.createMaze();
-                                enter2 = true;
-                            }
                         } else {
+                            mustMove = false;
                             String[] param = data.split(" ");
                             int health = Integer.parseInt(param[0]);
                             int score = Integer.parseInt(param[1]);
-                            String key = param[2];
-                            PacmanObject.load(health, score, key);
-                            enter2 = false;
+                            String keys = param[2];
+                            PacmanObject.load(health, score, keys);
+                            count_line = 0;
+                            this.stopReading();
+                            maze = this.createMaze();
                         }
                     }
                     
