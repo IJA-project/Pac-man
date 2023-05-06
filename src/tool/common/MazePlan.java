@@ -1,3 +1,12 @@
+/**
+ * Project name: Pac-man
+ * File name: MazePlan.java
+ * Date: 06.05.2023
+ * Last update: 01.05.2023
+ * Author: Andrei Kulinkovich(xkulin01)
+ * Description: MazePlan class represents maze plan
+ */
+
 package src.tool.common;
 import java.io.*;
 import src.game.*;
@@ -6,20 +15,24 @@ import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * MazePlan class represents maze plan
+ */
 public class MazePlan implements CommonMaze {
     private int rows;
     static int count = 0;
-
     private final Lock lock = new ReentrantLock();
     private int cols;
     private CommonField[][] mazePlan;
     private List<CommonMazeObject> ghost_lst;
-
     private CommonMazeObject pacman;
 
-    public CommonMazeObject getPacman(){
-        return this.pacman;
-    }
+    /**
+     * Constructor for MazePlan
+     * @param rows row of field
+     * @param cols column of field
+     * @param lines lines of maze
+     */
     public MazePlan(int rows, int cols, String[] lines){
         count = 0;
         this.rows = rows;
@@ -69,19 +82,33 @@ public class MazePlan implements CommonMaze {
         }
     }
 
+    /**
+     * Method returns CommonField object representing border and sets maze to it
+     * @param row row of field
+     * @param col column of field
+     * @return CommonField object representing border
+     */
     private CommonField Borders(int row, int col){
         CommonField field = new WallField(row, col);
         field.setMaze(this);
         return field;
     }
 
-    private void Clean(){
-        for (CommonField[] i : this.mazePlan) {
-            for (CommonField j : i) {
-                j.remove(j.get());
-            }
-        }
+    /**
+     * Method returns pacman from maze
+     * @return CommonMazeObject object representing pacman
+     */
+    @Override
+    public CommonMazeObject getPacman(){
+        return this.pacman;
     }
+
+    /**
+     * Method returns field on position row, col
+     * @param row row of field
+     * @param col column of field
+     * @return field on position row, col, null if out of bounds
+     */
     @Override
     public CommonField getField(int row, int col){
         try{
@@ -91,18 +118,19 @@ public class MazePlan implements CommonMaze {
         }
     }
 
-    //Method for saving current state of the maze
+    /**
+     * Method save configuration of maze to logging then
+     */
     @Override
     public void saveState() {
         try {
             this.lock.lock();
 
-
             int count_rows = 0;
             int health = 0;
             int points = 0;
             boolean key = false;
-            // Try to open file and create PrintWriter
+
             try {
                 FileWriter fos = new FileWriter(1 + ".txt", true);
                 BufferedWriter pw = new BufferedWriter(fos);
@@ -111,7 +139,6 @@ public class MazePlan implements CommonMaze {
                 }
                 pw.write(count + " state" + "\n");
 
-                // Print maze layout to file
                 for (CommonField[] i : this.mazePlan) {
                     int count_cols = 0;
                     if (count_rows == 0 || count_rows == this.rows - 1) {
@@ -120,7 +147,6 @@ public class MazePlan implements CommonMaze {
                     }
 
                     for (CommonField j : i) {
-                        //Processing fields and when it is a wall, path, target or ghost
                         if (count_cols == 0 || count_cols == this.cols - 1) {
                             count_cols++;
                             continue;
@@ -151,11 +177,8 @@ public class MazePlan implements CommonMaze {
                     pw.write("\n");
                     count_rows++;
                 }
-
-                // Print health and points to file
                 pw.write(health + " " + points + " " + key + "\n");
 
-                // Close PrintWriter and FileOutputStream
                 pw.close();
                 fos.close();
                 count++;
@@ -167,16 +190,29 @@ public class MazePlan implements CommonMaze {
         }
     }
 
+    /**
+     * Method returns number of rows which defines maze
+     * @return number of rows
+     */
     @Override
     public int numRows(){
         return this.rows;
     }
 
+    /**
+     * Method returns number of columns which defines maze
+     * @return number of columns
+     */
     @Override
     public int numCols(){
         return this.cols;
     }
 
+    /**
+     * Method returns list of all ghosts in maze
+     * @return list of ghosts
+     */
+    @Override
     public List<CommonMazeObject> ghosts(){
         return new ArrayList<>(ghost_lst);
     }

@@ -1,9 +1,17 @@
+/**
+ * Project name: Pac-man
+ * File name: MazeConfigure.java
+ * Date: 06.05.2023
+ * Last update: 06.05.2023
+ * Author: Andrei Kulinkovich(xkulin01)
+ * Description: MazeConfigure class represents maze configuration from file, also it can load maze from file and interpret it.
+ */
+
 package src.game;
 
 import src.tool.MazePresenter;
 import src.tool.common.CommonMaze;
 import src.tool.common.MazePlan;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,22 +19,31 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-
+/**
+ * MazeConfigure class represents maze configuration from file, also it can load maze from file and interpret it.
+ */
 public class MazeConfigure extends Object{
     private String[] lines;
     private int rows;
     private int cols;
     private int numOfLines;
     private boolean errors;
+
     public CommonMaze maze;
 
+    /**
+     * Create maze from configuration
+     */
     public MazeConfigure(){
         this.numOfLines = 0;
         this.rows = 0;
         this.cols = 0;
         this.errors = false;
     }
-    //Load maze from file
+    /**
+     * Create maze from file
+     * @param str path to file with maze configuration
+     */
     public void loadMaze(String str){
         try {
             Scanner myReader = new Scanner(new File(str));
@@ -45,6 +62,11 @@ public class MazeConfigure extends Object{
             e.printStackTrace();
         }
     }
+    /**
+     * Start reading maps parameters
+     * @param rows number of rows in maze
+     * @param cols number of columns in maze
+     */
     public void startReading(int rows, int cols) {
         this.rows = rows;
         this.cols = cols;
@@ -53,6 +75,9 @@ public class MazeConfigure extends Object{
         }
         this.lines = new String[rows]; 
     }
+    /**
+     * Clean maze configuration to load new one configuration, use for logging
+     */
     public void clean(){
         this.numOfLines = 0;
         this.lines = null;
@@ -60,6 +85,12 @@ public class MazeConfigure extends Object{
         this.cols = 0;
         this.errors = false;
     }
+
+    /**
+     * Processing of reading maze configuration from file
+     * @param line line of maze plan
+     * @return true if processing was successful, false otherwise
+     */
     public boolean processLine(String line) {
         if (line.isEmpty() || line.length() != this.cols || !(Pattern.matches("^[XSGPKT.]+$", line)) || this.numOfLines >= this.rows ){
             this.errors = true;
@@ -72,7 +103,10 @@ public class MazeConfigure extends Object{
     }
 
 
-    //Load state of maze like walls, points, keys, targets and pacman from saved file, also load state of pacman
+    /**
+     * Load logging record from file, and interpret it.
+     * @param str path to file with logging record
+     */
     public void loadSave(String str) {
         final MazePresenter presenter = new MazePresenter(null, null, null, 0);
     
@@ -139,10 +173,13 @@ public class MazeConfigure extends Object{
             thread1.start(); // start the thread
     }
 
-public void loadSaveOneByOne(String str) {
-     final MazePresenter presenter = new MazePresenter(null, null, null, 2);
-    
-        
+    /**
+     * Load logging record from file, and interpret it. The interpretation of next state is after pressing button.
+     * @param str path to file with logging record
+     */
+    public void loadSaveStepByStep(String str) {
+        final MazePresenter presenter = new MazePresenter(null, null, null, 2);
+
         Thread thread1 = new Thread(() -> {
         try (Scanner myReader = new Scanner(new File(str))) {
 
@@ -174,7 +211,6 @@ public void loadSaveOneByOne(String str) {
                 boolean mustMove = false;
                 while (myReader.hasNextLine()) {
 
-
                     if ( presenter.getKey() != '~' || mustMove) {
                         data = myReader.nextLine();
 
@@ -182,7 +218,6 @@ public void loadSaveOneByOne(String str) {
                             this.clean();
                             this.startReading(row, col);
                             mustMove = true;
-
                         } else {
                             if (!Pattern.compile("^[0-9]{1,9} [0-9]{1,9} (true|false)$").matcher(data).matches()) {
                                 this.processLine(data);
@@ -202,7 +237,6 @@ public void loadSaveOneByOne(String str) {
                         }
 
                         Thread.sleep(40);
-
                     }
                 }
             } catch (FileNotFoundException | InterruptedException e) {
@@ -211,11 +245,13 @@ public void loadSaveOneByOne(String str) {
             }
             });
 
-            thread1.start(); // start the thread
-
+            thread1.start();
 }
 
-
+    /**
+     * Load logging record from file, and interpret it in reverse order.
+     * @param str path to file with logging record
+     */
     public void loadReverseSave(String str){
         final MazePresenter presenter = new MazePresenter(null, null, null, 0);
         Thread thread1 = new Thread(()->{
@@ -249,7 +285,6 @@ public void loadSaveOneByOne(String str) {
                         Thread.sleep(40);
                     }
 
-
                     String[] param1 = Files.readAllLines(path).get((int)lines+count+1).split(" ");
                     int health = Integer.parseInt(param1[0]);
                     int score = Integer.parseInt(param1[1]);
@@ -258,7 +293,6 @@ public void loadSaveOneByOne(String str) {
                     this.stopReading();
 
                     maze = this.createMaze();
-
 
                     presenter.updateMaze(maze);
                     presenter.initializeInterfaceSaves(health, score, true);
@@ -276,11 +310,13 @@ public void loadSaveOneByOne(String str) {
         });
 
         thread1.start();
-
     }
 
-
-    public void loadReverseSaveOneByOne(String str){
+    /**
+     * Load logging record from file, and interpret it in reverse order. The interpretation of next state is after pressing button.
+     * @param str path to file with logging record
+     */
+    public void loadReverseSaveStepByStep(String str){
         final MazePresenter presenter = new MazePresenter(null, null, null, 0);
         Thread thread1 = new Thread(()->{
             Path path = Paths.get(str);
@@ -319,7 +355,6 @@ public void loadSaveOneByOne(String str) {
                             Thread.sleep(40);
                         }
 
-
                         String[] param1 = Files.readAllLines(path).get((int) lines + count + 1).split(" ");
                         int health = Integer.parseInt(param1[0]);
                         int score = Integer.parseInt(param1[1]);
@@ -328,13 +363,11 @@ public void loadSaveOneByOne(String str) {
                         this.stopReading();
                         maze = this.createMaze();
 
-
                         presenter.updateMaze(maze);
                         presenter.initializeInterfaceSaves(health, score, true);
                         this.clean();
                         line_cur = Files.readAllLines(path).get((int) lines);
                         lines = lines - (row + 2);
-
                     }
                     Thread.sleep(85);
                     keys = presenter.getKey();
@@ -347,9 +380,13 @@ public void loadSaveOneByOne(String str) {
 
         thread1.start();
     }
+
+    /**
+     * Stop reading from file.
+     * @return true if reading was successful, false otherwise
+     */
     public boolean stopReading() {
         if (this.numOfLines == this.rows){
-
             return true;
         }else{
             this.errors = true;
@@ -357,6 +394,10 @@ public void loadSaveOneByOne(String str) {
         } 
     }
     
+    /**
+     * Create maze from read data.
+     * @return maze if data was read successfully, null otherwise
+     */
     public CommonMaze createMaze() {
         if (this.errors){
             return null;
@@ -364,7 +405,6 @@ public void loadSaveOneByOne(String str) {
         int rws = this.rows + 2;
         int cls = this.cols + 2;
         if (this.rows == 0 || this.cols == 0){
-
             return null;
         }
         this.maze = new MazePlan(rws, cls, this.lines);

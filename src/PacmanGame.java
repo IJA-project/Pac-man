@@ -82,7 +82,7 @@ public class PacmanGame {
                 MazePresenter presenter = new MazePresenter(cfg, maze, null, 1);
             }
             else if(buttonMode == 2){
-                cfg.loadSaveOneByOne("data\\save\\1.txt");
+                cfg.loadSaveStepByStep("data\\save\\1.txt");
                 CommonMaze maze = cfg.createMaze();
                 MazePresenter presenter = new MazePresenter(cfg, maze, null, 2);
                 

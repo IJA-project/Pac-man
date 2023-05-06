@@ -1,26 +1,44 @@
-package src.game;
+/**
+ * Project name: Pac-man
+ * File name: GhostObject.java
+ * Date: 06.05.2023
+ * Last update: 06.05.2023
+ * Author: Andrei Kulinkovich(xkulin01)
+ * Description: GhostObject class represents ghost object in maze
+ */
 
+package src.game;
 import src.tool.common.CommonField;
 import src.tool.common.CommonMaze;
 import src.tool.common.CommonMazeObject;
 
-
+/**
+  GhostObject class represents ghost object in maze
+ */
 public class GhostObject implements CommonMazeObject{
     private CommonField field;
     private int tmp_row = 0;
     private int tmp_col = 0;
     private char dir = ' ';
     private int wait = 0;
-
     private int dontMove = 0;
+
+    /**
+     * Constructor for GhostObject
+     * @param field field where ghost is
+     */
     public GhostObject(CommonField field){
         this.field = field;
     }
 
+    /**
+     * Check if ghost can move in this direction
+     * @param dir direction where ghost can be moving
+     * @return true if ghost can move in this direction, false otherwise
+     */
     public boolean canMove(CommonField.Direction dir){
         CommonField field = null;
         try{
-            //if wait is bigger than 0, ghost can't move
             if (wait>0){
                 wait--;
                 return false;
@@ -48,12 +66,16 @@ public class GhostObject implements CommonMazeObject{
         }
     }
 
+    /**
+     * Change field where ghost is, if it's possible, notify observers and return true, otherwise return false
+     * @param dir direction where ghost moving
+     * @return true if ghost moved, false otherwise
+     */
     public boolean move(CommonField.Direction dir){
         if (this.canMove(dir)){
             if (field.nextField(dir).get()!=null){
                 if (field.nextField(dir).get().isPacman()){
                     PacmanObject ptr = (PacmanObject)field.nextField(dir).get();
-                    //add wait for ghost, so he can't kill pacman in one move
                     wait = 40;
                     ptr.heat();
                     dontMove = 0;
@@ -74,15 +96,20 @@ public class GhostObject implements CommonMazeObject{
         return false;
     }    
 
+    /**
+     * Get field where ghost is
+     * @return field where ghost is
+     */
     public CommonField getField(){
         return this.field;
     }
 
-
-    public int getLives() {
-        throw new UnsupportedOperationException();
-    }
-
+    /**
+     * method for moving ghost, using algorithm looking for shortest way to pacman and moving there
+     * @param x row where ghost is
+     * @param y column where ghost is
+     * @param maze maze where pacman is
+     */
     public void processMoving(int x, int y, CommonMaze maze){
 
         CommonField field = maze.getField(x, y);
@@ -91,7 +118,6 @@ public class GhostObject implements CommonMazeObject{
         }
         this.tmp_row = x;
         this.tmp_col = y;
-        //Method for moving ghost, using algorithm looking for shortest way to pacman and moving there
 
         double wayL = 99999, wayR = 99999, wayU = 99999, wayD = 99999, waylow = 99999;
         if (field.getRow()!= this.field.getRow() || field.getCol() != this.field.getCol()) {
@@ -136,8 +162,4 @@ public class GhostObject implements CommonMazeObject{
             dir = ' ';
         }
     }
-
-    @Override
-    public int getPoints(){throw new UnsupportedOperationException();}
-    
 }

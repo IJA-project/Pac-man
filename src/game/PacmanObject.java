@@ -1,10 +1,22 @@
+/**
+ * Project name: Pac-man
+ * File name: PacmanObject.java
+ * Date: 06.05.2023
+ * Last update: 04.05.2023
+ * Author: Andrei Kulinkovich(xkulin01)
+ * Description: PacmanObject class represents pacman object in maze
+ */
+
+
 package src.game;
 
 import src.tool.common.CommonField;
 import src.tool.common.CommonMaze;
 import src.tool.common.CommonMazeObject;
 
-
+/**
+ * PacmanObject class represents pacman object in maze
+ */
 public class PacmanObject implements CommonMazeObject{
     private CommonField field;
     static public int lives = 3;
@@ -12,12 +24,13 @@ public class PacmanObject implements CommonMazeObject{
     static private int tmp_col = 0;
     static private boolean Win = false;
     static public boolean canExit = false;
-
     static private char dir = ' ';
-
     static public int score = 0;
 
-
+    /**
+     * Constructor for PacmanObject
+     * @param field field where pacman is
+     */
     public PacmanObject(CommonField field){
         lives = 3;
         tmp_row = 0;
@@ -28,17 +41,29 @@ public class PacmanObject implements CommonMazeObject{
         score = 0;
         this.field = field;
     }
-    //Load state of pacman like lives, score and if he has key its loading when we start game from saved file
+    /**
+     * Load pacman parameters from file (health, scores, key)
+     * @param health health of pacman
+     * @param scores scores of pacman
+     * @param key if pacman has key
+     */
     static public void load(int health, int scores, String key){
         lives = health;
         score = scores;
         canExit = key.equals("true");
     }
+    /**
+     * Heat pacman from ghost
+     */
     public void heat() {
         lives = lives - 1;
     }
+
+    /**
+     * Moving of pacman using keyboard
+     * @param key key which was pressed by user on keyboard, allowed keys are W, A, S, D, and their lower case
+     */
     public void keyMoving(char key){
-        //Move pacman to direction which we get from keyboard
         if (Character.toLowerCase(key) == 'w') {
             this.move(CommonField.Direction.U);
         } else if (Character.toLowerCase(key) == 's') {
@@ -50,9 +75,13 @@ public class PacmanObject implements CommonMazeObject{
         }
     }
 
-
+    /**
+     * Moving of pacman using mouse
+     * @param x x coordinate of field where user clicked
+     * @param y y coordinate of field where user clicked
+     * @param maze maze where pacman is
+     */
     public void mouseMoving(int x, int y, CommonMaze maze) {
-        //Move pacman to coordinates which we get from mouse click, the same moving algorithm as in ghost
             CommonField field = maze.getField(x, y);
             if (tmp_row != x || tmp_col!=y){
                 dir = ' ';
@@ -105,7 +134,12 @@ public class PacmanObject implements CommonMazeObject{
                 }
             }
 
-        }
+    }
+    /**
+     * Implementation CommonObject method for getting info whether Pacman object can move to field in direction dir
+     * @param dir direction where pacman wants to move
+     * @return true if pacman can move to field in direction dir, false otherwise
+     */
     @Override
     public boolean canMove(CommonField.Direction dir){
         CommonField field ;
@@ -118,13 +152,27 @@ public class PacmanObject implements CommonMazeObject{
         return field instanceof PathField || field instanceof TargetField;
     }
 
+    /**
+     * Method get info whether pacman is winner
+     * @return true if pacman is winner, false otherwise
+     */
     public boolean isWin(){
+        score += 1000;
         return Win;
     }
 
+    /**
+     * Method get info whether pacman is dead
+     * @return true if pacman is dead, false otherwise
+     */
     public boolean isDead(){
         return lives <= 0;
     }
+    /**
+     * Override method for moving pacman to field in direction dir
+     * @param dir direction where pacman wants to move
+     * @return truse if pacman move successfully, false otherwise
+     */
     @Override
     public boolean move(CommonField.Direction dir){
         if (this.canMove(dir)){
@@ -150,39 +198,43 @@ public class PacmanObject implements CommonMazeObject{
                 field.put(this);
                 this.field = field;
             }
-
             return true;
         }
         return false;
     }
+
+    /**
+     * Get info about pacman score
+     * @return pacman score
+     */
     @Override
     public int getPoints(){return score;}
 
-    static public int staticGetPoints(){
-        return score;
-    }
-
+    /**
+     * Override CommonObject method for getting field where pacman is
+     * @return pacman field
+     */
     @Override
     public CommonField getField(){
         return this.field;
     }
 
+    /**
+     * Override CommonObject method for getting info about pacman current lives
+     * @return number of pacman lives
+     */
     @Override
     public int getLives(){
         return lives;
     }
 
-    static public int staticGetLives(){
-        return lives;
-    }
-
+    /**
+     * Override CommonObject method for getting info if object is pacman
+     * @return true
+     */
     @Override
     public boolean isPacman(){
         return true;
     }
 
-    @Override
-    public boolean pacmanKey(){
-        return canExit;
-    }
 }

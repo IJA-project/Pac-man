@@ -373,7 +373,7 @@ public class MazePresenter extends JComponent {
             @Override
             public void keyPressed(KeyEvent e) {
                 e.getKeyChar();
-                cfg.loadSaveOneByOne("1.txt");
+                cfg.loadSaveStepByStep("1.txt");
             }
             @Override
             public void keyReleased(KeyEvent e) {

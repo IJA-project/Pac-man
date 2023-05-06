@@ -1,3 +1,12 @@
+/**
+ * Project name: Pac-man
+ * File name: TargetField.java
+ * Date: 06.05.2023
+ * Last update: 06.05.2023
+ * Author: Andrei Kulinkovich(xkulin01)
+ * Description: TargetField class represents target object in maze
+ */
+
 package src.game;
 
 import src.tool.common.AbstractObservableField;
@@ -5,26 +14,39 @@ import src.tool.common.CommonField;
 import src.tool.common.CommonMaze;
 import src.tool.common.CommonMazeObject;
 
+/**
+ * TargetField class represents target object in maze
+ */
 public class TargetField extends AbstractObservableField {
     private final int row;
     private final int col;
     private CommonMaze maze;
-
     private CommonMazeObject mazeObject;
 
+    /**
+     * Constructor for TargetField
+     * @param row row where target is
+     * @param col column where target is
+     */
     public TargetField(int row, int col){
-        //notifyObservers();
         this.row = row;
         this.col = col;
         mazeObject = null;
-
     }
 
+    /**
+     * Override CommonField method for set maze where target is
+     */
     @Override
     public void setMaze(CommonMaze maze){
         this.maze = maze;
     }
 
+    /**
+     * Override CommonField method for get next field in this direction
+     * @param dirs direction where next field is
+     * @return next field in this direction
+     */
     @Override
     public CommonField nextField(Direction dirs){
         CommonField field = switch (dirs) {
@@ -39,6 +61,10 @@ public class TargetField extends AbstractObservableField {
         return field;
     }
 
+    /**
+     * Override CommonField method for put object on this field
+     * @return true if object was put on this field, false otherwise
+     */
     @Override
     public boolean put(CommonMazeObject object){
         if (mazeObject == null){
@@ -46,11 +72,14 @@ public class TargetField extends AbstractObservableField {
             notifyObservers();
             return true;
         }else{
-            //notifyObservers();
             return false;
         }
     }
 
+    /**
+     * Override CommonField method for remove object from this field
+     * @return true if object was removed from this field, false otherwise
+     */
     @Override
     public boolean remove(CommonMazeObject object){
         if (mazeObject == object && mazeObject != null){
@@ -58,59 +87,53 @@ public class TargetField extends AbstractObservableField {
             notifyObservers();
             return true;
         }else {
-            //notifyObservers();
             return false;
         }
     }
 
+    /**
+     * Override CommonField method for check if this field is empty
+     * @return true if this field is empty, false otherwise
+     */
     @Override
     public boolean isEmpty(){
         return mazeObject == null;
     }
 
-    @Override
-    public boolean isPacman(){
-        return mazeObject instanceof PacmanObject;
-    }
-
-    @Override
-    public boolean isKey() {
-        return false;
-    }
-
-    @Override
-    public boolean isPoint() {
-        return false;
-    }
-
+    /**
+     * Override CommonField method for get object on this field
+     * @return object on this field
+     */
     @Override
     public CommonMazeObject get(){
         return mazeObject;
     }
 
+    /**
+     * Override CommonField method for check if object can move on this field
+     * @return always true
+     */
     @Override
     public boolean canMove(){
         return true;
     }
 
-    @Override
-    public boolean equals(Object obj){
-        return obj instanceof TargetField && ((TargetField)obj).getCol() == this.col && ((TargetField)obj).getRow() == this.row;
-
-    }
-
+    /**
+     * Override CommonField method for get number of column this field
+     * @return number column of this field
+     */
     @Override
     public int getCol(){
         return this.col;
     }
 
+    /**
+     * Override CommonField method for get number of row this field
+     * @return number row of this field
+     */
     @Override
     public int getRow(){
         return this.row;
     }
 
-    @Override
-    public boolean contains(CommonMazeObject object){
-        return object == mazeObject;
-    }
 }
