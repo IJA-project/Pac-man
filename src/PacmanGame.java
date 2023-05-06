@@ -20,7 +20,7 @@ public class PacmanGame {
 
         //Here you can choose how you want to load the maze from saving file or from txt file it's like satrt a new game. loadMaze is for txt file and loadSave is for saving file.
         if (mode == 1){
-            String filePath = "\\data\\save\\1.txt";
+            String filePath = "data\\save\\1.txt";
             File file = new File(filePath);
             if (file.exists() && file.isFile()) {
                 file.delete();
@@ -95,7 +95,9 @@ public class PacmanGame {
                 MazePresenter presenter = new MazePresenter(cfg, maze,null, 1);
             }
             else if(buttonMode == 2){
-                
+                cfg.loadReverseSaveStepByStep("data\\save\\1.txt");
+                CommonMaze maze = cfg.createMaze();
+                MazePresenter presenter = new MazePresenter(cfg, maze,null, 2);
             }
 
         }

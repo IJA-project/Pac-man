@@ -47,14 +47,16 @@ public class MazePresenter extends JComponent {
     public JLabel heartLabelTwo;
     public JLabel heartLabelThree;
     public JLabel scoreLabel;
+    public JLabel imageLabel;
     public MazeConfigure cfg;
     static char key = '`';
+
     public MazePresenter(MazeConfigure cfg, CommonMaze maze, PacmanObject pacmanObj, int mode) {
         this.cfg = cfg;
         this.frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.frame2.setSize(700, 700);
+        this.frame2.setSize(1200, 700);
         //this.frame2.setPreferredSize(new Dimension(700, 700));
-        //this.frame2.setResizable(false);
+        this.frame2.setResizable(false);
         this.frame2.setLocationRelativeTo(null);
         this.frame2.setBackground(Color.BLACK);
         this.maze = maze;
@@ -82,7 +84,7 @@ public class MazePresenter extends JComponent {
         this.heartLabelOne = new JLabel();
         this.heartLabelTwo = new JLabel();
         this.heartLabelThree = new JLabel();
-        addMenuButton();
+        addExitButton();
 
         
     }
@@ -357,10 +359,13 @@ public class MazePresenter extends JComponent {
                     // Not used
                 }
             });
+            JPanel mainCenterPanel = new JPanel();
+            mainCenterPanel.add(mainPanel, BorderLayout.CENTER);
+            mainCenterPanel.setBackground(Color.BLACK);
             // Remove the old main panel and add the new content panel to it
             JPanel oldMainPanel = (JPanel) this.frame2.getContentPane();
             oldMainPanel.removeAll();
-            oldMainPanel.add(mainPanel);
+            oldMainPanel.add(mainCenterPanel);
             this.frame2.setFocusable(true);
             this.frame2.requestFocusInWindow();
             //this.frame2.pack();
@@ -380,7 +385,7 @@ public class MazePresenter extends JComponent {
 
         JButton nextButton = new JButton();
         nextButton.setSize(new Dimension(70, 40));
-        ImageIcon next_icon = new ImageIcon("img\\next_reverse.png");
+        ImageIcon next_icon = new ImageIcon("data\\img\\next_reverse.png");
         Image scaledNextImage = next_icon.getImage().getScaledInstance(nextButton.getWidth(), nextButton.getHeight(), Image.SCALE_SMOOTH);
         nextButton.setOpaque(false);
         nextButton.setIcon(new ImageIcon(scaledNextImage));
@@ -390,34 +395,44 @@ public class MazePresenter extends JComponent {
                     key = 'w';
                 }
             });
-        this.frame2.add(nextButton, BorderLayout.NORTH);
+        this.mainAttributesPanel.add(nextButton, BorderLayout.CENTER);
         mainAttributesPanel.revalidate();
         mainAttributesPanel.repaint();
     }
 
-    public void addMenuButton() {
+    public void addExitButton() {
         ImageIcon icon = new ImageIcon("data\\img\\pacman_font.png");
         Image scaledImage = icon.getImage().getScaledInstance(230, 40, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         
-        JLabel imageLabel = new JLabel(scaledIcon);
+        this.imageLabel = new JLabel(scaledIcon);
         imageLabel.setSize(700, 50);
 
-        ImageIcon menu_icon = new ImageIcon("data\\img\\menu_button.png");
-        Image scaledMenuImage = menu_icon.getImage().getScaledInstance(100, 24, Image.SCALE_SMOOTH);
-        JButton menuButton = new JButton(new ImageIcon(scaledMenuImage));
-        menuButton.addActionListener(new ActionListener() {
+        ImageIcon exit_icon = new ImageIcon("data\\img\\exit_button.png");
+        Image scaledExitImage = exit_icon.getImage().getScaledInstance(100, 24, Image.SCALE_SMOOTH);
+        JButton exitButton = new JButton(new ImageIcon(scaledExitImage));
+        exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0){
-                // // Code to view high scores goes here
-                // frame.setVisible(false);
-                // new MenuPresenter();
-                
+                System.exit(0);         
             }
         });
-        menuButton.setBounds(450, 10,99, 25 );
-        imageLabel.add(menuButton, BorderLayout.EAST);
+        exitButton.setBounds(450, 10,99, 25 );
+        imageLabel.add(exitButton, BorderLayout.EAST);
+        imageLabel.revalidate();
+        imageLabel.repaint();
         this.mainPanel.add(imageLabel, BorderLayout.NORTH);
     }
 
+    public void addEndLoadLable(){
+        JLabel textLabel = new JLabel();
+        textLabel.setText("End of Load");
+        textLabel.setVerticalAlignment(SwingConstants.CENTER);
+        textLabel.setForeground(Color.yellow);
+        textLabel.setFont(new Font("Bauhaus 93", Font.BOLD, 25));
+        textLabel.setSize(150, 50);
+        imageLabel.add(textLabel, BorderLayout.WEST);
+        imageLabel.revalidate();
+        imageLabel.repaint();
+    }
 }

@@ -157,7 +157,6 @@ public class PacmanObject implements CommonMazeObject{
      * @return true if pacman is winner, false otherwise
      */
     public boolean isWin(){
-        score += 1000;
         return Win;
     }
 
@@ -185,6 +184,7 @@ public class PacmanObject implements CommonMazeObject{
             } else if (!this.field.nextField(dir).isEmpty()) {
                 lives-=1;
             } else if (this.field.nextField(dir) instanceof TargetField && canExit) {
+                score += 1000;
                 this.Win = true;
                 field.notifyObservers();
             }

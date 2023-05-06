@@ -1,6 +1,9 @@
 package src;
 
 import javax.swing.*;
+
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.*;
 public class MessageDialog extends JFrame implements ActionListener {
     public MessageDialog()

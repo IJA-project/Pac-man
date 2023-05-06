@@ -132,7 +132,7 @@ public class MazePlan implements CommonMaze {
             boolean key = false;
 
             try {
-                FileWriter fos = new FileWriter(1 + ".txt", true);
+                FileWriter fos = new FileWriter("data\\save\\1.txt", true);
                 BufferedWriter pw = new BufferedWriter(fos);
                 if (count == 0) {
                     pw.write((this.rows - 2) + " " + (this.cols - 2) + "\n");

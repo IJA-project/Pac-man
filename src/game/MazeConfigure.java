@@ -127,9 +127,8 @@ public class MazeConfigure extends Object{
 
 
                 while (myReader.hasNextLine()) {
+
                     data = myReader.nextLine();
-    
-                    // System.out.println(data);
                     if (Pattern.compile("^[0-9]{1,9} state$").matcher(data).matches()) {
                         if (data.equals("0 state")) {
                             firstState = true;
@@ -157,13 +156,20 @@ public class MazeConfigure extends Object{
                             int score = Integer.parseInt(param[1]);
                             String key = param[2];
                             PacmanObject.load(health, score, key);
+                            if (presenter.getKey() == '!'){
+                                break;
+                            }
                             presenter.updateMaze(maze);
                             presenter.initializeInterfaceSaves(health, score, false);
                         }
                     }
                     
                     Thread.sleep(40);
+                    if (presenter.getKey() == '!'){
+                        break;
+                    }
                 }
+                presenter.addEndLoadLable();
             } catch (FileNotFoundException | InterruptedException e) {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
@@ -210,7 +216,6 @@ public class MazeConfigure extends Object{
                 }
                 boolean mustMove = false;
                 while (myReader.hasNextLine()) {
-
                     if ( presenter.getKey() != '~' || mustMove) {
                         data = myReader.nextLine();
 
@@ -220,6 +225,7 @@ public class MazeConfigure extends Object{
                             mustMove = true;
                         } else {
                             if (!Pattern.compile("^[0-9]{1,9} [0-9]{1,9} (true|false)$").matcher(data).matches()) {
+
                                 this.processLine(data);
                             } else {
                                 mustMove = false;
@@ -232,13 +238,16 @@ public class MazeConfigure extends Object{
                                 this.stopReading();
                                 maze = this.createMaze();
                                 presenter.updateMaze(maze);
-                                presenter.initializeInterfaceSaves(healths, scores, false);//
+                                presenter.initializeInterfaceSaves(healths, scores, false);
                             }
                         }
 
-                        Thread.sleep(40);
+                        
                     }
+                    Thread.sleep(40);
+                    
                 }
+                presenter.addEndLoadLable();
             } catch (FileNotFoundException | InterruptedException e) {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
@@ -266,10 +275,11 @@ public class MazeConfigure extends Object{
                 int col = Integer.parseInt(param[1]);
 
                 lines = Files.lines(path).count();
-                int max = (int)lines-(row+2);
                 lines = (int)lines-(row+2);
 
                 while (!line_cur.equals("0 state")){
+
+
                     int count = 0;
                     this.startReading(row, col);
 
@@ -302,8 +312,9 @@ public class MazeConfigure extends Object{
                     line_cur = Files.readAllLines(path).get((int)lines);
                     lines = lines-(row+2);
 
-                    Thread.sleep(75);
+                    Thread.sleep(30);
                 }
+                presenter.addEndLoadLable();
         }catch (IOException | InterruptedException e){
             e.printStackTrace();
         }
@@ -317,7 +328,7 @@ public class MazeConfigure extends Object{
      * @param str path to file with logging record
      */
     public void loadReverseSaveStepByStep(String str){
-        final MazePresenter presenter = new MazePresenter(null, null, null, 0);
+        final MazePresenter presenter = new MazePresenter(null, null, null, 2);
         Thread thread1 = new Thread(()->{
             Path path = Paths.get(str);
             CommonMaze maze;
@@ -335,10 +346,8 @@ public class MazeConfigure extends Object{
                 char keys = presenter.getKey();
                 while (!line_cur.equals("0 state")) {
 
-                   System.out.println(keys);
                     if(keys != '~'){
                         keys = '~';
-                        System.out.println("key pressed");
 
                         int count = 0;
                         this.startReading(row, col);
@@ -373,6 +382,7 @@ public class MazeConfigure extends Object{
                     keys = presenter.getKey();
 
                 }
+                presenter.addEndLoadLable();
             }catch (IOException | InterruptedException e){
                 e.printStackTrace();
             }
