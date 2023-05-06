@@ -38,7 +38,7 @@ public class SettingPresenter extends JFrame implements ActionListener {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         // Create the switch buttons
-        ImageIcon off_icon = new ImageIcon("data\\img\\off.png");
+        ImageIcon off_icon = new ImageIcon("lib\\img\\off.png");
         toggleButton1 = new JToggleButton(off_icon);
         toggleButton2 = new JToggleButton(off_icon);
         toggleButton3 = new JToggleButton(off_icon);
@@ -110,7 +110,7 @@ public class SettingPresenter extends JFrame implements ActionListener {
         JPanel button_panel = new JPanel();
         button_panel.setBorder(BorderFactory.createEmptyBorder(0, 200, 0, 200));
         button_panel.setBackground(Color.BLACK);
-        ImageIcon run_icon = new ImageIcon("data\\img\\run_bttn.png");
+        ImageIcon run_icon = new ImageIcon("lib\\img\\run_bttn.png");
         button = new JButton(run_icon);
         button.setPreferredSize(new Dimension(300, 100));
         button.setBounds(600, 100, 99, 25 );
@@ -136,10 +136,10 @@ public class SettingPresenter extends JFrame implements ActionListener {
     
             // Update the text of the button that triggered the event
             if (on) {
-                ImageIcon on_icon = new ImageIcon("data\\img\\on_button.png");
+                ImageIcon on_icon = new ImageIcon("lib\\img\\on_button.png");
                 source.setIcon(on_icon);
             } else {
-                ImageIcon off_icon = new ImageIcon("data\\img\\off.png");
+                ImageIcon off_icon = new ImageIcon("lib\\img\\off.png");
                 source.setIcon(off_icon);
             }
             if (source == toggleButton1) {

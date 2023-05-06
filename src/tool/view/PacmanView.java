@@ -31,7 +31,7 @@ public class PacmanView implements ComponentView {
         double y = (h - diameter) / 2.0;
         int scaledWidth = (int)diameter;
         int scaledHeight = (int)diameter;
-        Image pacman_img = new ImageIcon("data\\img\\pacman.png").getImage();
+        Image pacman_img = new ImageIcon("lib\\img\\pacman.png").getImage();
         g.drawImage(pacman_img, (int)x, (int)y, scaledWidth, scaledHeight, this.parent);
     }
 }

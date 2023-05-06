@@ -10,7 +10,7 @@ public class MenuPresenter{
 
     public MenuPresenter(){
             JFrame frame = new JFrame();
-            ImageIcon imageIcon = new ImageIcon("data\\img\\menu_white.png");
+            ImageIcon imageIcon = new ImageIcon("lib\\img\\menu_white.png");
             //System.out.println(imageIcon.getIconWidth());
             //System.out.println(imageIcon.getIconHeight());
             frame.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight());
@@ -24,7 +24,7 @@ public class MenuPresenter{
             JLabel imageLabel = new JLabel(imageIcon);
             imageLabel.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight()); // Set the position and size of the label
     
-            ImageIcon play_icon = new ImageIcon("data\\img\\play_button.png");
+            ImageIcon play_icon = new ImageIcon("lib\\img\\play_button.png");
 
             JButton playButton = new JButton( play_icon);
             playButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -38,7 +38,7 @@ public class MenuPresenter{
             playButton.setBounds((imageIcon.getIconWidth()-200)/2, imageIcon.getIconHeight()/2+60, 199, 50);
             imageLabel.add(playButton);
             
-            ImageIcon load_icon = new ImageIcon("data\\img\\load_button.png");
+            ImageIcon load_icon = new ImageIcon("lib\\img\\load_button.png");
             JButton savedGameButton = new JButton(load_icon);
             savedGameButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             savedGameButton.addActionListener(new ActionListener() {
@@ -52,7 +52,7 @@ public class MenuPresenter{
             savedGameButton.setBounds((imageIcon.getIconWidth()-200)/2, imageIcon.getIconHeight()/2+120, 199, 50);
             imageLabel.add(savedGameButton);
             
-            ImageIcon exit_icon = new ImageIcon("data\\img\\exit_button.png");
+            ImageIcon exit_icon = new ImageIcon("lib\\img\\exit_button.png");
             JButton exitButton = new JButton(exit_icon);
             exitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             exitButton.addActionListener(new ActionListener() {

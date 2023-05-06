@@ -118,7 +118,7 @@ public class MazePresenter extends JComponent {
     }
 
     public void updateLives(){
-        ImageIcon icon = new ImageIcon("data\\img\\heart.png");
+        ImageIcon icon = new ImageIcon("lib\\img\\heart.png");
         Image scaledImage = icon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         if (this.pacmanObj.getLives() == 3){
@@ -287,7 +287,7 @@ public class MazePresenter extends JComponent {
             this.mazePanel.removeAll();
             this.mazePanel.add(content);
 
-            ImageIcon icon = new ImageIcon("data\\img\\heart.png");
+            ImageIcon icon = new ImageIcon("lib\\img\\heart.png");
             Image scaledImage = icon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(scaledImage);
             if (lives == 3){
@@ -385,7 +385,7 @@ public class MazePresenter extends JComponent {
 
         JButton nextButton = new JButton();
         nextButton.setSize(new Dimension(70, 40));
-        ImageIcon next_icon = new ImageIcon("data\\img\\next_reverse.png");
+        ImageIcon next_icon = new ImageIcon("lib\\img\\next_reverse.png");
         Image scaledNextImage = next_icon.getImage().getScaledInstance(nextButton.getWidth(), nextButton.getHeight(), Image.SCALE_SMOOTH);
         nextButton.setOpaque(false);
         nextButton.setIcon(new ImageIcon(scaledNextImage));
@@ -401,14 +401,14 @@ public class MazePresenter extends JComponent {
     }
 
     public void addExitButton() {
-        ImageIcon icon = new ImageIcon("data\\img\\pacman_font.png");
+        ImageIcon icon = new ImageIcon("lib\\img\\pacman_font.png");
         Image scaledImage = icon.getImage().getScaledInstance(230, 40, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         
         this.imageLabel = new JLabel(scaledIcon);
         imageLabel.setSize(700, 50);
 
-        ImageIcon exit_icon = new ImageIcon("data\\img\\exit_button.png");
+        ImageIcon exit_icon = new ImageIcon("lib\\img\\exit_button.png");
         Image scaledExitImage = exit_icon.getImage().getScaledInstance(100, 24, Image.SCALE_SMOOTH);
         JButton exitButton = new JButton(new ImageIcon(scaledExitImage));
         exitButton.addActionListener(new ActionListener() {

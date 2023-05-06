@@ -38,7 +38,7 @@ public class MazeSelection {
             buttonPanel.setPreferredSize(new Dimension(600, 600));
             buttonPanel.setBackground(Color.BLACK);
 
-            ImageIcon maze1_icon = new ImageIcon("data\\img\\maze1.png");
+            ImageIcon maze1_icon = new ImageIcon("lib\\img\\maze1.png");
             Image scaledImage1 = maze1_icon.getImage().getScaledInstance(280, 280, Image.SCALE_SMOOTH);
             ImageIcon scaledIcon1 = new ImageIcon(scaledImage1);
             JButton maze1Button = new JButton();
@@ -53,7 +53,7 @@ public class MazeSelection {
             });
             buttonPanel.add(maze1Button);
             
-            ImageIcon maze2_icon = new ImageIcon("data\\img\\maze2.png");
+            ImageIcon maze2_icon = new ImageIcon("lib\\img\\maze2.png");
             Image scaledImage2 = maze2_icon.getImage().getScaledInstance(280, 280, Image.SCALE_SMOOTH);
             ImageIcon scaledIcon2 = new ImageIcon(scaledImage2);
             JButton maze2Button = new JButton();
@@ -69,7 +69,7 @@ public class MazeSelection {
             });
             buttonPanel.add(maze2Button);
             
-            ImageIcon maze3_icon = new ImageIcon("data\\img\\maze3.png");
+            ImageIcon maze3_icon = new ImageIcon("lib\\img\\maze3.png");
             Image scaledImage3 = maze3_icon.getImage().getScaledInstance(280, 280, Image.SCALE_SMOOTH);
             ImageIcon scaledIcon3 = new ImageIcon(scaledImage3);
             JButton maze3Button = new JButton();
@@ -86,7 +86,7 @@ public class MazeSelection {
             });
             buttonPanel.add(maze3Button);
 
-            ImageIcon maze4_icon = new ImageIcon("data\\img\\maze4.png");
+            ImageIcon maze4_icon = new ImageIcon("lib\\img\\maze4.png");
             Image scaledImage4 = maze4_icon.getImage().getScaledInstance(280, 280, Image.SCALE_SMOOTH);
             ImageIcon scaledIcon4 = new ImageIcon(scaledImage4);
             JButton maze4Button = new JButton();
