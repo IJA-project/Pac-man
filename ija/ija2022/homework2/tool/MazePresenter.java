@@ -19,6 +19,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -56,7 +57,6 @@ public class MazePresenter extends JComponent {
 
     public MazePresenter(MazeConfigure cfg, CommonMaze maze, PacmanObject pacmanObj, int mode) {
         this.cfg = cfg;
-        System.out.println(cfg);
         this.frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame2.setSize(1200, 700);
         this.frame2.setResizable(false);
@@ -72,6 +72,8 @@ public class MazePresenter extends JComponent {
         this.scorePanel = new JPanel();
         this.scorePanel.setBackground(Color.BLACK);
         this.scoreLabel = new JLabel();
+        this.scoreLabel.setForeground(Color.yellow);
+        this.scoreLabel.setFont(new Font("Bauhaus 93", Font.BOLD, 20));
         this.mainPanel = new JPanel(new BorderLayout());
         this.mainPanel.setBackground(Color.BLACK);
         this.mainPanel.setSize(600, 700);
@@ -79,9 +81,9 @@ public class MazePresenter extends JComponent {
         this.mainPanel.setLayout(new BorderLayout());
         this.mainAttributesPanel =  new JPanel(new BorderLayout());
         this.mainAttributesPanel.setBackground(Color.BLACK);
-        this.mainAttributesPanel.setSize(600, 50);
+        this.mainAttributesPanel.setSize(600, 35);
         this.mainAttributesPanel.setLayout(new BorderLayout());
-        this.mainAttributesPanel.setPreferredSize(new Dimension(600, 50));
+        this.mainAttributesPanel.setPreferredSize(new Dimension(600, 90));
         if (mode == 2){
             addNextButton();
         }
@@ -113,6 +115,7 @@ public class MazePresenter extends JComponent {
 
     public void updateScores(){
         if (this.pacmanObj.getLives() <= 0){
+           
             scoreLabel.setText("0");
         }
         else{
@@ -161,7 +164,7 @@ public class MazePresenter extends JComponent {
             layout.setVgap(0);
             JPanel content = new JPanel(layout);
             content.setBackground(Color.BLACK);
-            content.setPreferredSize(new Dimension(600, 600));
+            content.setPreferredSize(new Dimension(550, 550));
             
             for(int i = 0; i < rows; ++i) {
                 for(int j = 0; j < cols; ++j) {
@@ -229,39 +232,41 @@ public class MazePresenter extends JComponent {
 
             updateLives();
             heartPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-            heartPanel.setPreferredSize(new Dimension(100, 30));
+            heartPanel.setPreferredSize(new Dimension(240, 30));
             heartPanel.add(heartLabelOne);
             heartPanel.add(heartLabelTwo);
             heartPanel.add(heartLabelThree);
 
             updateScores();
             scorePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-            scorePanel.setPreferredSize(new Dimension(100, 30));
+            scorePanel.setPreferredSize(new Dimension(240, 30));
             scorePanel.add(scoreLabel);
 
             // mainPanel.removeAll();
             // mainPanel.revalidate();
             // mainPanel.repaint();
-            mainPanel.setPreferredSize(new Dimension(700, 700));
+            mainPanel.setPreferredSize(new Dimension(550, 700));
             mainPanel.add(this.mazePanel, BorderLayout.CENTER);
-            mainAttributesPanel.removeAll();
+            //mainAttributesPanel.removeAll();
             mainAttributesPanel.revalidate();
             mainAttributesPanel.repaint();
             mainAttributesPanel.add(heartPanel, BorderLayout.WEST);
             mainAttributesPanel.add(scorePanel, BorderLayout.EAST);
             mainPanel.add(mainAttributesPanel, BorderLayout.SOUTH);
-
+            JPanel mainCenterPanel = new JPanel();
+            mainCenterPanel.add(mainPanel, BorderLayout.CENTER);
+            mainCenterPanel.setBackground(Color.BLACK);
             // Remove the old main panel and add the new content panel to it
             JPanel oldMainPanel = (JPanel) this.frame2.getContentPane();
             oldMainPanel.removeAll();
-            oldMainPanel.add(mainPanel);
+            oldMainPanel.add(mainCenterPanel);
             if (pacmanObj != null){
                 MyKeyListener keyListener = new MyKeyListener(pacmanObj, this.maze, this);
                 this.frame2.addKeyListener(keyListener);
             }
             this.frame2.setFocusable(true);
             this.frame2.requestFocusInWindow();
-            this.frame2.pack();
+            //this.frame2.pack();
             this.frame2.setVisible(true);
             oldMainPanel.revalidate();
             oldMainPanel.repaint();
@@ -277,7 +282,7 @@ public class MazePresenter extends JComponent {
             layout.setVgap(0);
             JPanel content = new JPanel(layout);
             content.setBackground(Color.BLACK);
-            content.setPreferredSize(new Dimension(600, 600));
+            content.setPreferredSize(new Dimension(550, 550));
             for(int i = 0; i < rows; ++i) {
                 for(int j = 0; j < cols; ++j) {
                     FieldView field = new FieldView(this.maze.getField(i, j), this);
@@ -313,7 +318,7 @@ public class MazePresenter extends JComponent {
             }
             else
             if (lives <= 0 && maze.getPacman() != null){
-                heartPanel.setPreferredSize(new Dimension(250, 30));
+                heartPanel.setPreferredSize(new Dimension(240, 30));
                 this.heartLabelOne.setIcon(null);
                 this.heartLabelOne.setText("Game Over");
                 this.heartLabelTwo.setIcon(null);
@@ -321,7 +326,7 @@ public class MazePresenter extends JComponent {
     
             }
             heartPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-            heartPanel.setPreferredSize(new Dimension(250, 30));
+            heartPanel.setPreferredSize(new Dimension(240, 30));
             heartPanel.add(heartLabelOne);
             heartPanel.add(heartLabelTwo);
             heartPanel.add(heartLabelThree);
@@ -333,14 +338,15 @@ public class MazePresenter extends JComponent {
                 scoreLabel.setText(Integer.toString(points));
             }
             scorePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-            scorePanel.setPreferredSize(new Dimension(250, 30));
+            scorePanel.setPreferredSize(new Dimension(240, 30));
             scorePanel.add(scoreLabel);
 
-            mainPanel.setPreferredSize(new Dimension(600, 700));
+            mainPanel.setPreferredSize(new Dimension(550, 700));
             mainPanel.add(this.mazePanel, BorderLayout.CENTER);
             //mainAttributesPanel.removeAll();
             mainAttributesPanel.revalidate();
             mainAttributesPanel.repaint();
+            mainAttributesPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 50, 0));
             mainAttributesPanel.add(heartPanel, BorderLayout.WEST);
             mainAttributesPanel.add(scorePanel, BorderLayout.EAST);
             mainPanel.add(mainAttributesPanel, BorderLayout.SOUTH);
@@ -348,7 +354,6 @@ public class MazePresenter extends JComponent {
                 @Override
                 public void keyPressed(KeyEvent e) {
                     key = e.getKeyChar();
-
                 }
                 @Override
                 public void keyReleased(KeyEvent e) {
@@ -383,14 +388,17 @@ public class MazePresenter extends JComponent {
     }
 
     public void addNextButton() {
-        ImageIcon next_icon = new ImageIcon("img\\next_button.png");
-        Image scaledNextImage = next_icon.getImage().getScaledInstance(100, 50, Image.SCALE_SMOOTH);
-        JButton nextButton = new JButton(new ImageIcon(scaledNextImage));
-        nextButton.setSize(new Dimension(100, 47));;
+
+        JButton nextButton = new JButton();
+        nextButton.setSize(new Dimension(70, 40));
+        ImageIcon next_icon = new ImageIcon("img\\next_reverse.png");
+        Image scaledNextImage = next_icon.getImage().getScaledInstance(nextButton.getWidth(), nextButton.getHeight(), Image.SCALE_SMOOTH);
+        nextButton.setOpaque(false);
+        nextButton.setIcon(new ImageIcon(scaledNextImage));
         nextButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0){
-                    // new MazeSelection();
+                    key = 'w';
                 }
             });
         //nextButton.setBounds(530, 10,99, 25 );
@@ -408,20 +416,20 @@ public class MazePresenter extends JComponent {
         JLabel imageLabel = new JLabel(scaledIcon);
         imageLabel.setSize(600, 50);
 
-        // ImageIcon menu_icon = new ImageIcon("img\\menu_button.png");
-        // Image scaledMenuImage = menu_icon.getImage().getScaledInstance(100, 24, Image.SCALE_SMOOTH);
-        // JButton menuButton = new JButton(new ImageIcon(scaledMenuImage));
-        // menuButton.addActionListener(new ActionListener() {
-        //     @Override
-        //     public void actionPerformed(ActionEvent arg0){
-        //         // // Code to view high scores goes here
-        //         // frame.setVisible(false);
-        //         // new MenuPresenter();
+        ImageIcon menu_icon = new ImageIcon("img\\menu_button.png");
+        Image scaledMenuImage = menu_icon.getImage().getScaledInstance(100, 24, Image.SCALE_SMOOTH);
+        JButton menuButton = new JButton(new ImageIcon(scaledMenuImage));
+        menuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                // Code to view high scores goes here
+                // frame2.setVisible(false);
+                // new MenuPresenter();
                 
-        //     }
-        // });
-        // menuButton.setBounds(530, 10,99, 25 );
-        // imageLabel.add(menuButton, BorderLayout.EAST);
+            }
+        });
+        menuButton.setBounds(450, 10,99, 25 );
+        imageLabel.add(menuButton, BorderLayout.EAST);
         this.mainPanel.add(imageLabel, BorderLayout.NORTH);
     }
 

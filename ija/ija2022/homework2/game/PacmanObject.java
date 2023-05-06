@@ -7,17 +7,17 @@ import ija.ija2022.homework2.tool.common.CommonMazeObject;
 
 public class PacmanObject implements CommonMazeObject{
     private CommonField field;
-    static private int lives = 3;
+    static public int lives = 3;
 
 
     static private int tmp_row = 0;
     static private int tmp_col = 0;
     static private boolean Win = false;
-    static private boolean canExit = false;
+    static public boolean canExit = false;
 
     static private char dir = ' ';
 
-    static private int score = 0;
+    static public int score = 0;
 
 
     public PacmanObject(CommonField field){

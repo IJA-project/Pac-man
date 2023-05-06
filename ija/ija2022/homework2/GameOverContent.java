@@ -1,12 +1,15 @@
 package ija.ija2022.homework2;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -34,11 +37,21 @@ public class GameOverContent{
         imageLabel.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight());
 
         if (isWin){
-            JLabel textLabel = new JLabel("Lives "+lives);
+            JPanel attributesLabel = new JPanel(new BorderLayout());
+            attributesLabel.setBackground(Color.BLACK);
+            attributesLabel.setPreferredSize(new Dimension(400, 50));
+            JLabel textLabel = new JLabel("Lives: "+lives);
             textLabel.setForeground(Color.yellow);
             textLabel.setFont(new Font("Bauhaus 93", Font.BOLD, 40));
-            textLabel.setBounds((imageIcon.getIconWidth()-200)/2, imageIcon.getIconHeight()/2+60, 199, 50);
-            imageLabel.add(textLabel);
+            //textLabel.setBounds((imageIcon.getIconWidth()-200)/2, imageIcon.getIconHeight()/2+60, 199, 50);
+            JLabel textLabel2 = new JLabel("Scores: "+points);
+            textLabel2.setForeground(Color.yellow);
+            textLabel2.setFont(new Font("Bauhaus 93", Font.BOLD, 40));
+            //textLabel2.setBounds((imageIcon.getIconWidth()+200)/2, imageIcon.getIconHeight()/2+60, 199, 50);
+            attributesLabel.add(textLabel, BorderLayout.EAST);
+            attributesLabel.add(textLabel2, BorderLayout.WEST);
+            attributesLabel.setBounds((imageIcon.getIconWidth()-200)/2-100, imageIcon.getIconHeight()/2+40, 400, 50);
+            imageLabel.add(attributesLabel);
         }
         
         ImageIcon menu_icon = new ImageIcon("img\\menu_button.png");

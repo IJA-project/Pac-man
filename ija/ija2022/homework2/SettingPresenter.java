@@ -1,7 +1,10 @@
 package ija.ija2022.homework2;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +13,9 @@ import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -18,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
+import javax.swing.SwingConstants;
 
 public class SettingPresenter extends JFrame implements ActionListener {
     private JToggleButton toggleButton1;
@@ -32,43 +38,98 @@ public class SettingPresenter extends JFrame implements ActionListener {
     private boolean count4 = false;
 
     public SettingPresenter() {
+        this.setSize(1200, 700);
+        this.setBackground(Color.BLACK);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         // Create the switch buttons
-        toggleButton1 = new JToggleButton("OFF");
-        toggleButton2 = new JToggleButton("OFF");
-        toggleButton3 = new JToggleButton("OFF");
-        toggleButton4 = new JToggleButton("OFF");
+        ImageIcon off_icon = new ImageIcon("img\\off.png");
+        toggleButton1 = new JToggleButton(off_icon);
+        toggleButton2 = new JToggleButton(off_icon);
+        toggleButton3 = new JToggleButton(off_icon);
+        toggleButton4 = new JToggleButton(off_icon);
         // Add action listeners to the buttons
         toggleButton1.addActionListener(this);
         toggleButton2.addActionListener(this);
         toggleButton3.addActionListener(this);
         toggleButton4.addActionListener(this);
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(4, 2));
-        panel.add(new JLabel("Load Save"));
-        panel.add(toggleButton1);
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BorderLayout());
+        mainPanel.setPreferredSize(new Dimension(700, 700));
 
-        panel.add(new JLabel("Load reverse Save"));
+        JPanel instructioPanel = new JPanel();
+        instructioPanel.setPreferredSize(new Dimension(300, 100));
+        instructioPanel.setBackground(Color.BLACK);
+        JLabel instructionLabel = new JLabel();
+        instructionLabel.setBackground(Color.BLACK);
+        instructionLabel.setForeground(Color.yellow);
+        instructionLabel.setFont(new Font("Bauhaus 93", Font.BOLD, 40));
+        instructionLabel.setText("Please, select a mode to load your game");
+        instructioPanel.add(instructionLabel, BorderLayout.CENTER);
+        mainPanel.add(instructioPanel, BorderLayout.NORTH);
+
+        JPanel panel = new JPanel();
+        panel.setBorder(BorderFactory.createEmptyBorder(0, 250, 0, 250));
+        panel.setPreferredSize(new Dimension(500, 500));
+        panel.setBackground(Color.BLACK);
+        panel.setLayout(new GridLayout(4, 2));
+
+        JLabel label1 = new JLabel("Load Save");
+        label1.setForeground(Color.yellow);
+        label1.setFont(new Font("Bauhaus 93", Font.BOLD, 33));
+        label1.setHorizontalAlignment(SwingConstants.CENTER);
+        label1.setVerticalAlignment(SwingConstants.CENTER);
+        panel.add(label1);
+
+        JLabel label2 = new JLabel("Load reverse Save");
+        label2.setForeground(Color.yellow);
+        label2.setFont(new Font("Bauhaus 93", Font.BOLD, 33));
+        label2.setHorizontalAlignment(SwingConstants.CENTER);
+        label2.setVerticalAlignment(SwingConstants.CENTER);
+        panel.add(label2);
+
+        panel.add(toggleButton1);
         panel.add(toggleButton2);
 
-        panel.add(new JLabel("Run"));
-        panel.add(toggleButton3);
+        JLabel label3 = new JLabel("Run permanent");
+        label3.setForeground(Color.yellow);
+        label3.setFont(new Font("Bauhaus 93", Font.BOLD, 33));
+        label3.setHorizontalAlignment(SwingConstants.CENTER);
+        label3.setVerticalAlignment(SwingConstants.CENTER);
+        panel.add(label3);
 
-        panel.add(new JLabel("Buttons"));
+        JLabel label4 = new JLabel("Run using buttons");
+        label4.setForeground(Color.yellow);
+        label4.setFont(new Font("Bauhaus 93", Font.BOLD, 33));
+        label4.setHorizontalAlignment(SwingConstants.CENTER);
+        label4.setVerticalAlignment(SwingConstants.CENTER);
+        panel.add(label4);
+
+        panel.add(toggleButton3);
         panel.add(toggleButton4);
 
-        getContentPane().add(panel, BorderLayout.CENTER);
+        mainPanel.add(panel, BorderLayout.CENTER);
 
         // Create a button for testing
-        button = new JButton("Test");
+        JPanel button_panel = new JPanel();
+        button_panel.setBorder(BorderFactory.createEmptyBorder(0, 200, 0, 200));
+        button_panel.setBackground(Color.BLACK);
+        ImageIcon run_icon = new ImageIcon("img\\run_bttn.png");
+        button = new JButton(run_icon);
+        button.setPreferredSize(new Dimension(300, 100));
+        button.setBounds(600, 100, 99, 25 );
         button.addActionListener(this);
-        getContentPane().add(button, BorderLayout.SOUTH);
+        button_panel.add(button);
 
+        mainPanel.add(button_panel, BorderLayout.SOUTH);
+
+        add(mainPanel, BorderLayout.CENTER);
+        //add(button);
         // Set the size and visibility of the frame
-        setSize(300, 200);
+        this.setFocusable(true);
+        this.requestFocusInWindow();
         setVisible(true);
         
     }
@@ -81,9 +142,11 @@ public class SettingPresenter extends JFrame implements ActionListener {
     
             // Update the text of the button that triggered the event
             if (on) {
-                source.setText("ON");
+                ImageIcon on_icon = new ImageIcon("img\\on_button.png");
+                source.setIcon(on_icon);
             } else {
-                source.setText("OFF");
+                ImageIcon off_icon = new ImageIcon("img\\off.png");
+                source.setIcon(off_icon);
             }
             if (source == toggleButton1) {
                 if (on) {
