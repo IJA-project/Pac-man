@@ -60,7 +60,7 @@ public class GameOverContent{
             @Override
             public void actionPerformed(ActionEvent arg0){
                 frame.setVisible(false);
-                new MenuPresenter();
+                MenuPresenter presenter = new MenuPresenter();
                 
             }
         });
