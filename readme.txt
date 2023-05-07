@@ -13,7 +13,7 @@ mvn package
 
 If everything goes successfully, program documentation and jar file will be created. To run the program, the following command will need to be entered next:
 
-java -jar .\target\ija-1.0.jar
+java -jar .\target\xkulin01-1.0.jar
 
 
 ## Contributors

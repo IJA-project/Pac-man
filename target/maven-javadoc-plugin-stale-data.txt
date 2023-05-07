@@ -1,0 +1,84 @@
+@options
+@packages
+@argfile
+-encoding
+'UTF-8'
+-protected
+--release
+17
+-sourcepath
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src;C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/target/generated-sources/annotations'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'xkulin01 1.0 API'
+-use
+-version
+-windowtitle
+'xkulin01 1.0 API'
+game
+tool.common
+tool
+tool.view
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/game/GhostObject.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/game/KeyObject.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/game/MazeConfigure.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/game/PacmanObject.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/game/PathField.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/game/PointObject.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/game/TargetField.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/game/WallField.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/GameMain.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/common/AbstractObservableField.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/common/CommonField.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/common/CommonMaze.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/common/CommonMazeObject.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/common/MazePlan.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/common/Observable.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/GameOverContent.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/MazePresenter.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/MazeSelection.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/MenuPresenter.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/MessageDialog.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/MyKeyListener.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/PacmanGame.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/SettingPresenter.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/view/ComponentView.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/view/FieldView.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/view/GhostView.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/view/KeyView.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/view/PacmanView.java'
+'C:/Users/Lenovo/IdeaProjects/java_homework_2/xkulin01/src/tool/view/PointView.java'
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\src\GameMain.java = 1683488037508
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\src\ija.iml = 1683450610079
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\src = 1683490664140
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\generated-sources\annotations = 1683492180946
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\allclasses-index.html = 1683492194211
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\allpackages-index.html = 1683492194214
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\element-list = 1683492193968
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\GameMain.html = 1683492193725
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\help-doc.html = 1683492194247
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\index-all.html = 1683492194241
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\index.html = 1683492194184
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\jquery-ui.overrides.css = 1683492194260
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\member-search-index.js = 1683492194218
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\module-search-index.js = 1683492194215
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\overview-summary.html = 1683492194243
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\overview-tree.html = 1683492194180
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\package-search-index.js = 1683492194216
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\package-summary.html = 1683492193978
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\package-tree.html = 1683492193982
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\package-use.html = 1683492194161
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\script.js = 1683492194250
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\search.js = 1683492194252
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\serialized-form.html = 1683492194025
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\stylesheet.css = 1683492194249
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\tag-search-index.js = 1683492194219
+C:\Users\Lenovo\IdeaProjects\java_homework_2\xkulin01\target\site\apidocs\type-search-index.js = 1683492194217

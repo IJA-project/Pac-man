@@ -67,7 +67,7 @@ public class GhostObject implements CommonMazeObject {
             field = this.field.nextField(dir);
             if (field instanceof PathField || field instanceof TargetField) {
                 if (field.get() != null) {
-                    if (field.get().isPacman() || field.get().isKey() || field.get().isPoint()) {
+                    if (field.get() instanceof PacmanObject || field.get() instanceof PointObject || field.get() instanceof KeyObject) {
                         return true;
                     } else {
                         if (dontMove > 5) {
