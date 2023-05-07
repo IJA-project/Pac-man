@@ -1,3 +1,12 @@
+/**
+ * Project name: Pac-man
+ * File name: MyKeyListener.java
+ * Date: 06.05.2023
+ * Last update: 06.05.2023
+ * Author: Zdebska Kateryna(xzdebs00)
+ * Description:  MyKeyListener class implements the KeyListener interface to handle press on the buttons 'w', 's', 'd', 'a'.
+ */
+
 package src;
 
 import java.awt.event.KeyEvent;
@@ -7,48 +16,57 @@ import src.game.PacmanObject;
 import src.tool.MazePresenter;
 import src.tool.common.CommonMaze;
 
+/**
+ * The MyKeyListener class implements the KeyListener interface to handle press on the buttons 'w', 's', 'd', 'a'.
+ */
 public class MyKeyListener implements KeyListener {
     private PacmanObject obj; 
     public CommonMaze maze;
     public MazePresenter presenter;
 
-
-
+    /**
+     * Constructor for MyKeyListener object.
+     * 
+     * @param pacmanObj The PacmanObject representing the player's character.
+     * @param maze      The CommonMaze object representing the game maze.
+     * @param presenter The MazePresenter object for updating the game view.
+     */
     public MyKeyListener(PacmanObject pacmanObj, CommonMaze maze, MazePresenter presenter) {
         this.obj = pacmanObj;
         this.maze = maze;
         this.presenter = presenter;
     }
 
-
+    /**
+     * Invoked when a key has been pressed.
+     *
+     * @param e The KeyEvent object that contains the char of the pressed key, and other details.
+     */
     @Override
     public void keyPressed(KeyEvent e) {
-        // System.out.println("8");
         if (((PacmanObject)this.obj).isWin() == false && ((PacmanObject)this.obj).isDead() == false){
-            // System.out.println(" key pressed: " + ((PacmanObject)this.obj).getLives());
-
-
             ((PacmanObject)this.obj).keyMoving(e.getKeyChar());
             maze.saveState();
             presenter.updateLives();
             presenter.updateScores();
         }
-        // if(((PacmanObject)maze.getPacman()).isWin() == true || ((PacmanObject)maze.getPacman()).isDead() == true){
-        //     try {
-        //         Thread.sleep(75);
-        //     } catch (InterruptedException e1) {
-        //         // TODO Auto-generated catch block
-        //         e1.printStackTrace();
-        //     }
-        //     presenter.gameOver();
-        // }
     }
 
+    /**
+     * Invoked when a key has been released.
+     *
+     * @param e The KeyEvent object that contains the details of the key release event.
+     */
     @Override
     public void keyReleased(KeyEvent e) {
-        // System.out.println(" key released: " + KeyEvent.getKeyText(e.getKeyCode()));
+        // Not used
     }
 
+    /**
+     * Invoked when a key has been typed (pressed and released).
+     *
+     * @param e The KeyEvent object that contains the details of the key typed event.
+     */
     @Override
     public void keyTyped(KeyEvent e) {
         // Not used
