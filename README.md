@@ -1,3 +1,5 @@
+# Pac-man
+VUT FIT IJA project 2023
 ## Description 
 
 Pac-Man Adventure is a classic game loved by many generations of players. It features a simple yet challenging gameplay, where the player controls Pac-Man, a character who needs to navigate through a maze and collect all the dots without getting caught by ghosts. This game is all about strategy and quick thinking.
