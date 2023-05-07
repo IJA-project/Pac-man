@@ -198,19 +198,19 @@ public class SettingPresenter extends JFrame implements ActionListener {
             } else {
                 if (count1){
                     if(count3){
-                        new PacmanGame(2, 1, "");
+                        PacmanGame pacmanGame = new PacmanGame(2, 1, "");
                     }
                     if(count4){
-                        new PacmanGame(2, 2, "");
+                        PacmanGame pacmanGame = new PacmanGame(2, 2, "");
                     }
                     
                 }
                 if(count2){
                     if(count3){
-                        new PacmanGame(3, 1, "");
+                        PacmanGame pacmanGame = new PacmanGame(3, 1, "");
                     }
                     if(count4){
-                        new PacmanGame(3, 2 ,"");
+                        PacmanGame pacmanGame = new PacmanGame(3, 2 ,"");
                     }
                 }
                 this.setVisible(false);

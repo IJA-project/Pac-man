@@ -40,7 +40,7 @@ public class MenuPresenter {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 frame.setVisible(false);
-                new MazeSelection();
+                MazeSelection mazeSelection = new MazeSelection();
             }
         });
         playButton.setBounds((imageIcon.getIconWidth() - 200) / 2, imageIcon.getIconHeight() / 2 + 60, 199, 50);
@@ -53,7 +53,7 @@ public class MenuPresenter {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 frame.setVisible(false);
-                new SettingPresenter();
+                SettingPresenter settingPresenter = new SettingPresenter();
             }
         });
         savedGameButton.setBounds((imageIcon.getIconWidth() - 200) / 2, imageIcon.getIconHeight() / 2 + 120, 199, 50);

@@ -135,7 +135,7 @@ public class MazePresenter extends JComponent {
     public void gameOver() {
         if (this.pacmanObj.isDead() || this.pacmanObj.isWin()) {
             frame2.setVisible(false);
-            new GameOverContent(this.pacmanObj.isWin(), this.pacmanObj.getLives(), this.pacmanObj.getPoints());
+            GameOverContent gameOver = new GameOverContent(this.pacmanObj.isWin(), this.pacmanObj.getLives(), this.pacmanObj.getPoints());
         }
 
     }

@@ -59,7 +59,7 @@ public class MazeSelection {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 frame.setVisible(false);
-                new PacmanGame(1, 0, "data\\maps\\map1.txt");
+                PacmanGame pacmanGame = new PacmanGame(1, 0, "data\\maps\\map1.txt");
             }
         });
         buttonPanel.add(maze1Button);
@@ -73,7 +73,7 @@ public class MazeSelection {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 frame.setVisible(false);
-                new PacmanGame(1, 0, "data\\maps\\map2.txt");
+                PacmanGame pacmanGame = new PacmanGame(1, 0, "data\\maps\\map2.txt");
             }
         });
         buttonPanel.add(maze2Button);
@@ -87,7 +87,7 @@ public class MazeSelection {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 frame.setVisible(false);
-                new PacmanGame(1, 0, "data\\maps\\map3.txt");
+                PacmanGame pacmanGame = new PacmanGame(1, 0, "data\\maps\\map3.txt");
 
             }
         });
@@ -102,7 +102,7 @@ public class MazeSelection {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 frame.setVisible(false);
-                new PacmanGame(1, 0, "data\\maps\\map4.txt");
+                PacmanGame pacmanGame = new PacmanGame(1, 0, "data\\maps\\map4.txt");
 
             }
         });

@@ -19,6 +19,6 @@ public class GameMain {
      * @param args Command-line arguments (not used).
      */
     public static void main(String... args) {
-        new MenuPresenter();
+        MenuPresenter presenter = new MenuPresenter();
     }
 }

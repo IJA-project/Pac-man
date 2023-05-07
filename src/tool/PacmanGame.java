@@ -76,24 +76,24 @@ public class PacmanGame {
             if (buttonMode == 1){
                 cfg.loadSave("data\\save\\1.txt");
                 CommonMaze maze = cfg.createMaze();
-                new MazePresenter(cfg, maze, null, 1);
+                MazePresenter presenter = new MazePresenter(cfg, maze, null, 1);
             }
             else if(buttonMode == 2){
                 cfg.loadSaveStepByStep("data\\save\\1.txt");
                 CommonMaze maze = cfg.createMaze();
-                new MazePresenter(cfg, maze, null, 2);
+                MazePresenter presenter = new MazePresenter(cfg, maze, null, 2);
                 
             }            
         }else{
             if(buttonMode == 1){
                 cfg.loadReverseSave("data\\save\\1.txt");
                 CommonMaze maze = cfg.createMaze();
-                new MazePresenter(cfg, maze,null, 1);
+                MazePresenter presenter = new MazePresenter(cfg, maze,null, 1);
             }
             else if(buttonMode == 2){
                 cfg.loadReverseSaveStepByStep("data\\save\\1.txt");
                 CommonMaze maze = cfg.createMaze();
-                new MazePresenter(cfg, maze,null, 2);
+                MazePresenter presenter = new MazePresenter(cfg, maze,null, 2);
             }
 
         }
