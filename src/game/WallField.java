@@ -19,8 +19,17 @@ import tool.common.CommonField;
  */
 public class WallField extends AbstractObservableField {
 
+    /**
+     * Attribute representing row where wall is
+     */
     private int row;
+    /**
+     * Attribute representing column where wall is
+     */
     private int col;
+    /**
+     * Attribute representing maze where wall is
+     */
     private CommonMaze maze;
 
     /**

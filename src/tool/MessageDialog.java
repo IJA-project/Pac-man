@@ -1,5 +1,3 @@
-package tool;
-
 /**
  * Project name: Pac-man
  * File name: MessageDialog.java
@@ -9,6 +7,8 @@ package tool;
  * Description:  MessageDialog class display a message screen in a game 
  *               when player chose wrong combination of buttons in logging settings.
  */
+
+package tool;
 
 import javax.swing.*;
 
@@ -42,7 +42,6 @@ public class MessageDialog extends JFrame implements ActionListener {
         setSize(400, 100);
         this.setFocusable(true);
         this.setVisible(true);
-
     }
 
     /**
@@ -53,5 +52,4 @@ public class MessageDialog extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent evt) {
         this.setVisible(false);
     }
-
 }

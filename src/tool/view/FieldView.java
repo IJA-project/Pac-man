@@ -1,7 +1,12 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
+/**
+ * Project name: Pac-man
+ * File name: FieldView.java
+ * Date: 06.05.2023
+ * Last update: 06.05.2023
+ * Author: Zdebska Kateryna(xzdebs00)
+ * Description: FieldView class represents the view for displaying 
+ *              the field and models on it in a graphical user interface.
+ */
 
 package tool.view;
 
@@ -21,12 +26,26 @@ import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import java.awt.*;
 
+/**
+ * FieldView class represents the view for displaying the field in a graphical user interface.
+ */
 public class FieldView extends JPanel implements Observable.Observer {
+    
+    /** Attribute representing model of field */
     private final CommonField model;
+    /** Attribute representing objects placed on current field. */
     private final List<ComponentView> objects;
+    /** Attribute representing number of model changes. */
     private int changedModel = 0;
+    /** Attribute representing object for the maze graphical user interface. */
     private MazePresenter presenter;
 
+    /**
+     * Constructor for a FieldView object.
+     * 
+     * @param model The CommonField object representing the model of field.
+     * @param presenter The MazePresenter object for the maze graphical user interface.
+     */
     public FieldView(CommonField model, MazePresenter presenter) {
         this.model = model;
         this.objects = new ArrayList();
@@ -35,6 +54,11 @@ public class FieldView extends JPanel implements Observable.Observer {
         model.addObserver(this);
     }
 
+    /**
+     * Method to paint the field and models on it.
+     * 
+     * @param g The Graphics object used for painting.
+     */
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Rectangle bounds = this.getBounds();
@@ -59,6 +83,9 @@ public class FieldView extends JPanel implements Observable.Observer {
         }
     }
 
+    /**
+     * Update the view based on the model state.
+     */
     private void privUpdate() {
         this.setBackground(Color.black);
         if (this.model.canMove()) {
@@ -73,29 +100,42 @@ public class FieldView extends JPanel implements Observable.Observer {
                 this.objects.clear();
             }
             this.setBorder(BorderFactory.createLineBorder(Color.darkGray));
-        } else {
         }
-        // this.setBorder(BorderFactory.createLineBorder(Color.darkGray));\
-
     }
 
+    /**
+     * Update method called when the observer captured field changes.
+     * 
+     * @param field The observed field.
+     */
     public final void update(Observable field) {
         ++this.changedModel;
         this.privUpdate();
-        // long pid = ManagementFactory.getRuntimeMXBean().getPid();
-        // System.out.println("Current thread PID: " + pid);
         this.presenter.gameOver();
 
     }
 
+    /**
+     * Gets the number of updates made to the field view.
+     * 
+     * @return The number of updates.
+     */
     public int numberUpdates() {
         return this.changedModel;
     }
 
+    /**
+     * Clears the counter for model changes.
+     */
     public void clearChanged() {
         this.changedModel = 0;
     }
 
+    /**
+     * Gets the CommonField object representing the field model.
+     * 
+     * @return The CommonField object.
+     */
     public CommonField getField() {
         return this.model;
     }

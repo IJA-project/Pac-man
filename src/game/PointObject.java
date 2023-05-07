@@ -16,6 +16,9 @@ import tool.common.CommonMazeObject;
  * PointObject class represents point object in maze
  */
 public class PointObject implements CommonMazeObject {
+    /**
+     * Attribute representing field where point is
+     */
     private CommonField field;
 
     /**

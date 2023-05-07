@@ -1,5 +1,3 @@
-package tool;
-
 /**
  * Project name: Pac-man
  * File name: MenuPresenter.java
@@ -8,6 +6,8 @@ package tool;
  * Author: Zdebska Kateryna(xzdebs00)
  * Description:  MenuPresenter class display a menu screen in a game.
  */
+
+package tool;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

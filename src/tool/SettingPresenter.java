@@ -1,8 +1,16 @@
+/**
+ * Project name: Pac-man
+ * File name: SettingPresenter.java
+ * Date: 06.05.2023
+ * Last update: 06.05.2023
+ * Author: Zdebska Kateryna(xzdebs00)
+ * Description: SettingPresenter class display a settings screen for a load of the game.
+ */
+
 package tool;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -10,7 +18,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,31 +26,45 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
+/**
+ * SettingPresenter class display a settings screen for a load of the game.
+*/
 public class SettingPresenter extends JFrame implements ActionListener {
+    /** Sets mode to load save. */
     private JToggleButton toggleButton1;
+    /** Sets mode to load reverse save. */
     private JToggleButton toggleButton2;
+    /** Sets mode to load full save. */
     private JToggleButton toggleButton3;
+    /** Sets mode to load save step-by-step. */
     private JToggleButton toggleButton4;
-    private JLabel label1, label2, label3, label4;
+    /** Run button for load saved game. */
     private JButton button;
+    /** Flag for 1 toggle button, if it is pressed. */
     private boolean count1 = false;
+    /** Flag for 2 toggle button, if it is pressed. */
     private boolean count2 = false;
+    /** Flag for 3 toggle button, if it is pressed. */
     private boolean count3 = false;
+    /** Flag for 4 toggle button, if it is pressed. */
     private boolean count4 = false;
 
+    /**
+     * Constructor for SettingPresenter object.
+    */
     public SettingPresenter() {
         this.setSize(1200, 700);
         this.setBackground(Color.BLACK);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        // Create the switch buttons
+
         ImageIcon off_icon = new ImageIcon("lib\\img\\off.png");
         toggleButton1 = new JToggleButton(off_icon);
         toggleButton2 = new JToggleButton(off_icon);
         toggleButton3 = new JToggleButton(off_icon);
         toggleButton4 = new JToggleButton(off_icon);
-        // Add action listeners to the buttons
+
         toggleButton1.addActionListener(this);
         toggleButton2.addActionListener(this);
         toggleButton3.addActionListener(this);
@@ -106,35 +127,37 @@ public class SettingPresenter extends JFrame implements ActionListener {
 
         mainPanel.add(panel, BorderLayout.CENTER);
 
-        // Create a button for testing
         JPanel button_panel = new JPanel();
         button_panel.setBorder(BorderFactory.createEmptyBorder(0, 200, 0, 200));
         button_panel.setBackground(Color.BLACK);
         ImageIcon run_icon = new ImageIcon("lib\\img\\run_bttn.png");
         button = new JButton(run_icon);
         button.setPreferredSize(new Dimension(300, 100));
-        button.setBounds(600, 100, 99, 25);
+        button.setBounds(600, 100, 99, 25 );
         button.addActionListener(this);
         button_panel.add(button);
 
         mainPanel.add(button_panel, BorderLayout.SOUTH);
 
         add(mainPanel, BorderLayout.CENTER);
-        // add(button);
-        // Set the size and visibility of the frame
         this.setFocusable(true);
         this.requestFocusInWindow();
         setVisible(true);
-
+        
     }
 
+    /**
+     * Change visualisation of toggle button when player click on it.
+     * Create game when run button pressed.
+     * 
+     * @param e The ActionEvent object representing click on the button.
+     */
     public void actionPerformed(ActionEvent e) {
         // Get the state of the button that triggered the event
         if (e.getSource() instanceof JToggleButton) {
             JToggleButton source = (JToggleButton) e.getSource();
             boolean on = source.isSelected();
-
-            // Update the text of the button that triggered the event
+    
             if (on) {
                 ImageIcon on_icon = new ImageIcon("lib\\img\\on_button.png");
                 source.setIcon(on_icon);
@@ -149,21 +172,18 @@ public class SettingPresenter extends JFrame implements ActionListener {
                     count1 = false;
                 }
             } else if (source == toggleButton2) {
-                // Do something based on the state of the button
                 if (on) {
                     count2 = true;
                 } else {
                     count2 = false;
                 }
             } else if (source == toggleButton3) {
-                // Do something based on the state of the button
                 if (on) {
                     count3 = true;
                 } else {
                     count3 = false;
                 }
             } else if (source == toggleButton4) {
-                // Do something based on the state of the button
                 if (on) {
                     count4 = true;
                 } else {
@@ -172,38 +192,29 @@ public class SettingPresenter extends JFrame implements ActionListener {
             }
         }
         if (e.getSource() == button) {
-            // System.out.println(count1);
-            // System.out.println(count2);
-            // System.out.println(count3);
-            // System.out.println(count4);
             // Check if at least 1 switch every category is selected
             if ((count1 && count2) || (count3 && count4) || (!count1 && !count2) || (!count3 && !count4)) {
                 new MessageDialog();
-
             } else {
-                //////
-                if (count1) {
-                    if (count3) {
-                        PacmanGame pacmanGame = new PacmanGame(2, 1, "");
+                if (count1){
+                    if(count3){
+                        new PacmanGame(2, 1, "");
                     }
-                    if (count4) {
-                        PacmanGame pacmanGame = new PacmanGame(2, 2, "");
+                    if(count4){
+                        new PacmanGame(2, 2, "");
                     }
-
+                    
                 }
-                if (count2) {
-                    if (count3) {
-                        PacmanGame pacmanGame = new PacmanGame(3, 1, "");
+                if(count2){
+                    if(count3){
+                        new PacmanGame(3, 1, "");
                     }
-                    if (count4) {
-                        PacmanGame pacmanGame = new PacmanGame(3, 2, "");
+                    if(count4){
+                        new PacmanGame(3, 2 ,"");
                     }
                 }
                 this.setVisible(false);
-
-            }
-
+            }        
         }
-    }
-
+    } 
 }

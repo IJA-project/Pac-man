@@ -37,6 +37,10 @@ public interface Observable {
      * observable objects.
      */
     public static interface Observer {
+        /**
+         * Called when the observed object changes.
+         * @param o the observed object
+         */
         void update(Observable o);
     }
 }

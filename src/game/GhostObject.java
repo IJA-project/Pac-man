@@ -17,11 +17,29 @@ import tool.common.CommonMazeObject;
  * GhostObject class represents ghost object in maze
  */
 public class GhostObject implements CommonMazeObject {
+    /**
+     * Attribute representing field where ghost is
+     */
     private CommonField field;
+    /**
+     * Attribute representing temporary row of previous field where ghost was
+     */
     private int tmp_row = 0;
+    /**
+     * Attribute representing temporary column of previous field where ghost was
+     */
     private int tmp_col = 0;
+    /**
+     * Attribute representing direction where ghost was moving
+     */
     private char dir = ' ';
+    /**
+     * Attribute representing number of steps where ghost should wait when other ghost is on the same field and ghost can't move
+     */
     private int wait = 0;
+    /**
+     * Attribute representing number of steps where ghost should wait after ghost hit the pacman
+     */
     private int dontMove = 0;
 
     /**

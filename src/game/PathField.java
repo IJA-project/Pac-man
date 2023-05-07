@@ -18,9 +18,21 @@ import tool.common.CommonMazeObject;
  * PathField class represents path field in maze
  */
 public class PathField extends AbstractObservableField {
+    /**
+     * Attribute representing row where path field is
+     */
     private final int row;
+    /**
+     * Attribute representing column where path field is
+     */
     private final int col;
+    /**
+     * Attribute representing maze where path field is
+     */
     private CommonMaze maze;
+    /**
+     * Attribute representing object on the path field
+     */
     private CommonMazeObject mazeObject;
 
     /**

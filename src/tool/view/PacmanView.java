@@ -1,7 +1,11 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
+/**
+ * Project name: Pac-man
+ * File name: PacmanView.java
+ * Date: 06.05.2023
+ * Last update: 06.05.2023
+ * Author: Zdebska Kateryna(xzdebs00)
+ * Description: PacmanView class represents the graphical view of a pacman component.
+ */
 
 package tool.view;
 
@@ -11,15 +15,28 @@ import java.awt.*;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+/**
+ * The PacmanView class represents the graphical view of a pacman component.
+ */
 public class PacmanView implements ComponentView {
-    private CommonMazeObject model;
+    /** The field of the pacman.*/
     private FieldView parent;
 
+    /**
+     * Constructor for a PacmanView object.
+     * 
+     * @param parent The parent FieldView of the pacman view.
+     * @param m CommonMazeObject representing the pacman model (not used).
+     */
     public PacmanView(FieldView parent, CommonMazeObject m) {
-        this.model = m;
         this.parent = parent;
     }
 
+    /**
+     * Renders the graphical representation of the pacman component into the graphics context g.
+     * 
+     * @param g The graphics context.
+     */
     @Override
     public void paintComponent(Graphics g) {
         Rectangle bounds = this.parent.getBounds();

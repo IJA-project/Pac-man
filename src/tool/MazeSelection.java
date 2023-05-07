@@ -1,5 +1,3 @@
-package tool;
-
 /**
  * Project name: Pac-man
  * File name: MazeSelection.java
@@ -8,6 +6,8 @@ package tool;
  * Author: Zdebska Kateryna(xzdebs00)
  * Description:  MazeSelection class display a screen where player can choose maze for a game.
  */
+
+package tool;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

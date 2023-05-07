@@ -18,9 +18,21 @@ import tool.common.CommonMazeObject;
  * TargetField class represents target object in maze
  */
 public class TargetField extends AbstractObservableField {
+    /**
+     * Attribute representing row where target field is
+     */
     private final int row;
+    /**
+     * Attribute representing column where target field is
+     */
     private final int col;
+    /**
+     * Attribute representing maze where target field is
+     */
     private CommonMaze maze;
+    /**
+     * Attribute representing object on the target field
+     */
     private CommonMazeObject mazeObject;
 
     /**

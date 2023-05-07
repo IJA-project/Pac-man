@@ -1,7 +1,11 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
+/**
+ * Project name: Pac-man
+ * File name: MazePresenter.java
+ * Date: 06.05.2023
+ * Last update: 06.05.2023
+ * Author: Zdebska Kateryna(xzdebs00)
+ * Description: MazePresenter class display a game screen with maze and other attributes.
+ */
 
 package tool;
 
@@ -12,11 +16,9 @@ import tool.view.FieldView;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -28,35 +30,57 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 
+/**
+ * MazePresenter class display a game screen with maze and other attributes.
+ */
 public class MazePresenter extends JComponent {
+    /** Frame of the game. */
     public JFrame frame2 = new JFrame();
-    private static char state;
+    /** Attribute representing of chosen maze*/
     private CommonMaze maze;
+    /** Attribute representing of chosen pacman object*/
     private PacmanObject pacmanObj;
-    private MenuPresenter menuPresenter;
-    private JPanel oldMainPanel;
-    public JPanel mazePanel;
-    public JPanel heartPanel;
-    public JPanel scorePanel;
-    public JPanel mainPanel;
-    public JPanel mainAttributesPanel;
-    public JLabel heartLabelOne;
-    public JLabel heartLabelTwo;
-    public JLabel heartLabelThree;
-    public JLabel scoreLabel;
-    public JLabel imageLabel;
+    /** Attribute representing of maze Panel*/
+    private JPanel mazePanel;
+    /** Attribute representing of heart Panel*/
+    private JPanel heartPanel;
+    /** Attribute representing of score Panel*/
+    private JPanel scorePanel;
+    /** Attribute representing of main Panel*/
+    private JPanel mainPanel;
+    /** Attribute representing panel containing pacman's lives and score*/
+    private JPanel mainAttributesPanel;
+    /** Attribute representing label of the first heart*/
+    private JLabel heartLabelOne;
+    /** Attribute representing label of the second heart*/
+    private JLabel heartLabelTwo;
+    /** Attribute representing label of the third heart*/
+    private JLabel heartLabelThree;
+    /** Attribute representing label of the pacman's score*/
+    private JLabel scoreLabel;
+    /** Attribute representing label for text PACMAN*/
+    private JLabel imageLabel;
+     /** Attribute representing MazeConfigure object*/
     public MazeConfigure cfg;
+     /** Attribute representing current char from keyboard*/
     static char key = '`';
-
+    /** Attribute representing label for icone of one herts*/
     private final Image heartImage = new ImageIcon("lib\\img\\heart.png")
             .getImage()
             .getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-
+            
+    /**
+     * Constructor for MazePresenter.
+     * 
+     * @param cfg maze configuration
+     * @param maze chosen maze for the game
+     * @param pacmanObj pacman object in current maze
+     * @param mode mode of the game
+     */
     public MazePresenter(MazeConfigure cfg, CommonMaze maze, PacmanObject pacmanObj, int mode) {
         this.cfg = cfg;
         this.frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame2.setSize(1200, 700);
-        // this.frame2.setPreferredSize(new Dimension(700, 700));
         this.frame2.setResizable(false);
         this.frame2.setLocationRelativeTo(null);
         this.frame2.setBackground(Color.BLACK);
@@ -66,7 +90,6 @@ public class MazePresenter extends JComponent {
 
         this.maze = maze;
         this.pacmanObj = pacmanObj;
-        this.oldMainPanel = new JPanel();
         this.mazePanel = new JPanel();
         this.mazePanel.setBackground(Color.BLACK);
         this.heartPanel = new JPanel();
@@ -93,6 +116,11 @@ public class MazePresenter extends JComponent {
 
     }
 
+    /**
+     * Updates maze and pacman for loads.
+     * 
+     * @param maze new current maze
+     */
     public void updateMaze(CommonMaze maze) {
         this.maze = maze;
         if (maze != null && ((PacmanObject) maze.getPacman() != null)) {
@@ -101,28 +129,32 @@ public class MazePresenter extends JComponent {
 
     }
 
+    /**
+     * Create new object GameOverContent after ending of the game.
+     */
     public void gameOver() {
-        // System.out.println(this.pacmanObj.isWin());
         if (this.pacmanObj.isDead() || this.pacmanObj.isWin()) {
-            // System.out.println("11111");
             frame2.setVisible(false);
-            GameOverContent gameover = new GameOverContent(this.pacmanObj.isWin(), this.pacmanObj.getLives(),
-                    this.pacmanObj.getPoints());
+            new GameOverContent(this.pacmanObj.isWin(), this.pacmanObj.getLives(), this.pacmanObj.getPoints());
         }
 
     }
 
+    /**
+     * Update visualisation of scores.
+     */
     public void updateScores() {
         if (this.pacmanObj.getLives() <= 0) {
-
             scoreLabel.setText("0");
         } else {
             scoreLabel.setText(Integer.toString(this.pacmanObj.getPoints()));
         }
     }
 
+    /**
+     * Update visualisation of lives.
+     */
     public void updateLives() {
-
         ImageIcon scaledIcon = new ImageIcon(heartImage);
         if (this.pacmanObj.getLives() == 3) {
             this.heartLabelThree.setText(null);
@@ -147,10 +179,12 @@ public class MazePresenter extends JComponent {
             this.heartLabelOne.setText("Game Over");
             this.heartLabelTwo.setIcon(null);
             this.heartLabelThree.setIcon(null);
-
         }
     }
 
+    /**
+     * Initializes the game interface.
+     */
     public void initializeInterface() {
         if (this.maze != null) {
             int rows = this.maze.numRows();
@@ -171,9 +205,6 @@ public class MazePresenter extends JComponent {
                     field.addMouseListener(new MouseAdapter() {
                         @Override
                         public void mouseClicked(MouseEvent e) {
-                            // Handle the click event
-                            // if (((PacmanObject)maze.getPacman()).isWin() == false &&
-                            // ((PacmanObject)maze.getPacman()).isDead() == false){
                             Thread thread = new Thread(() -> {
                                 while (maze.getPacman().getField() != maze.getField(row, col)) {
                                     if (((PacmanObject) maze.getPacman()).isWin() == false
@@ -183,7 +214,6 @@ public class MazePresenter extends JComponent {
                                         try {
                                             Thread.sleep(40);
                                         } catch (InterruptedException e1) {
-                                            // TODO Auto-generated catch block
                                             e1.printStackTrace();
                                         }
                                     } else {
@@ -192,30 +222,9 @@ public class MazePresenter extends JComponent {
                                 }
                             });
                             thread.start();
-                            // }
                             Thread thread2 = new Thread(() -> {
-                                // while(maze.getPacman().getField() != maze.getField(row, col)){
-                                // try {
-                                // Thread.sleep(75);
-                                // } catch (InterruptedException e1) {
-                                // // TODO Auto-generated catch block
-                                // e1.printStackTrace();
-                                // }
                                 updateLives();
                                 updateScores();
-                                // if(((PacmanObject)maze.getPacman()).isWin() == true ||
-                                // ((PacmanObject)maze.getPacman()).isDead() == true){
-                                // try {
-                                // Thread.sleep(500);
-                                // } catch (InterruptedException e1) {
-                                // // TODO Auto-generated catch block
-                                // e1.printStackTrace();
-                                // }
-                                // gameOver();
-                                // // break;
-                                // }
-                                // }
-
                             });
                             thread2.start();
                         }
@@ -224,8 +233,6 @@ public class MazePresenter extends JComponent {
                 }
             }
 
-            // Remove the old main panel and add the new content panel to it
-            // this.mazePanel.removeAll();
             this.mazePanel.add(content);
 
             updateLives();
@@ -240,34 +247,30 @@ public class MazePresenter extends JComponent {
             scorePanel.setPreferredSize(new Dimension(240, 30));
             scorePanel.add(scoreLabel);
 
-            // mainPanel.removeAll();
-            // mainPanel.revalidate();
-            // mainPanel.repaint();
             mainPanel.setPreferredSize(new Dimension(550, 700));
             mainPanel.add(this.mazePanel, BorderLayout.CENTER);
-            // mainAttributesPanel.removeAll();
-            // mainAttributesPanel.revalidate();
-            // mainAttributesPanel.repaint();
             mainAttributesPanel.add(heartPanel, BorderLayout.WEST);
             mainAttributesPanel.add(scorePanel, BorderLayout.EAST);
             mainPanel.add(mainAttributesPanel, BorderLayout.SOUTH);
             JPanel mainCenterPanel = new JPanel();
             mainCenterPanel.add(mainPanel, BorderLayout.CENTER);
             mainCenterPanel.setBackground(Color.BLACK);
-            // Remove the old main panel and add the new content panel to it
-            // JPanel oldMainPanel = (JPanel) this.frame2.getContentPane();
-            // oldMainPanel.removeAll();
             this.frame2.add(mainCenterPanel);
             
             if (pacmanObj != null) {
                 MyKeyListener keyListener = new MyKeyListener(pacmanObj, this.maze, this);
                 this.frame2.addKeyListener(keyListener);
             }
-            // this.frame2.pack();
-            // this.frame2.pack();
         }
     }
 
+    /**
+     * Initializes the load game interface.
+     * 
+     * @param lives number of pacman lives in current state
+     * @param points user score in current state
+     * @param isButton flag for mode of the loading, step-by-step or permanent run
+     */
     public void initializeInterfaceSaves(int lives, int points, boolean isButton) {
         if (this.maze != null) {
             int rows = this.maze.numRows();
@@ -284,7 +287,7 @@ public class MazePresenter extends JComponent {
                     content.add(field);
                 }
             }
-            // Remove the old main panel and add the new content panel to it
+            // Remove the old maze panel and add the new content panel to it
             this.mazePanel.removeAll();
             this.mazePanel.add(content);
 
@@ -331,7 +334,6 @@ public class MazePresenter extends JComponent {
 
             mainPanel.setPreferredSize(new Dimension(550, 700));
             mainPanel.add(this.mazePanel, BorderLayout.CENTER);
-            // mainAttributesPanel.removeAll();
             mainAttributesPanel.revalidate();
             mainAttributesPanel.repaint();
             mainAttributesPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 50, 0));
@@ -339,16 +341,28 @@ public class MazePresenter extends JComponent {
             mainAttributesPanel.add(scorePanel, BorderLayout.EAST);
             mainPanel.add(mainAttributesPanel, BorderLayout.SOUTH);
             this.frame2.addKeyListener(new KeyListener() {
+                /**
+                * Invoked when a key has been pressed.
+                * @param e The KeyEvent object that contains the char of the pressed key, and other details.
+                */
                 @Override
                 public void keyPressed(KeyEvent e) {
                     key = e.getKeyChar();
                 }
-
+                /**
+                * Invoked when a key has been released.
+                * @param e The KeyEvent object that contains the details of the key release event.
+                */
                 @Override
                 public void keyReleased(KeyEvent e) {
                     // Not used
                 }
 
+                /**
+                * Invoked when a key has been typed (pressed and released).
+                *
+                * @param e The KeyEvent object that contains the details of the key typed event.
+                */
                 @Override
                 public void keyTyped(KeyEvent e) {
                     // Not used
@@ -357,27 +371,31 @@ public class MazePresenter extends JComponent {
             JPanel mainCenterPanel = new JPanel();
             mainCenterPanel.add(mainPanel, BorderLayout.CENTER);
             mainCenterPanel.setBackground(Color.BLACK);
+
             // Remove the old main panel and add the new content panel to it
             JPanel oldMainPanel = (JPanel) this.frame2.getContentPane();
             oldMainPanel.removeAll();
             oldMainPanel.add(mainCenterPanel);
-            this.frame2.setFocusable(true);
-            this.frame2.requestFocusInWindow();
-            // this.frame2.pack();
-            this.frame2.setVisible(true);
             oldMainPanel.revalidate();
             oldMainPanel.repaint();
         }
     }
 
+    /**
+     * Returns pressed key in logging.
+     * 
+     * @return char of the pressed key
+     */
     public char getKey() {
         char tmp = this.key;
         this.key = '~';
         return tmp;
     }
 
+    /**
+     * Visualise "next" button if mode of load is step-by-step.
+     */
     public void addNextButton() {
-
         JButton nextButton = new JButton();
         nextButton.setSize(new Dimension(70, 40));
         ImageIcon next_icon = new ImageIcon("lib\\img\\next_reverse.png");
@@ -396,6 +414,9 @@ public class MazePresenter extends JComponent {
         mainAttributesPanel.repaint();
     }
 
+    /**
+     * Visualise "exit" button.
+     */
     public void addExitButton() {
         ImageIcon icon = new ImageIcon("lib\\img\\pacman_font.png");
         Image scaledImage = icon.getImage().getScaledInstance(230, 40, Image.SCALE_SMOOTH);
@@ -420,6 +441,9 @@ public class MazePresenter extends JComponent {
         this.mainPanel.add(imageLabel, BorderLayout.NORTH);
     }
 
+    /**
+     * Display title if load is ended.
+     */
     public void addEndLoadLable() {
         JLabel textLabel = new JLabel();
         textLabel.setText("End of Load");

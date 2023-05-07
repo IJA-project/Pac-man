@@ -1,7 +1,11 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
+/**
+ * Project name: Pac-man
+ * File name: KeyView.java
+ * Date: 06.05.2023
+ * Last update: 06.05.2023
+ * Author: Zdebska Kateryna(xzdebs00)
+ * Description: KeyView class represents the graphical view of a key component.
+ */
 
 package tool.view;
 
@@ -11,15 +15,28 @@ import java.awt.*;
 
 import javax.swing.ImageIcon;
 
+/**
+ * The KeyView class represents the graphical view of a key component.
+ */
 public class KeyView implements ComponentView {
-    private final CommonMazeObject model;
+    /** The field of the key.*/
     private final FieldView parent;
 
+    /**
+     * Constructor for a KeyView object.
+     * 
+     * @param parent The parent FieldView of the key view.
+     * @param m CommonMazeObject representing the key model (not used).
+     */
     public KeyView(FieldView parent, CommonMazeObject m) {
-        this.model = m;
         this.parent = parent;
     }
 
+    /**
+     * Renders the graphical representation of the key component into the graphics context g.
+     * 
+     * @param g The graphics context.
+     */
     public void paintComponent(Graphics g) {
         Rectangle bounds = this.parent.getBounds();
         double w = bounds.getWidth();

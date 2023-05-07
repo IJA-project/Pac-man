@@ -24,12 +24,29 @@ import java.util.regex.Pattern;
  * maze from file and interpret it.
  */
 public class MazeConfigure extends Object {
+    /**
+     * Attribute representing lines of maze configuration
+     */
     private String[] lines;
+    /**
+     * Attribute representing rows size of maze
+     */
     private int rows;
+    /**
+     * Attribute representing cols size of maze
+     */
     private int cols;
+    /**
+     * Attribute representing number of lines in maze configuration
+     */
     private int numOfLines;
+    /**
+     * Attribute representing if there are any errors in maze configuration
+     */
     private boolean errors;
-
+    /**
+     * Attribute representing maze plan
+     */
     public CommonMaze maze;
 
     /**

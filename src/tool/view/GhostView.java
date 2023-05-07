@@ -1,30 +1,45 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
+/**
+ * Project name: Pac-man
+ * File name: GhostView.java
+ * Date: 06.05.2023
+ * Last update: 06.05.2023
+ * Author: Zdebska Kateryna(xzdebs00)
+ * Description: GhostView class represents the graphical view of a ghost component.
+ */
 
 package tool.view;
 
 import tool.common.CommonMazeObject;
 
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 import java.awt.*;
 
+/**
+ * The GhostView class represents the graphical view of a ghost component.
+ */
 public class GhostView implements ComponentView {
-    private final CommonMazeObject model;
+    /** The field of the ghost.*/
     private final FieldView parent;
 
+    /**
+     * Constructor for a GhostView object.
+     * 
+     * @param parent The parent FieldView of the ghost view.
+     * @param m CommonMazeObject representing the ghost model (not used).
+     */
     public GhostView(FieldView parent, CommonMazeObject m) {
-        this.model = m;
         this.parent = parent;
     }
 
+    /**
+     * Renders the graphical representation of the ghost component into the graphics context g.
+     * 
+     * @param g The graphics context.
+     */
     public void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g;
         Rectangle bounds = this.parent.getBounds();
         double w = bounds.getWidth();
         double h = bounds.getHeight();

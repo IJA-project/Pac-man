@@ -20,12 +20,33 @@ import java.util.concurrent.locks.ReentrantLock;
  * MazePlan class represents maze plan
  */
 public class MazePlan implements CommonMaze {
+    /**
+     *Atributes representing rows size of maze
+     */
     private int rows;
+    /**
+     *Atributes representing count of state maze configuration to save
+     */
     static int count = 0;
+    /**
+     *Atributes representing lock for saveState method
+     */
     private final Lock lock = new ReentrantLock();
+    /**
+     *Atributes representing cols size of maze
+     */
     private int cols;
+    /**
+     *Atributes representing maze plan
+     */
     private CommonField[][] mazePlan;
+    /**
+     *Atributes representing list of ghosts
+     */
     private List<CommonMazeObject> ghost_lst;
+    /**
+     *Atributes representing object pacman
+     */
     private CommonMazeObject pacman;
 
     /**

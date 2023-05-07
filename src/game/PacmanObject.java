@@ -17,13 +17,37 @@ import tool.common.CommonMazeObject;
  * PacmanObject class represents pacman object in maze
  */
 public class PacmanObject implements CommonMazeObject {
+    /**
+     * Attribute representing field where pacman is
+     */
     private CommonField field;
+    /**
+     * Attribute representing lives of pacman
+     */
     static public int lives = 3;
+    /**
+     * Attribute representing row where pacman was
+     */
     static private int tmp_row = 0;
+    /**
+     * Attribute representing column where pacman was
+     */
     static private int tmp_col = 0;
+    /**
+     * Attribute representing if pacman won
+     */
     static private boolean Win = false;
+    /**
+     * Attribute representing if pacman can exit(he has key)
+     */
     static public boolean canExit = false;
+    /**
+     * Attribute representing direction where pacman was moving
+     */
     static private char dir = ' ';
+    /**
+     * Attribute representing scores of pacman
+     */
     static public int score = 0;
 
     /**
