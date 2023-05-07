@@ -23,7 +23,11 @@ import javax.swing.JLabel;
  * GameOverContent class display a game over screen in a game.
  */
 public class GameOverContent{
+    /**
+     * Flag for end of game.
+     */
     static public int isOver = 0;
+
     /**
      * Constructor for GameOverContent
      * @param isWin does player win or loose
@@ -87,7 +91,10 @@ public class GameOverContent{
             frame.setVisible(true);
         }     
     } 
-
+    
+    /**
+     * Reload flag for end of game.
+     */
     static public void reloadGameOver(){
         isOver = 0;
     }
