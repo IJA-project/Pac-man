@@ -112,7 +112,6 @@ public class FieldView extends JPanel implements Observable.Observer {
         ++this.changedModel;
         this.privUpdate();
         this.presenter.gameOver();
-
     }
 
     /**

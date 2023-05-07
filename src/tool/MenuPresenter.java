@@ -23,6 +23,7 @@ public class MenuPresenter {
      * Constructor for MenuPresenter
      */
     public MenuPresenter() {
+        GameOverContent.reloadGameOver();
         JFrame frame = new JFrame();
         ImageIcon imageIcon = new ImageIcon("lib\\img\\menu_white.png");
         frame.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight());

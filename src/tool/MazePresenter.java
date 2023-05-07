@@ -84,9 +84,6 @@ public class MazePresenter extends JComponent {
         this.frame2.setResizable(false);
         this.frame2.setLocationRelativeTo(null);
         this.frame2.setBackground(Color.BLACK);
-        this.frame2.setFocusable(true);
-        this.frame2.requestFocusInWindow();
-        this.frame2.setVisible(true);
 
         this.maze = maze;
         this.pacmanObj = pacmanObj;
@@ -261,6 +258,9 @@ public class MazePresenter extends JComponent {
                 MyKeyListener keyListener = new MyKeyListener(pacmanObj, this.maze, this);
                 this.frame2.addKeyListener(keyListener);
             }
+            this.frame2.setFocusable(true);
+            this.frame2.requestFocusInWindow();
+            this.frame2.setVisible(true);
         }
     }
 
@@ -376,6 +376,9 @@ public class MazePresenter extends JComponent {
             JPanel oldMainPanel = (JPanel) this.frame2.getContentPane();
             oldMainPanel.removeAll();
             oldMainPanel.add(mainCenterPanel);
+            this.frame2.setFocusable(true);
+            this.frame2.requestFocusInWindow();
+            this.frame2.setVisible(true);
             oldMainPanel.revalidate();
             oldMainPanel.repaint();
         }
