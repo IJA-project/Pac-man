@@ -3,9 +3,9 @@
 // (powered by FernFlower decompiler)
 //
 
-package src.tool.view;
+package tool.view;
 
-import src.tool.common.CommonMazeObject;
+import tool.common.CommonMazeObject;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -24,7 +24,7 @@ public class GhostView implements ComponentView {
     }
 
     public void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D)g;
+        Graphics2D g2 = (Graphics2D) g;
         Rectangle bounds = this.parent.getBounds();
         double w = bounds.getWidth();
         double h = bounds.getHeight();
@@ -32,9 +32,9 @@ public class GhostView implements ComponentView {
         double diameter = Math.min(h, w) - 10.0;
         double x = (w - diameter) / 2.0;
         double y = (h - diameter) / 2.0;
-        int scaledWidth = (int)diameter;
-        int scaledHeight = (int)diameter;
+        int scaledWidth = (int) diameter;
+        int scaledHeight = (int) diameter;
         Image pacman_img = new ImageIcon("lib\\img\\redghost.png").getImage();
-        g.drawImage(pacman_img, (int)x, (int)y, scaledWidth, scaledHeight, this.parent);
+        g.drawImage(pacman_img, (int) x, (int) y, scaledWidth, scaledHeight, this.parent);
     }
 }

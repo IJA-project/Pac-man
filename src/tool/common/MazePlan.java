@@ -7,9 +7,10 @@
  * Description: MazePlan class represents maze plan
  */
 
-package src.tool.common;
+package tool.common;
+
 import java.io.*;
-import src.game.*;
+import game.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
@@ -29,11 +30,12 @@ public class MazePlan implements CommonMaze {
 
     /**
      * Constructor for MazePlan
-     * @param rows row of field
-     * @param cols column of field
+     * 
+     * @param rows  row of field
+     * @param cols  column of field
      * @param lines lines of maze
      */
-    public MazePlan(int rows, int cols, String[] lines){
+    public MazePlan(int rows, int cols, String[] lines) {
         count = 0;
         this.rows = rows;
         this.cols = cols;
@@ -43,37 +45,37 @@ public class MazePlan implements CommonMaze {
         // create lower and upper borders
         for (int j = 0; j < cols; j++) {
             this.mazePlan[0][j] = Borders(0, j);
-            this.mazePlan[rows-1][j] = Borders(rows-1, j);
+            this.mazePlan[rows - 1][j] = Borders(rows - 1, j);
         }
-        for (int i = 1; i < rows-1; i++) {
+        for (int i = 1; i < rows - 1; i++) {
             this.mazePlan[i][0] = Borders(i, 0);// create left border
-            this.mazePlan[i][cols-1] = Borders(i, cols-1);// create right border
+            this.mazePlan[i][cols - 1] = Borders(i, cols - 1);// create right border
 
-            for (int j = 1; j < cols-1; j++) {
+            for (int j = 1; j < cols - 1; j++) {
                 CommonField field = null;
-                char symb = lines[i-1].charAt(j-1); // lines moved because of borders
-                if ( symb == 'X'){
+                char symb = lines[i - 1].charAt(j - 1); // lines moved because of borders
+                if (symb == 'X') {
                     field = new WallField(i, j);
-                } else if(symb == '.'){
+                } else if (symb == '.') {
                     field = new PathField(i, j);
-                } else if(symb == 'S'){
+                } else if (symb == 'S') {
                     field = new PathField(i, j);
                     PacmanObject pacman = new PacmanObject(field);
                     field.put(pacman);
                     this.pacman = pacman;
-                }else if(symb == 'G'){
+                } else if (symb == 'G') {
                     field = new PathField(i, j);
                     GhostObject ptr = new GhostObject(field);
                     field.put(ptr);
                     this.ghost_lst.add(ptr);
-                } else if (symb == 'K'){
+                } else if (symb == 'K') {
                     field = new PathField(i, j);
                     field.put(new KeyObject(field));
-                }else if (symb == 'P'){
-                    field = new PathField(i,j);
+                } else if (symb == 'P') {
+                    field = new PathField(i, j);
                     field.put(new PointObject(field));
-                }else if (symb == 'T'){
-                    field = new TargetField(i,j);
+                } else if (symb == 'T') {
+                    field = new TargetField(i, j);
                 }
                 field.setMaze(this);
                 this.mazePlan[i][j] = field;
@@ -84,11 +86,12 @@ public class MazePlan implements CommonMaze {
 
     /**
      * Method returns CommonField object representing border and sets maze to it
+     * 
      * @param row row of field
      * @param col column of field
      * @return CommonField object representing border
      */
-    private CommonField Borders(int row, int col){
+    private CommonField Borders(int row, int col) {
         CommonField field = new WallField(row, col);
         field.setMaze(this);
         return field;
@@ -96,24 +99,26 @@ public class MazePlan implements CommonMaze {
 
     /**
      * Method returns pacman from maze
+     * 
      * @return CommonMazeObject object representing pacman
      */
     @Override
-    public CommonMazeObject getPacman(){
+    public CommonMazeObject getPacman() {
         return this.pacman;
     }
 
     /**
      * Method returns field on position row, col
+     * 
      * @param row row of field
      * @param col column of field
      * @return field on position row, col, null if out of bounds
      */
     @Override
-    public CommonField getField(int row, int col){
-        try{
+    public CommonField getField(int row, int col) {
+        try {
             return this.mazePlan[row][col];
-        } catch(IndexOutOfBoundsException e){
+        } catch (IndexOutOfBoundsException e) {
             return null;
         }
     }
@@ -192,28 +197,31 @@ public class MazePlan implements CommonMaze {
 
     /**
      * Method returns number of rows which defines maze
+     * 
      * @return number of rows
      */
     @Override
-    public int numRows(){
+    public int numRows() {
         return this.rows;
     }
 
     /**
      * Method returns number of columns which defines maze
+     * 
      * @return number of columns
      */
     @Override
-    public int numCols(){
+    public int numCols() {
         return this.cols;
     }
 
     /**
      * Method returns list of all ghosts in maze
+     * 
      * @return list of ghosts
      */
     @Override
-    public List<CommonMazeObject> ghosts(){
+    public List<CommonMazeObject> ghosts() {
         return new ArrayList<>(ghost_lst);
     }
 }

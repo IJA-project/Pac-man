@@ -7,19 +7,21 @@
  * Description: Abstract class implementing Observable interface operations. Allows you to insert and cancel observers and notify registered observers of changes.
  */
 
-package src.tool.common;
+package tool.common;
 
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- *Abstract class implementing Observable interface operations. Allows you to insert and cancel observers and notify registered observers of changes.
+ * Abstract class implementing Observable interface operations. Allows you to
+ * insert and cancel observers and notify registered observers of changes.
  */
 public abstract class AbstractObservableField implements CommonField {
     private final Set<Observable.Observer> observers = new HashSet();
 
     /**
      * Registers a new observer.
+     * 
      * @param o observer to be registered
      */
     public void addObserver(Observable.Observer o) {
@@ -28,6 +30,7 @@ public abstract class AbstractObservableField implements CommonField {
 
     /**
      * Removes the observer.
+     * 
      * @param o observer to be removed from the list of registered observers
      */
     public void removeObserver(Observable.Observer o) {

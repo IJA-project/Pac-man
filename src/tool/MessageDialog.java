@@ -1,3 +1,5 @@
+package tool;
+
 /**
  * Project name: Pac-man
  * File name: MessageDialog.java
@@ -8,8 +10,6 @@
  *               when player chose wrong combination of buttons in logging settings.
  */
 
-package src;
-
 import javax.swing.*;
 
 import java.awt.Color;
@@ -17,15 +17,14 @@ import java.awt.Font;
 import java.awt.event.*;
 
 /**
- * MessageDialog class display a message screen in a game 
+ * MessageDialog class display a message screen in a game
  * when player chose wrong combination of buttons in logging settings.
  */
 public class MessageDialog extends JFrame implements ActionListener {
     /**
      * Constructor for MessageDialog
      */
-    public MessageDialog()
-    {
+    public MessageDialog() {
         this.setBackground(Color.BLACK);
         this.setLocationRelativeTo(null);
         JLabel label = new JLabel("Please, select only one option in each category");
@@ -43,15 +42,16 @@ public class MessageDialog extends JFrame implements ActionListener {
         setSize(400, 100);
         this.setFocusable(true);
         this.setVisible(true);
- 
+
     }
+
     /**
-    * Hides the message screen when player click on the button OK.
-    * @param evt The ActionEvent object representing click on the button.
-    */
-    public void actionPerformed(ActionEvent evt)
-    {
+     * Hides the message screen when player click on the button OK.
+     * 
+     * @param evt The ActionEvent object representing click on the button.
+     */
+    public void actionPerformed(ActionEvent evt) {
         this.setVisible(false);
     }
- 
+
 }

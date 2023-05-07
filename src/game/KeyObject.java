@@ -7,35 +7,38 @@
  * Description: KeyObject class represents key object in maze
  */
 
+package game;
 
-package src.game;
-
-import src.tool.common.CommonField;
-import src.tool.common.CommonMazeObject;
+import tool.common.CommonField;
+import tool.common.CommonMazeObject;
 
 /**
  * KeyObject class represents key object in maze
  */
 public class KeyObject implements CommonMazeObject {
     private CommonField field;
+
     /**
      * Constructor for KeyObject
+     * 
      * @param field field where key is
      */
-    public KeyObject(CommonField field){
+    public KeyObject(CommonField field) {
         this.field = field;
     }
 
     /**
      * Implement method from CommonMazeObject to check if object is key
+     * 
      * @return true, because object is key
      */
-    public boolean isKey(){
+    public boolean isKey() {
         return true;
     }
 
     /**
      * Implement method from CommonMazeObject, get current field where key is
+     * 
      * @return field where key is
      */
     @Override

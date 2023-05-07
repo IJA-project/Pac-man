@@ -7,15 +7,16 @@
  * Description: GhostObject class represents ghost object in maze
  */
 
-package src.game;
-import src.tool.common.CommonField;
-import src.tool.common.CommonMaze;
-import src.tool.common.CommonMazeObject;
+package game;
+
+import tool.common.CommonField;
+import tool.common.CommonMaze;
+import tool.common.CommonMazeObject;
 
 /**
-  GhostObject class represents ghost object in maze
+ * GhostObject class represents ghost object in maze
  */
-public class GhostObject implements CommonMazeObject{
+public class GhostObject implements CommonMazeObject {
     private CommonField field;
     private int tmp_row = 0;
     private int tmp_col = 0;
@@ -25,31 +26,33 @@ public class GhostObject implements CommonMazeObject{
 
     /**
      * Constructor for GhostObject
+     * 
      * @param field field where ghost is
      */
-    public GhostObject(CommonField field){
+    public GhostObject(CommonField field) {
         this.field = field;
     }
 
     /**
      * Check if ghost can move in this direction
+     * 
      * @param dir direction where ghost can be moving
      * @return true if ghost can move in this direction, false otherwise
      */
-    public boolean canMove(CommonField.Direction dir){
+    public boolean canMove(CommonField.Direction dir) {
         CommonField field = null;
-        try{
-            if (wait>0){
+        try {
+            if (wait > 0) {
                 wait--;
                 return false;
             }
             field = this.field.nextField(dir);
-            if(field instanceof PathField || field instanceof TargetField){
-                if (field.get()!=null){
-                    if (field.get().isPacman() || field.get().isKey() || field.get().isPoint()){
+            if (field instanceof PathField || field instanceof TargetField) {
+                if (field.get() != null) {
+                    if (field.get().isPacman() || field.get().isKey() || field.get().isPoint()) {
                         return true;
-                    }else {
-                        if (dontMove>5){
+                    } else {
+                        if (dontMove > 5) {
                             dontMove = 0;
                             return true;
                         }
@@ -57,25 +60,26 @@ public class GhostObject implements CommonMazeObject{
                     }
                 }
                 return true;
-            }else {
+            } else {
                 return false;
             }
-        }
-        catch (UnsupportedOperationException e){
+        } catch (UnsupportedOperationException e) {
             return false;
         }
     }
 
     /**
-     * Change field where ghost is, if it's possible, notify observers and return true, otherwise return false
+     * Change field where ghost is, if it's possible, notify observers and return
+     * true, otherwise return false
+     * 
      * @param dir direction where ghost moving
      * @return true if ghost moved, false otherwise
      */
-    public boolean move(CommonField.Direction dir){
-        if (this.canMove(dir)){
-            if (field.nextField(dir).get()!=null){
-                if (field.nextField(dir).get().isPacman()){
-                    PacmanObject ptr = (PacmanObject)field.nextField(dir).get();
+    public boolean move(CommonField.Direction dir) {
+        if (this.canMove(dir)) {
+            if (field.nextField(dir).get() != null) {
+                if (field.nextField(dir).get().isPacman()) {
+                    PacmanObject ptr = (PacmanObject) field.nextField(dir).get();
                     wait = 40;
                     ptr.heat();
                     dontMove = 0;
@@ -94,44 +98,51 @@ public class GhostObject implements CommonMazeObject{
         }
         dontMove++;
         return false;
-    }    
+    }
 
     /**
      * Get field where ghost is
+     * 
      * @return field where ghost is
      */
-    public CommonField getField(){
+    public CommonField getField() {
         return this.field;
     }
 
     /**
-     * method for moving ghost, using algorithm looking for shortest way to pacman and moving there
-     * @param x row where ghost is
-     * @param y column where ghost is
+     * method for moving ghost, using algorithm looking for shortest way to pacman
+     * and moving there
+     * 
+     * @param x    row where ghost is
+     * @param y    column where ghost is
      * @param maze maze where pacman is
      */
-    public void processMoving(int x, int y, CommonMaze maze){
+    public void processMoving(int x, int y, CommonMaze maze) {
 
         CommonField field = maze.getField(x, y);
-        if (this.tmp_row != x || this.tmp_col!=y){
+        if (this.tmp_row != x || this.tmp_col != y) {
             dir = ' ';
         }
         this.tmp_row = x;
         this.tmp_col = y;
 
         double wayL = 99999, wayR = 99999, wayU = 99999, wayD = 99999, waylow = 99999;
-        if (field.getRow()!= this.field.getRow() || field.getCol() != this.field.getCol()) {
+        if (field.getRow() != this.field.getRow() || field.getCol() != this.field.getCol()) {
             if (this.canMove(CommonField.Direction.L) && dir != 'R') {
-                wayL = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.L).getRow(), 2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.L).getCol(), 2));
+                wayL = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.L).getRow(), 2)
+                        + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.L).getCol(), 2));
             }
             if (this.canMove(CommonField.Direction.R) && dir != 'L') {
-                wayR = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.R).getRow(), 2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.R).getCol(), 2));
+                wayR = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.R).getRow(), 2)
+                        + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.R).getCol(), 2));
             }
             if (this.canMove(CommonField.Direction.U) && dir != 'D') {
-                wayU = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.U).getRow(), 2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.U).getCol(), 2));
+                wayU = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.U).getRow(), 2)
+                        + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.U).getCol(), 2));
             }
             if (this.canMove(CommonField.Direction.D) && dir != 'U') {
-                wayD = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.D).getRow(), 2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.D).getCol(), 2));
+                wayD = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.D).getRow(), 2)
+                        + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.D).getCol(), 2));
             }
             if (wayL <= waylow) {
                 waylow = wayL;

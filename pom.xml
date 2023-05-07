@@ -46,7 +46,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>src.GameMain</mainClass>
+              <mainClass>GameMain</mainClass>
             </manifest>
           </archive>
         </configuration>

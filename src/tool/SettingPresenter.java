@@ -1,4 +1,4 @@
-package src;
+package tool;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -113,19 +113,19 @@ public class SettingPresenter extends JFrame implements ActionListener {
         ImageIcon run_icon = new ImageIcon("lib\\img\\run_bttn.png");
         button = new JButton(run_icon);
         button.setPreferredSize(new Dimension(300, 100));
-        button.setBounds(600, 100, 99, 25 );
+        button.setBounds(600, 100, 99, 25);
         button.addActionListener(this);
         button_panel.add(button);
 
         mainPanel.add(button_panel, BorderLayout.SOUTH);
 
         add(mainPanel, BorderLayout.CENTER);
-        //add(button);
+        // add(button);
         // Set the size and visibility of the frame
         this.setFocusable(true);
         this.requestFocusInWindow();
         setVisible(true);
-        
+
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -133,7 +133,7 @@ public class SettingPresenter extends JFrame implements ActionListener {
         if (e.getSource() instanceof JToggleButton) {
             JToggleButton source = (JToggleButton) e.getSource();
             boolean on = source.isSelected();
-    
+
             // Update the text of the button that triggered the event
             if (on) {
                 ImageIcon on_icon = new ImageIcon("lib\\img\\on_button.png");
@@ -178,32 +178,32 @@ public class SettingPresenter extends JFrame implements ActionListener {
             // System.out.println(count4);
             // Check if at least 1 switch every category is selected
             if ((count1 && count2) || (count3 && count4) || (!count1 && !count2) || (!count3 && !count4)) {
-              new MessageDialog();
+                new MessageDialog();
 
             } else {
                 //////
-                if (count1){
-                    if(count3){
+                if (count1) {
+                    if (count3) {
                         PacmanGame pacmanGame = new PacmanGame(2, 1, "");
                     }
-                    if(count4){
+                    if (count4) {
                         PacmanGame pacmanGame = new PacmanGame(2, 2, "");
                     }
-                    
+
                 }
-                if(count2){
-                    if(count3){
+                if (count2) {
+                    if (count3) {
                         PacmanGame pacmanGame = new PacmanGame(3, 1, "");
                     }
-                    if(count4){
-                        PacmanGame pacmanGame = new PacmanGame(3, 2 ,"");
+                    if (count4) {
+                        PacmanGame pacmanGame = new PacmanGame(3, 2, "");
                     }
                 }
                 this.setVisible(false);
 
             }
-            
+
         }
     }
-  
+
 }

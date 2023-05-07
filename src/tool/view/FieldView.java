@@ -3,14 +3,14 @@
 // (powered by FernFlower decompiler)
 //
 
-package src.tool.view;
+package tool.view;
 
-import src.game.TargetField;
-import src.game.WallField;
-import src.tool.MazePresenter;
-import src.tool.common.CommonField;
-import src.tool.common.CommonMazeObject;
-import src.tool.common.Observable;
+import game.TargetField;
+import game.WallField;
+import tool.MazePresenter;
+import tool.common.CommonField;
+import tool.common.CommonMazeObject;
+import tool.common.Observable;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -64,26 +64,28 @@ public class FieldView extends JPanel implements Observable.Observer {
         if (this.model.canMove()) {
             if (!this.model.isEmpty()) {
                 CommonMazeObject o = this.model.get();
-                ComponentView v = o.isPacman() ? new PacmanView(this, this.model.get()) : o.isPoint() ? new PointView(this, this.model.get()) : o.isKey() ? new KeyView(this, this.model.get()) :new GhostView(this, this.model.get());
+                ComponentView v = o.isPacman() ? new PacmanView(this, this.model.get())
+                        : o.isPoint() ? new PointView(this, this.model.get())
+                                : o.isKey() ? new KeyView(this, this.model.get())
+                                        : new GhostView(this, this.model.get());
                 this.objects.add(v);
             } else {
                 this.objects.clear();
             }
             this.setBorder(BorderFactory.createLineBorder(Color.darkGray));
-        }else{
+        } else {
         }
-        //this.setBorder(BorderFactory.createLineBorder(Color.darkGray));
-        
+        // this.setBorder(BorderFactory.createLineBorder(Color.darkGray));\
+
     }
 
     public final void update(Observable field) {
         ++this.changedModel;
         this.privUpdate();
-        //long pid = ManagementFactory.getRuntimeMXBean().getPid();
-        //System.out.println("Current thread PID: " + pid);
+        // long pid = ManagementFactory.getRuntimeMXBean().getPid();
+        // System.out.println("Current thread PID: " + pid);
         this.presenter.gameOver();
-        
-        
+
     }
 
     public int numberUpdates() {

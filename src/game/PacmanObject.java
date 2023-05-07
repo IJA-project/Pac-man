@@ -7,17 +7,16 @@
  * Description: PacmanObject class represents pacman object in maze
  */
 
+package game;
 
-package src.game;
-
-import src.tool.common.CommonField;
-import src.tool.common.CommonMaze;
-import src.tool.common.CommonMazeObject;
+import tool.common.CommonField;
+import tool.common.CommonMaze;
+import tool.common.CommonMazeObject;
 
 /**
  * PacmanObject class represents pacman object in maze
  */
-public class PacmanObject implements CommonMazeObject{
+public class PacmanObject implements CommonMazeObject {
     private CommonField field;
     static public int lives = 3;
     static private int tmp_row = 0;
@@ -29,9 +28,10 @@ public class PacmanObject implements CommonMazeObject{
 
     /**
      * Constructor for PacmanObject
+     * 
      * @param field field where pacman is
      */
-    public PacmanObject(CommonField field){
+    public PacmanObject(CommonField field) {
         lives = 3;
         tmp_row = 0;
         tmp_col = 0;
@@ -41,17 +41,20 @@ public class PacmanObject implements CommonMazeObject{
         score = 0;
         this.field = field;
     }
+
     /**
      * Load pacman parameters from file (health, scores, key)
+     * 
      * @param health health of pacman
      * @param scores scores of pacman
-     * @param key if pacman has key
+     * @param key    if pacman has key
      */
-    static public void load(int health, int scores, String key){
+    static public void load(int health, int scores, String key) {
         lives = health;
         score = scores;
         canExit = key.equals("true");
     }
+
     /**
      * Heat pacman from ghost
      */
@@ -61,9 +64,11 @@ public class PacmanObject implements CommonMazeObject{
 
     /**
      * Moving of pacman using keyboard
-     * @param key key which was pressed by user on keyboard, allowed keys are W, A, S, D, and their lower case
+     * 
+     * @param key key which was pressed by user on keyboard, allowed keys are W, A,
+     *            S, D, and their lower case
      */
-    public void keyMoving(char key){
+    public void keyMoving(char key) {
         if (Character.toLowerCase(key) == 'w') {
             this.move(CommonField.Direction.U);
         } else if (Character.toLowerCase(key) == 's') {
@@ -77,76 +82,83 @@ public class PacmanObject implements CommonMazeObject{
 
     /**
      * Moving of pacman using mouse
-     * @param x x coordinate of field where user clicked
-     * @param y y coordinate of field where user clicked
+     * 
+     * @param x    x coordinate of field where user clicked
+     * @param y    y coordinate of field where user clicked
      * @param maze maze where pacman is
      */
     public void mouseMoving(int x, int y, CommonMaze maze) {
-            CommonField field = maze.getField(x, y);
-            if (tmp_row != x || tmp_col!=y){
+        CommonField field = maze.getField(x, y);
+        if (tmp_row != x || tmp_col != y) {
+            dir = ' ';
+        }
+        tmp_row = x;
+        tmp_col = y;
+
+        if (!(field instanceof WallField)) {
+            double wayL = 99999, wayR = 99999, wayU = 99999, wayD = 99999, waylow = 99999;
+
+            if (field.getRow() != this.field.getRow() || field.getCol() != this.field.getCol()) {
+                if (this.canMove(CommonField.Direction.L) && dir != 'R') {
+                    wayL = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.L).getRow(),
+                            2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.L).getCol(), 2));
+                }
+                if (this.canMove(CommonField.Direction.R) && dir != 'L') {
+                    wayR = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.R).getRow(),
+                            2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.R).getCol(), 2));
+                }
+                if (this.canMove(CommonField.Direction.U) && dir != 'D') {
+                    wayU = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.U).getRow(),
+                            2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.U).getCol(), 2));
+                }
+                if (this.canMove(CommonField.Direction.D) && dir != 'U') {
+                    wayD = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.D).getRow(),
+                            2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.D).getCol(), 2));
+                }
+                if (wayL <= waylow) {
+                    waylow = wayL;
+                    dir = 'L';
+                }
+                if (wayR <= waylow) {
+                    waylow = wayR;
+                    dir = 'R';
+                }
+                if (wayU <= waylow) {
+                    waylow = wayU;
+                    dir = 'U';
+                }
+                if (wayD <= waylow) {
+                    dir = 'D';
+                }
+                if (dir == 'L') {
+                    this.move(CommonField.Direction.L);
+                } else if (dir == 'R') {
+                    this.move(CommonField.Direction.R);
+                } else if (dir == 'U') {
+                    this.move(CommonField.Direction.U);
+                } else if (dir == 'D') {
+                    this.move(CommonField.Direction.D);
+                }
+            } else {
                 dir = ' ';
             }
-            tmp_row = x;
-            tmp_col = y;
-
-            if (!(field instanceof WallField)) {
-                double wayL = 99999, wayR = 99999, wayU = 99999, wayD = 99999, waylow = 99999;
-
-                if (field.getRow() != this.field.getRow() || field.getCol() != this.field.getCol()) {
-                    if (this.canMove(CommonField.Direction.L) && dir != 'R') {
-                        wayL = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.L).getRow(), 2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.L).getCol(), 2));
-                    }
-                    if (this.canMove(CommonField.Direction.R) && dir != 'L') {
-                        wayR = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.R).getRow(), 2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.R).getCol(), 2));
-                    }
-                    if (this.canMove(CommonField.Direction.U) && dir != 'D') {
-                        wayU = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.U).getRow(), 2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.U).getCol(), 2));
-                    }
-                    if (this.canMove(CommonField.Direction.D) && dir != 'U') {
-                        wayD = Math.sqrt(Math.pow(field.getRow() - this.field.nextField(CommonField.Direction.D).getRow(), 2) + Math.pow(field.getCol() - this.field.nextField(CommonField.Direction.D).getCol(), 2));
-                    }
-                    if (wayL <= waylow) {
-                        waylow = wayL;
-                        dir = 'L';
-                    }
-                    if (wayR <= waylow) {
-                        waylow = wayR;
-                        dir = 'R';
-                    }
-                    if (wayU <= waylow) {
-                        waylow = wayU;
-                        dir = 'U';
-                    }
-                    if (wayD <= waylow) {
-                        dir = 'D';
-                    }
-                    if (dir == 'L') {
-                        this.move(CommonField.Direction.L);
-                    } else if (dir == 'R') {
-                        this.move(CommonField.Direction.R);
-                    } else if (dir == 'U') {
-                        this.move(CommonField.Direction.U);
-                    } else if (dir == 'D') {
-                        this.move(CommonField.Direction.D);
-                    }
-                } else {
-                    dir = ' ';
-                }
-            }
+        }
 
     }
+
     /**
-     * Implementation CommonObject method for getting info whether Pacman object can move to field in direction dir
+     * Implementation CommonObject method for getting info whether Pacman object can
+     * move to field in direction dir
+     * 
      * @param dir direction where pacman wants to move
      * @return true if pacman can move to field in direction dir, false otherwise
      */
     @Override
-    public boolean canMove(CommonField.Direction dir){
-        CommonField field ;
-        try{
+    public boolean canMove(CommonField.Direction dir) {
+        CommonField field;
+        try {
             field = this.field.nextField(dir);
-        }
-        catch (UnsupportedOperationException e){
+        } catch (UnsupportedOperationException e) {
             return false;
         }
         return field instanceof PathField || field instanceof TargetField;
@@ -154,44 +166,48 @@ public class PacmanObject implements CommonMazeObject{
 
     /**
      * Method get info whether pacman is winner
+     * 
      * @return true if pacman is winner, false otherwise
      */
-    public boolean isWin(){
+    public boolean isWin() {
         return Win;
     }
 
     /**
      * Method get info whether pacman is dead
+     * 
      * @return true if pacman is dead, false otherwise
      */
-    public boolean isDead(){
+    public boolean isDead() {
         return lives <= 0;
     }
+
     /**
      * Override method for moving pacman to field in direction dir
+     * 
      * @param dir direction where pacman wants to move
      * @return truse if pacman move successfully, false otherwise
      */
     @Override
-    public boolean move(CommonField.Direction dir){
-        if (this.canMove(dir)){
-            if (this.field.nextField(dir).isKey()){
+    public boolean move(CommonField.Direction dir) {
+        if (this.canMove(dir)) {
+            if (this.field.nextField(dir).isKey()) {
                 canExit = true;
                 this.field.nextField(dir).remove(this.field.nextField(dir).get());
             } else if (this.field.nextField(dir).isPoint()) {
-                score +=10;
+                score += 10;
                 this.field.nextField(dir).remove(this.field.nextField(dir).get());
             } else if (!this.field.nextField(dir).isEmpty()) {
-                lives-=1;
+                lives -= 1;
             } else if (this.field.nextField(dir) instanceof TargetField && canExit) {
                 score += 1000;
                 this.Win = true;
                 field.notifyObservers();
             }
-            if (this.lives <= 0){
+            if (this.lives <= 0) {
                 field.notifyObservers();
             }
-            if (this.Win == false && this.lives > 0){
+            if (this.Win == false && this.lives > 0) {
                 CommonField field;
                 field = this.field.nextField(dir);
                 this.field.remove(this);
@@ -205,35 +221,41 @@ public class PacmanObject implements CommonMazeObject{
 
     /**
      * Get info about pacman score
+     * 
      * @return pacman score
      */
     @Override
-    public int getPoints(){return score;}
+    public int getPoints() {
+        return score;
+    }
 
     /**
      * Override CommonObject method for getting field where pacman is
+     * 
      * @return pacman field
      */
     @Override
-    public CommonField getField(){
+    public CommonField getField() {
         return this.field;
     }
 
     /**
      * Override CommonObject method for getting info about pacman current lives
+     * 
      * @return number of pacman lives
      */
     @Override
-    public int getLives(){
+    public int getLives() {
         return lives;
     }
 
     /**
      * Override CommonObject method for getting info if object is pacman
+     * 
      * @return true
      */
     @Override
-    public boolean isPacman(){
+    public boolean isPacman() {
         return true;
     }
 

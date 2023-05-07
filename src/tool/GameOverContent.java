@@ -1,3 +1,4 @@
+package tool;
 /**
  * Project name: Pac-man
  * File name: GameOverContent.java
@@ -6,8 +7,6 @@
  * Author: Zdebska Kateryna(xzdebs00)
  * Description:  GameOverContent class display a game over screen in a game.
  */
-
-package src;
 
 import java.awt.Color;
 import java.awt.Font;
