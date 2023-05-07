@@ -1,3 +1,12 @@
+/**
+ * Project name: Pac-man
+ * File name: MenuPresenter.java
+ * Date: 06.05.2023
+ * Last update: 06.05.2023
+ * Author: Zdebska Kateryna(xzdebs00)
+ * Description:  MenuPresenter class display a menu screen in a game.
+ */
+
 package src;
 
 import java.awt.event.ActionEvent;
@@ -6,26 +15,25 @@ import javax.swing.JFrame;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * MenuPresenter class display a menu screen in a game.
+ */
 public class MenuPresenter{
-
+    /**
+     * Constructor for MenuPresenter
+     */
     public MenuPresenter(){
             JFrame frame = new JFrame();
             ImageIcon imageIcon = new ImageIcon("lib\\img\\menu_white.png");
-            //System.out.println(imageIcon.getIconWidth());
-            //System.out.println(imageIcon.getIconHeight());
             frame.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight());
             frame.setLocationRelativeTo(null);
             frame.setResizable(false);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            
-            Image image = imageIcon.getImage();
-            // Create a label with the image
             JLabel imageLabel = new JLabel(imageIcon);
-            imageLabel.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight()); // Set the position and size of the label
+            imageLabel.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight());
     
             ImageIcon play_icon = new ImageIcon("lib\\img\\play_button.png");
-
             JButton playButton = new JButton( play_icon);
             playButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             playButton.addActionListener(new ActionListener() {
@@ -44,7 +52,6 @@ public class MenuPresenter{
             savedGameButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0){
-                    // Code to view high scores goes here
                     frame.setVisible(false);
                     new SettingPresenter();
                 }
@@ -58,7 +65,6 @@ public class MenuPresenter{
             exitButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0){
-                    // Code to show options goes here
                     System.exit(0);
                     
                 }

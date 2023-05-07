@@ -1,23 +1,34 @@
+/**
+ * Project name: Pac-man
+ * File name: GameOverContent.java
+ * Date: 06.05.2023
+ * Last update: 06.05.2023
+ * Author: Zdebska Kateryna(xzdebs00)
+ * Description:  GameOverContent class display a game over screen in a game.
+ */
+
 package src;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
+/**
+ * GameOverContent class display a game over screen in a game.
+ */
 public class GameOverContent{
+    /**
+     * Constructor for GameOverContent
+     * @param isWin does player win or loose
+     * @param lives number of lives at the end of game
+     * @param points number of points at the end of game
+     */
     public GameOverContent(boolean isWin, int lives, int points){
         JFrame frame = new JFrame();
         ImageIcon imageIcon;
@@ -32,7 +43,6 @@ public class GameOverContent{
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        Image image = imageIcon.getImage();
         JLabel imageLabel = new JLabel(imageIcon);
         imageLabel.setSize(imageIcon.getIconWidth(), imageIcon.getIconHeight());
 
@@ -49,7 +59,6 @@ public class GameOverContent{
         menuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0){
-                // Code to view high scores goes here
                 frame.setVisible(false);
                 new MenuPresenter();
                 
@@ -63,7 +72,6 @@ public class GameOverContent{
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0){
-                // Code to show options goes here
                 System.exit(0);
                 
             }
